@@ -121,17 +121,17 @@
 																																																																																																					[what_is_this_with_you]Эээ! Что с тобой? Тебе что, плохо?
 																																																																																																						[Game_Study10]Е-мое, походу, водка палёная...[VIDEO SeregaFeelingBed][AUDIO SeregaSaysFakeVodka][BGNDVIDEO BackGround1_FinalStudy]
 																																																																																																							Все, допились... надо скорую вызывать!
-																																																																																																								[Mark_Final1][FINAL Твой друг умер ещё до приезда скорой помощи. Вам двоим удалось выжить, но от большой дозы метанола у вас пропало зрение...(поучительный финал#1)][VIDEO BackGround1_FinalStudy][AUDIO Silent_5]
+																																																																																																								[mark_ajzcoy79pydv7gvz8327][GOTO mark_final1]
 																																																																																																					[would_you_know_what_i_think]А я... знаешь... ещё что... думаю...
-																																																																																																						[Mark_Final7][FINAL К сожалению, ты перепил и отрубился... Встреча не удалась! (отрицательный финал#7)][VIDEO EugeneFallingToSalat]
+																																																																																																						[mark_r1aicld30p1761zwk9x2][GOTO mark_final7]
 																																																																																																			Потому что миром правит любовь... вот я люблю выпить...[VIDEO AllLaughingDrunkWithAudio]
 																																																																																																				[mark_4vbiq9ztwy4n8b28qbk5][GOTO Parashute_mark]
 																																																																																																			[For_what_we_drink_one_more]За что ещё выпьем?[VIDEO SeregaFlowingUpSlavkaAndEugene]
 																																																																																																				[Drink_for_freedom_in_Ephiopia]Выпьем за... свободную Эфиопию![VIDEO SlavkaWantToSayTostLoop][AUDIO SlavkaSaysTostForFreeEphiopia][BGNDVIDEO BackGround1_Study3]
 																																																																																																					За это я выпью...[VIDEO AllDrinking]
-																																																																																																						[Mark_Final14][FINAL Ты споил своего друга... Встреча не удалась! (отрицательный финал #14)][VIDEO SlavkaDrunkDie]
+																																																																																																						[mark_k87bhbcqm57m9ouy1rjq][GOTO mark_final14]
 																																																																																																					Ты достал... своим дебилизмом!
-																																																																																																						[Mark_Final12][FINAL Ты разозлил своего друга и он стукнул тебя! Встреча не удалась. (отрицательный финал #12)][VIDEO SlavkaPunchesEugene][AUDIO SlavkaPunchesEugene]
+																																																																																																						[mark_hsrn3154c4q2hme21wcx][GOTO mark_final12]
 																																																																																																	Ну и почему?
 																																																																																																		[mark_5i9t9sxl88xag19x80t3][GOTO Parashute_mark]
 																																																																																																	[your_wife_knows]Мне кажется, твоя жена знает...[VIDEO WifeBeatSeregaWithSound]
@@ -139,13 +139,13 @@
 																																																																																																			Мадам, позвольте заметить...
 																																																																																																				[mark_eb42t64yk8m105o87197]Что ты сказал???[VIDEO WifeSharpTellingLoop][AUDIO WifeSaysWhatHaveYouSaid][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																					Мы... уже... собсно... собирались ...
-																																																																																																						[mark_e07u92oqj1gzq386x241][GOTO Mark_Final8]
+																																																																																																						[mark_e07u92oqj1gzq386x241][GOTO mark_final8]
 																																																																																																					[our_friend_your_husband_very_respective_person]Наш друг... ваш муж... достойнейший человек...
 																																																																																																						[mark_k408w68sq0d5ck3bh65b]Кто достойнейший? Этот сморчок??? Ну насмешил![VIDEO WifeSharpTellingLoop][AUDIO WifeSaysWhoIsRespectivePerson][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																							Он рассказывал... вы удивительная женщина!
 																																																																																																								[mark_dn4l29f8191wr2ujzz00]Ой, ой, льстишь, подлец![VIDEO WifeScaringLoop][AUDIO WifeSaysYouLieMe][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																									[get_out_from_our_friend_woman]Не тронь нашего друга, женщина!
-																																																																																																										[Mark_Final8][FINAL Жена твоего друга утащила его домой и испортила вам встречу! (отрицательный финал #8)][VIDEO WifeTakesOffSerega]
+																																																																																																										[mark_1nba13760587zar6de91][GOTO mark_final8]
 																																																																																																									[GOTO you_dont_understand_madam]
 																																																																																																									[GOTO your_husband_said]
 																																																																																																							Он не сморчок... он рассказывал нам, что...
@@ -166,7 +166,7 @@
 																																																																																																													Нет... ребенку... на дороге...
 																																																																																																														[mark_63f6hu2v08wzvn16ps43]Как это случилось?[AUDIO WifeSaysHowItHappened][VIDEO WifeSharpTellingLoop][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																															Обкуренный вдупель малыш... перебегал дорогу...
-																																																																																																																[mark_p6i43clf5rkyq367voss][FINAL Придумай что-нибудь получше! Жена твоего друга утащила его домой. Встреча не удалась! (отрицательный финал #8)][VIDEO WifeTakesOffSerega]
+																																																																																																																[mark_ays7m21599yl5ic4d61d][GOTO mark_final15]
 																																																																																																															Дети увидели сигарету... на перекрестке...
 																																																																																																																[mark_i1at9sh13f5tqtqpv32v]Что ты несешь???[VIDEO WifeScaringLoop][AUDIO WifeSaysWhatAreYouSaying][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																																	Один побежал за сигаретой...
@@ -179,19 +179,19 @@
 																																																																																																																					Он отобрал у него сигарету! Чтобы малыш... не умер от рака легких.
 																																																																																																																						[mark_lcf12nzw2j50ms34qcr1]Избавиться от рака... лучше всего... с помощью пива.[VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysHowToUseRak][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																																							[he_is_a_hero]Он у тебя герой!
-																																																																																																																								[mark_k2s86p8ejcq7q862xagi][GOTO Mark_Final8]
+																																																																																																																								[mark_k2s86p8ejcq7q862xagi][GOTO mark_final8]
 																																																																																																																					Он остановил машину... собственным телом...
 																																																																																																																						[mark_fru6dy3jko2u25pbm70m]О боже! Его срочно надо показать врачам! Миленький, как ты? Сейчас, сейчас, потерпи...[AUDIO WifeSaysHeMustToGoToHospital][VIDEO WifeScaringLoop][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																																							Он в порядке... мы напоили его обезбаливающим...
-																																																																																																																								[Mark_Final31][FINAL Кажется жена друга поверила! В целом встреча удалась, но могло быть и лучше. (положительный финал#1)][VIDEO WifeTakesOffSerega][AUDIO Silent_5]
+																																																																																																																								[mark_f5cd336t3gp13w5q6msu][GOTO mark_final31]
 																																																																																																																	[GOTO you_dont_understand_madam]
 																																																																																																													У женщины случился... выкидыш...
-																																																																																																														[you_lie_me][FINAL Жена друга не поверила и утащила его домой... Встреча не удалась! (отрицательный финал #8)][VIDEO WifeTakesOffSerega]
+																																																																																																														[you_lie_me][GOTO mark_final16]
 																																																																																																											Он потерял... смысл жизни...
 																																																																																																												[tommorow_morning_we_are_talk_about_it]Мы с ним завтра утром поговорим об этом![VIDEO WifeSharpTellingLoop][AUDIO WifeSaysWeWillSayAboutItTomorrowMorning][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																													[GOTO get_out_from_our_friend_woman]
 																																																																																																													[you_dont_understand_madam]Вы не понимаете... мадам!
-																																																																																																														[mark_q597w731z1yfa9c69vqj][GOTO Mark_Final8]
+																																																																																																														[mark_q597w731z1yfa9c69vqj][GOTO mark_final8]
 																																																																																																							[GOTO you_dont_understand_madam]
 																																																																																																			Сударыня, как вам не стыдно!
 																																																																																																				[mark_owgm20j3z661ljvi867v]Это тебе должно быть стыдно, пропоица подзаборная![VIDEO WifeScaringLoop][AUDIO WifeSaysYouMustBeFault][BGNDVIDEO BackGround1_StudyWife]
@@ -200,7 +200,7 @@
 																																																																																																							[GOTO our_friend_your_husband_very_respective_person]
 																																																																																																					[GOTO get_out_from_our_friend_woman]
 																																																																																																			О! Белая пьянка! Дамы спаивают кавалеров...
-																																																																																																				[mark_088srx2i4l213f3ri7w0][GOTO Mark_Final8]
+																																																																																																				[mark_088srx2i4l213f3ri7w0][GOTO mark_final8]
 																																																																																																	[GOTO For_what_we_drink_one_more]
 																																																																																															Ты и спирт медицинский залпом можешь.
 																																																																																																[mark_m2k336ou5qno6br8n567][GOTO Game_Study10]
@@ -218,22 +218,22 @@
 																																																																																			Нас сейчас отсюда выпроводят...
 																																																																																				[mark_ewp5h10q2eltpl4n1b08]Да пусть только попробуют![VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysIfTheyTry][BGNDVIDEO BackGround1_Study3]
 																																																																																					Заткнись урод![VIDEO SecurityComing]
-																																																																																						[mark_ao87e88o3pc3x59x54d1][GOTO Mark_Final6]
+																																																																																						[mark_ao87e88o3pc3x59x54d1][GOTO mark_final6]
 																																																																																					[easy_man]Успокойся, чувак!
 																																																																																						[Game_Study6]Господа, просим покинуть наше заведение![VIDEO SecurityComing][AUDIO SecuritySaysGoOut][BGNDVIDEO BackGround1_StudySecurity][MUSIC NONE]
 																																																																																							Извините нас... пожалуйста... мы больше не будем!
 																																																																																								[Game_Study5]...[VIDEO SecurityLeaving][AUDIO Silent_3][BGNDVIDEO BackGround1_Study3]
 																																																																																									Все из-за тебя, козла!
-																																																																																										[mark_6639fx477167zkj64u4l][GOTO Mark_Final12]
+																																																																																										[mark_6639fx477167zkj64u4l][GOTO mark_final12]
 																																																																																									[GOTO drink_fourth_glass]
 																																																																																							На каком... собственно... основании?
-																																																																																								[mark_hh8u4im9f2m0ngp069j4][GOTO Mark_Final6]
+																																																																																								[mark_hh8u4im9f2m0ngp069j4][GOTO mark_final6]
 																																																																																							[ok_we_go_out]Хорошо... мы уходим...[VIDEO AllGoOutBar]
 																																																																																								[EPISODE8,Game_Study7]В такую погоду... только тещу за пивом гонять![AUDIO SeregaSaysAboutWeatherAndWifeMother][VIDEO BackGround1_Street][BGNDVIDEO BackGround1_Street][AMBIENT AmbientStreet][MUSIC NONE]
 																																																																																									Мне надо отлить...[VIDEO Police_Arriving]
 																																																																																										[Game_Study8]Граждане, предъявите ваши документы![VIDEO Police_Talking][AUDIO Police_AskDocuments][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																											Какие документы? Нас здесь итак все знают!
-																																																																																												[mark_80629z9xftiybykm914b][GOTO Mark_Final2]
+																																																																																												[mark_80629z9xftiybykm914b][GOTO mark_final2]
 																																																																																											Нет документов... дома оставили...
 																																																																																												[mark_mmwwa52acua74w1yc0qi]Тогда пройдемте...[VIDEO Police_Talking][AUDIO Police_LetsGo][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																													[where_we_go]Куда?
@@ -249,39 +249,37 @@
 																																																																																																	
 																																																																																																		[mark_58d0h36t990478y34o8s]...[VIDEO BackGround1_PoliceStanding][AUDIO SlavkaSaysAmericansAreFool][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																																			Сам ты дебил... такие же люди, как все...
-																																																																																																				[mark_g2p5orivzq53ux6057k4][GOTO Mark_Final2]
+																																																																																																				[mark_g2p5orivzq53ux6057k4][GOTO mark_final2]
 																																																																																																			[GOTO will_we_compromise]
 																																																																																																			[GOTO my_friend_is_police_cheif]
 																																																																																													Несите меня сами! (лечь на землю)
-																																																																																														[mark_46z2yxi2m5sdyk9epsdr][GOTO Mark_Final2]
+																																																																																														[mark_46z2yxi2m5sdyk9epsdr][GOTO mark_final2]
 																																																																																													[my_friend_is_police_cheif]Мой друг - начальник РОВД!
 																																																																																														[mark_74dpw13w1i3nv3mzdwcd]Это не важно.[VIDEO Police_Talking][AUDIO Police_ItIsNotImportant][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																															Это важно для вашей карьеры.
 																																																																																																[mark_42d038g99ltilsuq08k7]Ты что, мне угрожаешь? Как его фамилия?[VIDEO Police_Talking][AUDIO Police_WhatIsHisFirstName][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																																	Иванов (пытаешься угадать)
-																																																																																																		[mark_p58ahu639u4vsvqq786z][GOTO Mark_Final2]
+																																																																																																		[mark_p58ahu639u4vsvqq786z][GOTO mark_final2]
 																																																																																																	Я сейчас ему позвоню, но вы сначала подумайте, не отпустить ли вам нас?
 																																																																																																		[mark_f79d50618m3q55a14ch9]Вот только не надо меня пугать! Вы свободны.[VIDEO Police_Talking][AUDIO Police_DontThreatOnMe][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																																			Спасибо за понимание!
-																																																																																																				[mark_0451a80c1mpoc64sw2a0][GOTO Mark_Final32]
+																																																																																																				[mark_0451a80c1mpoc64sw2a0][GOTO mark_final0]
 																																																																																															[will_we_compromise]А может быть договоримся?
 																																																																																																[mark_1p27u7nihm3nh8e130n6]Может быть.[VIDEO Police_Talking][AUDIO Police_MayBe][BGNDVIDEO BackGround1_PoliceStanding]
-																																																																																																	500 устроит? (реально можете наскребсти)
+																																																																																																	5000 устроит? (реально можете наскребсти)
 																																																																																																		[mark_35pi6pq9k67591j440ai]И еще половину сержанту.[VIDEO Police_Talking][AUDIO Police_OneHalfToSergent][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																																			Но у нас столько нет...
-																																																																																																				[Mark_Final2][FINAL Вас забрали менты. Встреча не удалась! (отрицательный финал #2)][VIDEO police_leaving][AUDIO silent_2]
+																																																																																																				[mark_r2esbi1yml4fd86im970][GOTO mark_final2]
 																																																																																																			[GOTO only_500_now]
 																																																																																																			[GOTO Bad_policeman]
-																																																																																																	1000 (блефуешь, у вас столько нет)
+																																																																																																	10000 (блефуешь, у вас столько нет)
 																																																																																																		[mark_84ebz2aev5ix675c0e70]Давайте и уходите.[VIDEO Police_Talking][AUDIO Police_GiveAndGo][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																																			[Bad_policeman]Вы задержаны за получение взятки![VIDEO Police_confused]
-																																																																																																				[Mark_Final32][LABEL Менты испугались! Поздравления! Встреча алкодрузей удалась! Главный положительный финал!]
-																																																																																																					Смотреть финальные титры
-																																																																																																						[mark_1r8iiq5303o65hy6n1on][FINAL ...][VIDEO Titles][AUDIO final_music][AMBIENT NONE][MUSIC NONE]
-																																																																																																			[only_500_now]С собой только 500, но я занесу завтра! Обещаю!
+																																																																																																				[mark_0pr20uw4n0wsz20cr14j][GOTO mark_final0]
+																																																																																																			[only_500_now]С собой только 5000, но я занесу завтра! Обещаю!
 																																																																																																				[mark_n57z7l0kz2n15r2uk2d6]Давай сколько есть и проваливайте.[VIDEO Police_Talking][AUDIO Police_GiveAsYouHave][BGNDVIDEO BackGround1_PoliceStanding]
-																																																																																																					Вот... держите... 500...
-																																																																																																						[Mark_Final33][FINAL Вам удалось откупиться от ментов, но пришлось отдать последние деньги и поэтому не бухать оставшийся месяц. (Не самый лучший, но положительный финал #2)][AUDIO Silent_5]
+																																																																																																					Вот... держите... 5000...
+																																																																																																						[mark_4f8fb6x4gp1lglew8sp0][GOTO mark_final33]
 																																																																																			Я сказал тише!
 																																																																																				[mark_96c6mirz82537o10z70s][GOTO mass_shootings_save_country]
 																																																																																			[GOTO easy_man]
@@ -302,7 +300,7 @@
 																																																																																					[GOTO easy_man]
 																																																																																			[GOTO easy_man]
 																																																																													Это кто там трендит?
-																																																																														[Mark_Final6][FINAL Охрана выпроводила вас из заведения. Встреча не удалась! (отрицательный финал #6)][VIDEO AllFuckOffTheBar]
+																																																																														[mark_4pv81q922nj530v4m6k6][GOTO mark_final6]
 																																																																											Знаете рецепт карьерного роста в нашей стране?
 																																																																												[mark_d1vxj8rg86f9xrilo98v]Карьера мужчины зависит от того, кто с кем пьёт, карьера женщины - кто с кем спит.Проблема в том, что выпить с нужным человеком гораздо трудней, чем переспать![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutCarier][BGNDVIDEO BackGround1_Study3]
 																																																																													[GOTO this_country_is_without_promising]
@@ -320,7 +318,7 @@
 																																																																															[she_is_very_good]Она... она... очень хорошая...
 																																																																																[mark_fs7bf6gv9x03dwu133vj]Это ты тут "уже хороший" сидишь! Говорю тебе все женщины одинаковые![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysYouDrunkAllWomenAreTheSame][BGNDVIDEO BackGround1_Study3]
 																																																																																	[Dont_compare_by_your_wife]Ты по своей жене всех не мерь.
-																																																																																		[Mark_Final13][FINAL Твой друг стукнул тебя в репу! Надо быть повежливее! Встреча не удалась! (отрицательный финал #13)][VIDEO SeregaPunchesEugene][AUDIO SeregaPunchesEugene]
+																																																																																		[mark_dyl7e9794zt3v14229e2][GOTO mark_final13]
 																																																																																	Есть одна проблема с ней...
 																																																																																		[mark_7wd0qrg7hmdj4q333987]Какая проблема?[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWhatProblem][BGNDVIDEO BackGround1_Study3]
 																																																																																			Она замужем...
@@ -335,7 +333,7 @@
 																																																																																							Расслабься, чувак!
 																																																																																								[mark_9h13ytu89es621zvcxg6]Он шутит! Кому твоя грымза нужна то?[AUDIO SlavkaSaysWifeIsWitch][VIDEO SlavkaJustified][BGNDVIDEO BackGround1_Study3]
 																																																																																									[she_is_pretty_when_you_drunk]Она очень даже красива... когда ты сильно пьян!
-																																																																																										[mark_220obkidr8162l0b546s][GOTO Mark_Final3]
+																																																																																										[mark_220obkidr8162l0b546s][GOTO mark_final3]
 																																																																																									[GOTO drink_fourth_glass]
 																																																																																					[she_is_your_friend_wife]Она жена твоего друга.
 																																																																																						[EPISODE10]Так... давай сейчас ещё выпьем и рассмотрим эту ситуацию трезво...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysLetsDrinkAndThink]
@@ -369,13 +367,13 @@
 																																																																																														[enough_for_you]Знаешь... тебе уже хватит...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysThatsEnoughForYou][BGNDVIDEO BackGround1_Study3]
 																																																																																															[GOTO vodka_is_very_strange]
 																																																																																															Наливай я сказал!
-																																																																																																[mark_0lcaed0wypk18005q5p7][GOTO Mark_Final13]
+																																																																																																[mark_0lcaed0wypk18005q5p7][GOTO mark_final13]
 																																																																																									Водка какая то... странная...[VIDEO AllDrinking]
 																																																																																										[mark_zhb3x0748r46da2h8bld][GOTO it_sharps_me]
 																																																																																			Она нимфоманка.
 																																																																																				[mark_q12696o24vjl74b09qz5]Вон, у этого перца сбоку уже была одна такая нимфоманка, до сих пор лечится![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutNimtha][BGNDVIDEO BackGround1_Study3]
 																																																																																					Что, правда лечишься?
-																																																																																						[mark_5uq8plm325is91dg09ox][GOTO Mark_Final4]
+																																																																																						[mark_5uq8plm325is91dg09ox][GOTO mark_final4]
 																																																																																					[GOTO drink_fourth_glass]
 																																																																															[she_is_very_pretty]Она очень красивая...
 																																																																																[mark_e09stq088a824htq83il]Может, просто у тебя давно женщины не было? [VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysMaybeYouHaveNoWomanLongTime][BGNDVIDEO BackGround1_Study3]
@@ -387,7 +385,7 @@
 																																																																																	Полгода.
 																																																																																		[you_are_oldman]По-моему таких, как ты девушки вообще не интересуют.[AUDIO SeregaSaysYouOlder][VIDEO SeregaSharpTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																																																			[go_fuck_you_off]Да пошел ты!
-																																																																																				[Mark_Final11][FINAL Ты ударил своего друга! Надо быть посдерженнее. Встреча не удалась! (отрицательный финал #11)][VIDEO EugenePunchesSeregaWithSound]
+																																																																																				[mark_k7vfau8252m3q6lh70aw][GOTO mark_final11]
 																																																																																			[GOTO drink_fourth_glass]
 																																																																																	Обычная женщина вчера была.
 																																																																																		[mark_htisr313qfms8vmxfa63]Да ты влюбился, чувак![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysYouAreInLoveMan][BGNDVIDEO BackGround1_Study3]
@@ -403,7 +401,7 @@
 																																																																					Прикольно! А еще чего-нибудь расскажи...
 																																																																						[mark_52vh4b272g3ta2te4929][GOTO story_about_airplane]
 																																																																					А медведь панда, это ведь твоя жена!
-																																																																						[mark_b6066tn42bi3u77j4gsc][GOTO Mark_Final13]
+																																																																						[mark_b6066tn42bi3u77j4gsc][GOTO mark_final13]
 																																																																	Нет, не видели.
 																																																																		[EPISODE11,story_about_airplane]Ладно, слушай другую: однажды у экипажа самолета кончилось топливо...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutAirplane1][BGNDVIDEO BackGround1_Study3]
 																																																																			[i_know_this_story]Я эту знаю...
@@ -441,7 +439,7 @@
 																																																																					[GOTO No_sex_with_one_girl]
 																																																															[GOTO thats_enough_your_stupid_humor]
 																																																													[i_ll_bob_you_to_face]Щас в репу получишь![VIDEO EugeneIshallHitYourFace]
-																																																														[mark_9i1i0tpcd8rmdxr0gxvf][GOTO Mark_Final12]
+																																																														[mark_9i1i0tpcd8rmdxr0gxvf][GOTO mark_final12]
 																																																											[GOTO tranquillize_you_friend]
 																																																											[GOTO i_ll_bob_you_to_face]
 																																																									[i_ll_talk_about_shit_too]Ага, щас тоже какое-нибудь дерьмо вспомню...
@@ -497,11 +495,11 @@
 																																									Знаешь, я не буду на тебя обижаться...
 																																										[mark_e85e712ygq9ng783ow0a]Потому что обижаются только обиженные и опущенные![VIDEO SlavkaSmokingLoop][AUDIO SlavkaSaysAboutDownMen][BGNDVIDEO BackGround1_Smoking1]
 																																											[i_ll_hit_your_fucking_face]Ну все, пипец тебе!
-																																												[Mark_Final10][FINAL Ты ударил в репу своего друга! Слишком слабые у тебя нервы. Встреча не удалась! (отрицательный финал #10)][VIDEO EugenePunchesSlavkaWithSound]
+																																												[mark_yi97czy63kmh30oynw54][GOTO mark_final10]
 																																											Потому что жизнь сама обидит тебя...[VIDEO SeregaSlavkaStopSmoking]
 																																												[mark_p7l95pd5sdd09p6uww21][GOTO Game_Study4]
 																																									Все, я сваливаю отсюда!
-																																										[Mark_Final5][FINAL Ты испортил вечер! Слишком слабые у тебя нервы. Встреча не удалась! (отрицательный финал #5)][VIDEO EugeneGoOut]
+																																										[mark_qg985w742szo9xb0919a][GOTO mark_final5]
 																																									[GOTO i_ll_hit_your_fucking_face]
 																																							[GOTO you_must_stop_smoking]
 																																					[GOTO get_out_freak]
@@ -528,7 +526,7 @@
 																																			Нас они вобще убивают!!![VIDEO AllLaughingDrunkWithAudio]
 																																				[mark_rfa5a12jf24n8k1q71fe][GOTO i_found_myself_in_beerbar]
 																																			Да пошла ты![VIDEO SecurityComing]
-																																				[mark_d2ho9lolo78thxv1946h][GOTO Mark_Final6]
+																																				[mark_d2ho9lolo78thxv1946h][GOTO mark_final6]
 																															[about_camel]Кстати, есть такое животное - верблюд, может не пить 30 дней!
 																																[mark_61i3h7c2tygs45r147pc][GOTO will_we_smoke]
 																															[GOTO Lets_smoke_proposed_Eugene]
@@ -541,9 +539,9 @@
 																																			А ты сам чо, не брезгливый? Налить тебе в мою туфельку?
 																																				[you_must_warn_to_normal_people_dont_drink_with_you]Предупреждать надо, чтоб нормальные люди не бухали с таким быдлом, как ты![AUDIO SlavkaSaysWeDontDrinkWithShitman][VIDEO SlavkaSaysToSerega][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																																					Правильно говоришь!
-																																						[Mark_Final3][FINAL Ну вот... твой друг обиделся и ушел... Встреча не удалась! (отрицательный финал #3)][VIDEO SeregaGoOutWithAudio]
+																																						[mark_a439yrxel0o273133k4g][GOTO mark_final3]
 																																					Иди бухай с бомжами!
-																																						[mark_1ep14ri8b71ecb0ec532][GOTO Mark_Final13]
+																																						[mark_1ep14ri8b71ecb0ec532][GOTO mark_final13]
 																																					[GOTO Lets_smoke_proposed_Eugene]
 																																			Нет, не брезгливый.
 																																				[mark_f6606xh4bmp86yge075b][GOTO will_we_smoke]
@@ -577,7 +575,7 @@
 																																							Ну тогда ладно...
 																																								[mark_92533d07m91s4i179y1c][GOTO will_we_smoke]
 																																							[You_goat]Ну ты и правда козлина!
-																																								[Mark_Final4][FINAL Ну зачем ты так? Твой друг обиделся и ушел... Встреча не удалась! (отрицательный финал #4)][VIDEO SlavkaGoOutWithAudio]
+																																								[mark_ck203m29d91pfg8c4d9z][GOTO mark_final4]
 																																	Свою меру я знаю и меньше никогда не пью!
 																																		[mark_fk12wv4x12p169gw670d][GOTO Man_need_waterfalling]
 																															[did_i_fasten_your_egg_too]Ты ведь не думаешь, что я споил тебя нарочно?
@@ -617,7 +615,7 @@
 																															[i_dont_trust]Не верю...
 																																[mark_5o7m9o6x844d72s5v0qi]Ты нам, своим друзьям не веришь?[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysYouDontTrustYourFriends][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																																	Да, я вам не верю!
-																																		[Mark_Final9][FINAL Твои друзья обиделись на тебя и ушли... Встреча не удалась! (отрицательный финал #9)][VIDEO SlavkaSeregaGoOut]
+																																		[mark_mxf8cqc1y4y131k6vhh1][GOTO mark_final9]
 																																	Верю, но с трудом.
 																																		[mark_fx486k8qb3ee1su68k7y]Круто мы тебя развели? Гыгыгы![VIDEO LaughingSlavkaAndSerega][AUDIO SeregaSaysCoolWeJokedYou][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																																			Ну вы блин приколисты! Я почти поверил...
@@ -720,5 +718,63 @@
 											[cancel_buy_button_episodes]Нет, спасибо.
 												[mark_677039120q01r58og222]{'[GOTO ' + this.gotoCancel + ']'}
 			[mark_57459g1d36876o98q2vr][GOTO cancel_buy_button_episodes]
-	Эпизоды игры
+		[mark_final0]Менты испугались! Поздравления! Встреча алконавтов удалась! Главный положительный финал![BGNDVIDEO Titles]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final1]Твой друг умер ещё до приезда скорой помощи. Вам двоим удалось выжить, но от большой дозы метанола у вас пропало зрение... Отрицательный финал #1[VIDEO BackGround1_FinalStudy][AUDIO Silent_5]
+			[play_again]Играть заново
+				[mark_9t32482uesqiuf0e4y53][GOTO GAME_SAVEPOINT]
+			[GOTO buy_episodes]
+		[mark_final2]Вас забрали менты. Встреча не удалась! Отрицательный финал #2[VIDEO police_leaving][AUDIO silent_2]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final3]Ну вот... твой друг обиделся и ушел... Встреча не удалась! Отрицательный финал #3[VIDEO SeregaGoOutWithAudio][AUDIO silent_5]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final4]Ну зачем ты так? Твой друг обиделся и ушел... Встреча не удалась! Отрицательный финал #4[VIDEO SlavkaGoOutWithAudio][AUDIO silent_5]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final5]Ты испортил вечер! Слишком слабые у тебя нервы. Встреча не удалась! Отрицательный финал #5[VIDEO EugeneGoOut][AUDIO silent_5]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final6]Охрана выпроводила вас из заведения. Встреча не удалась! Отрицательный финал #6[VIDEO AllFuckOffTheBar][AUDIO silent_7]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final7]К сожалению, ты перепил и отрубился... Встреча не удалась! Отрицательный финал #7.[VIDEO EugeneFallingToSalat][AUDIO silent_4]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final8]Жена твоего друга утащила его домой и испортила вам встречу! Отрицательный финал #8[VIDEO WifeTakesOffSerega][AUDIO silent_4]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final9]Твои друзья обиделись на тебя и ушли... Встреча не удалась! Отрицательный финал #9[VIDEO SlavkaSeregaGoOut][AUDIO silent_5]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final10]Ты ударил в репу своего друга! Слишком слабые у тебя нервы. Встреча не удалась! Отрицательный финал #10[VIDEO EugenePunchesSlavkaWithSound][AUDIO silent_5]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final11]Ты ударил своего друга! Надо быть посдерженнее. Встреча не удалась! Отрицательный финал #11[VIDEO EugenePunchesSeregaWithSound][AUDIO silent_6]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final12]Ты разозлил своего друга и он стукнул тебя! Встреча не удалась. Отрицательный финал #12[VIDEO SlavkaPunchesEugene][AUDIO SlavkaPunchesEugene]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final13]Твой друг стукнул тебя в репу! Надо быть повежливее! Встреча не удалась! Отрицательный финал #13[VIDEO SeregaPunchesEugene][AUDIO SeregaPunchesEugene]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final14]Ты споил своего друга... Встреча не удалась! Отрицательный финал #14[VIDEO SlavkaDrunkDie][AUDIO silent_4]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final15]Придумай что-нибудь получше! Жена твоего друга утащила его домой. Встреча не удалась! Отрицательный финал #15[VIDEO WifeTakesOffSerega][AUDIO silent_5]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final16]Жена друга не поверила и утащила его домой... Встреча не удалась! Отрицательный финал #16[VIDEO WifeTakesOffSerega][AUDIO silent_4]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final31]Кажется жена друга поверила! В целом встреча удалась, но могло быть и лучше. Положительный финал #1[VIDEO WifeTakesOffSerega][AUDIO silent_5]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+		[mark_final33]Вам удалось откупиться от ментов, но пришлось отдать последние деньги. Можно было сделать и лучше. Положительный финал #2[BGNDVIDEO BackGround1_PoliceStanding]
+			[GOTO play_again]
+			[GOTO buy_episodes]
+	[buy_episodes]Эпизоды игры
 		[mark_8b8adi78738690oewbn3]{this.gotoSuccess='START';this.gotoCancel='START';''}[GOTO buy_button_episodes]
