@@ -1,0 +1,805 @@
+import mx.controls.Alert;
+
+debugging = false;//true;
+
+var questionsStack:Array = new Array();
+
+// Текущая стадия игры
+currentGameStudy = 0;
+gameStateChanged = false;
+// Варианты стадий игры
+var GameStudyName: Array = new Array( 
+	"Трезвые",
+	"Выпившие",
+	"Курящие двое",
+	"Курят все",
+	"Пьяные",
+	"Очень пьяные",
+	"Охранник на фоне",
+	"На улице",
+	"Менты на улице",
+	"Жена пришла",
+	"Мертвые");
+
+answerMaxTime = 100000;
+
+pbAnswerTime.minimum = 0;
+pbAnswerTime.maximum = answerMaxTime;
+
+var GameState: Array = new Array (
+	"None",
+	"Intro",
+	"AskQuestion",
+	"PlayAdditional",
+	"WaitPlayer",
+	"AnswerQuestion",
+	"Final",
+	"Titles"
+	);
+
+var CurrentGameState: Number;
+var StartingAnswerTime: Number;
+var intervalID: Number;
+var SceneVideo: MovieClip = new MovieClip();
+
+var treeXML: XML = new XML();
+
+treeXML.ignoreWhite = true;
+var currentXMLNode: XMLNode = new XMLNode();
+
+System.useCodepage = true;
+
+var mc_Background:MovieClip = this.createEmptyMovieClip("mc_Background", this.getNextHighestDepth());
+
+// Для музыки
+var BGM = this.createEmptyMovieClip("BackgroundMusic", this.getNextHighestDepth());
+var AmbientMusic: Sound = new Sound("BGM");
+var BGS = this.createEmptyMovieClip("BackgroundSound", this.getNextHighestDepth());
+var AmbientSound: Sound = new Sound("BGS");
+
+// Для музыки
+var QS = this.createEmptyMovieClip("Question_Sound", this.getNextHighestDepth());
+var QuestionSound: Sound = new Sound("QS");
+
+////////////////////////////////////////////////////////////////////
+// ФОНОВЫЙ ЗВУКИ
+function playAmbientSound(aAmbientSoundName: String) {
+	AmbientSound.stop();
+	AmbientSound.attachSound(aAmbientSoundName);
+	AmbientSound.start(0, 99999);
+	if (debugging) {trace("Sound '" + aAmbientSoundName + "' starts...");}
+}
+
+// ФОНОВАЯ МУЗЫКА
+function playRandomAmbientMusic() {
+	var randomNum:Number = Math.floor(Math.random() * 3);
+	if (debugging) {trace("Generated random music number (0..2) = " + randomNum);}
+	switch (randomNum) {
+	case 1:
+		AmbientMusic.attachSound("DJ_Electric_Feeling_Promo_Mix_techno");
+	break;
+	case 2:
+		AmbientMusic.attachSound("DJ_Electric_Feeling_Promo_Mix_gitar");
+	break;
+	default:
+		AmbientMusic.attachSound("DJ_Electric_Feeling_Promo_Mix_electronic");
+	break;
+	}
+	AmbientMusic.onSoundComplete = function() {
+		this.stop("AmbientMusic");
+		if (debugging) {trace("Ambient music finish playing.");}
+		playRandomAmbientMusic();
+	}
+	AmbientMusic.start();
+	if (debugging) {trace("Ambient music start playing...");}
+}
+
+function stopAllAudio() {
+	QuestionSound.stop();
+	AmbientMusic.stop();
+	AmbientSound.stop();
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// Регулятор громкости музыки
+this.createEmptyMovieClip("scrollerMusic", this.getNextHighestDepth());
+scrollerMusic._x = 410;
+scrollerMusic._y = 625;
+scrollerMusic.beginFill(0xFFFFFF, 100);
+scrollerMusic.lineStyle(1, 0xFF0000, 100);
+scrollerMusic.moveTo(-3, -5);
+scrollerMusic.lineTo(3, -5);
+scrollerMusic.lineTo(3, 5);
+scrollerMusic.lineTo(-3, 5);
+scrollerMusic.lineTo(-3, -5);
+scrollerMusic.endFill();
+scrollerMusic.onPress = function() {
+	this.startDrag(false, 370, 625, 470, 625);
+};
+
+function setMusicVolumeByScroller() {
+	AmbientMusic.setVolume(scrollerMusic._x - 370);
+}
+
+function getMusicVolumeByScroller() {
+	return (scrollerMusic._x - 370);
+}
+
+scrollerMusic.onRelease = function() {
+	setMusicVolumeByScroller();
+	trace("Music volume: " + AmbientMusic.getVolume());
+	this.stopDrag();
+};
+
+scrollerMusic.onReleaseOutside = scrollerMusic.onRelease;
+
+/////////////////////////////////////////////////////////////
+// XML дерево
+function GetNodeAudio(aXMLNode: XMLNode) {
+	if (debugging) {trace("GetNodeAudio = " + aXMLNode.attributes.audio);}
+	return aXMLNode.attributes.audio;
+}
+
+function GetNodeAudio1(aXMLNode: XMLNode) {
+	if (debugging) {trace("GetNodeAudio1 = " + aXMLNode.attributes.audio1);}
+	return aXMLNode.attributes.audio1;
+}
+
+function GetNodeVideo(aXMLNode: XMLNode) {
+	if (debugging) {trace("GetNodeVideo = " + aXMLNode.attributes.video);}
+	return aXMLNode.attributes.video;
+}
+
+function GetNodeVideo1(aXMLNode: XMLNode) {
+	if (debugging) {trace("GetNodeVideo1 = " + aXMLNode.attributes.video1);}
+	return aXMLNode.attributes.video1;
+}
+
+function FindNodeWithMark(aXMLNode: XMLNode, aMarkName: String) {
+//	if (debugging) {trace("Mark:" + aXMLNode.attributes.mark);}
+
+	if (aXMLNode.attributes.mark == aMarkName) {
+		return aXMLNode;
+	}
+	
+	for (var i = 0; i < aXMLNode.childNodes.length; i++) {
+		var Node: XMLNode = FindNodeWithMark(aXMLNode.childNodes[i], aMarkName);
+		if (Node != null) {
+			return Node;
+		}
+	}
+	return null;
+}
+
+function getNodeGotoNode(aXMLNode: XMLNode) {
+	gotoText = aXMLNode.attributes.goto;
+	while (gotoText != null) {
+		if (debugging) {trace("getNodeGotoNode: looking for Mark = " + gotoText);}
+		aXMLNode = FindNodeWithMark(treeXML.firstChild.firstChild, gotoText);
+		if (aXMLNode == null) {
+			throw new Error("Error! Can not find goto_mark = [" + gotoText + "] !"); 
+		}
+		gotoText = aXMLNode.attributes.goto;
+	};
+	return aXMLNode;
+}
+
+///////////////////////////////////////////////////////////
+// Главный алгоритм
+
+function changeGameState(aStateNo: Number) {
+	if (debugging) {trace("Changed CurrentGameState = " + CurrentGameState + " to " + aStateNo);}
+	CurrentGameState = aStateNo;
+	gameStateChanged = true;
+	if (debugging) {trace("Changed gameStateChanged = " + gameStateChanged);}	
+}
+
+function PlayIntro() {
+	taQuestion.visible = false;
+	lstAnswerList.visible = false;
+	pbAnswerTime.visible = false;
+	PlayVideo("Intro", false);
+	PlayAudio("Intro", false);
+}
+
+function switchGameStatesForAudio() {
+	// Финальные титры после удачных финалов
+	if (CurrentGameState == 6) {
+		if ((currentXMLNode.attributes.mark == "MARK_FINAL1")
+			or (currentXMLNode.attributes.mark == "MARK_FINAL31")
+			or (currentXMLNode.attributes.mark == "MARK_FINAL32")
+			or (currentXMLNode.attributes.mark == "MARK_FINAL33")) {
+			bTitles.visible = true;
+			stopAllAudio();
+			changeGameState(7);
+		}
+	}
+
+	// Если закончилось доп. аудио к вопросу, переключаем на ответ на вопрос
+	if (CurrentGameState == 3) {
+		CalcStats(currentXMLNode.attributes.video1);
+		changeGameState(4);
+	}
+
+	// Если закончилось аудио вопрос, переключаем на доп. аудио к вопросу
+	if (CurrentGameState == 2) {
+		CalcStats(currentXMLNode.attributes.video);
+		changeGameState(3);
+	}
+}
+
+function PlayAudio(aAudioName: String) {
+	if (debugging) {trace("Audio = " + aAudioName);}
+	if (aAudioName == null) {
+		trace("Can not play this audio!");
+		switchGameStatesForAudio();
+		return;
+	}
+	trace(aAudioName.substr(0, 7).toUpperCase());
+	if (aAudioName.substr(0, 7).toUpperCase() == "SILENT_") {
+		var loops = aAudioName.slice(7);
+		trace("Keep silent for " + loops + " seconds...");
+		QuestionSound.attachSound("Silent1sec");
+		QuestionSound.start(0, loops);
+	}
+	else {
+		QuestionSound.attachSound(aAudioName);
+		QuestionSound.start();
+	}
+	
+	// Понижаем громкость музыки во время вопросов
+	var musicVolume = getMusicVolumeByScroller();
+	if (musicVolume > 15) {musicVolume = 15;} 
+	AmbientMusic.setVolume(musicVolume);
+}
+
+QuestionSound.onSoundComplete = function() {
+	trace("QuestionSound = " + QuestionSound.position + ", duration = " + QuestionSound.duration);
+	switchGameStatesForAudio();
+	setMusicVolumeByScroller();
+}
+
+function switchGameStatesForVideo() {
+	// Если была заставка, начинаем игру заново
+	if (CurrentGameState == 1) {
+		bRestart.onPress(null);
+	}
+	// Если закончилось видео ответа, переключаем на новый вопрос
+	if (CurrentGameState == 5) {
+		CalcStats(currentXMLNode.attributes.video);
+		changeGameState(2);
+	}
+}
+
+function PlayVideo(aVideoName: String, aLooped: Boolean): Void {
+	SceneVideo = this.attachMovie("video" + aVideoName, "scene_video", 0, {_x: 0, _y: 0, _xscale: 100, _yscale: 100});
+	if (debugging) {trace("PlayVideo = " + aVideoName + ", looped = " + aLooped);}
+	if(SceneVideo == null) {
+		if (debugging) {trace("Can not play this video!");}
+		switchGameStatesForVideo();
+		return;
+	}
+
+	if (!aLooped) {
+		SceneVideo.onEnterFrame = function() {
+			if (this._currentframe == this._totalframes) {
+				this.stop();
+				switchGameStatesForVideo();
+			}
+		}
+	}
+	else {
+		SceneVideo.onEnterFrame = function() {
+			if (this._currentframe == this._totalframes) {
+				if ((CurrentGameState == 4) and (currentGameStudy == 1)) {
+					this.stop();
+					PlayVideo("Background1_Study1", true);
+				}
+			}
+		}
+	}
+}
+
+function setGameStudy(aXMLNode: XMLNode) {
+	// Определяем стадию игры, ищем метки диалога в хронологическом порядке
+	for (var i=1;i<=10;i++) {
+		if (aXMLNode.attributes.mark == "GAME_STUDY" + i) {
+			if (debugging) {trace("game study changed " + currentGameStudy + " to " + i);}
+			currentGameStudy = i;
+		}
+	}
+	if (debugging) {trace("Current GAME STUDY = " + currentGameStudy);}
+	
+	if (currentGameStudy == 7) {
+		AmbientMusic.stop();
+		playAmbientSound("AmbientStreet");
+	}
+}
+
+function ShowFinal(aFinalText: String) {
+	changeGameState(6);
+	lstAnswerList.visible = false;
+	pbAnswerTime.visible = false;
+	lstAnswerList.removeAll();
+	taQuestion.text = aFinalText;
+	clearInterval(intervalID);
+}
+
+function CheckFinal(aXMLNode: XMLNode): Boolean {
+	finalText = aXMLNode.attributes.final;
+	if (debugging) {trace("Check final = " + finalText);}	
+	if (finalText != null) {		
+		ShowFinal(finalText);
+		return true;
+	}
+	return false;
+}
+
+function CalcStats(aVideoName: String) {
+///////////////////////////////////////////////////////////////////////////////	
+	trace("CalcStats VIDEO ==== " + aVideoName);
+	if (aVideoName == "SEREGAFLOWINGUPSLAVKA") {
+		SeregaGlassesPrepared++;
+		SlavkaGlassesPrepared++;
+	}
+	
+	if (aVideoName == "SLAVKAFLOWINGUPSEREGA") {
+		SeregaGlassesPrepared++;
+		SlavkaGlassesPrepared++;
+	}
+	
+	if (aVideoName == "SLAVKAFLOWINGUPEUGENE") {
+		EugeneGlassesPrepared++;
+	}
+	
+	if (aVideoName == "SEREGAFLOWINGUPSLAVKAANDEUGENE") {
+		SeregaGlassesPrepared++;
+		SlavkaGlassesPrepared++;
+		EugeneGlassesPrepared++;
+	}
+
+	if (aVideoName == "DRINKINGSLAVKAANDSEREGA") {
+		SeregaGlassesDrinken++;
+		SlavkaGlassesDrinken++;
+	}
+	
+	if (aVideoName == "ALLDRINKING") {
+		SeregaGlassesDrinken++;
+		SlavkaGlassesDrinken++;
+		EugeneGlassesDrinken++;
+	}
+	
+	tiStats.text = "1друг=" + SeregaGlassesPrepared + "/" + SeregaGlassesDrinken + " | 2друг=" + SlavkaGlassesPrepared + "/" + SlavkaGlassesDrinken + " | Ты=" + EugeneGlassesPrepared + "/" + EugeneGlassesDrinken;
+	
+///////////////////////////////////////////////////////////////////////////////
+}
+
+function AskQuestion(aXMLNode: XMLNode) {
+	if (debugging) {trace("Asking");}
+	
+	// Запоминаем вопрос в стэке
+	questionsStack[QuestionsAsked] = aXMLNode;
+	QuestionsAsked++;
+	
+	// Берем переход
+	aXMLNode = getNodeGotoNode(aXMLNode.firstChild);
+	currentXMLNode = aXMLNode;
+	trace("aXMLNode text = " + aXMLNode.attributes.label);
+
+	if (debugging) {trace("Remembered question N " + QuestionsAsked);}
+
+	// Узнаем стадию в игре
+	setGameStudy(aXMLNode);
+	
+	// Проверяем на финал
+	var isFinal = CheckFinal(aXMLNode);
+	trace("isFinal = " + isFinal + ", !isFinal = " + !isFinal);
+
+	// Формируем вопрос
+	if (!isFinal) {
+		taQuestion.text = aXMLNode.attributes.label;
+	}
+	taQuestion.visible = true;
+	// Формируем список вариантов ответов на вопрос
+	lstAnswerList.visible = false;
+	pbAnswerTime.visible = false;
+	lstAnswerList.removeAll();
+	trace("Answers count = " + aXMLNode.childNodes.length);
+	for (var i = 0; i < aXMLNode.childNodes.length; i++) {
+		var gotoNode: XMLNode = getNodeGotoNode(aXMLNode.childNodes[i]);
+		lstAnswerList.addItemAt(Math.random() * i, gotoNode.attributes.label, {XMLNode: gotoNode});		
+	}
+	// Задаем вопрос
+	PlayVideo(aXMLNode.attributes.video, !(isFinal));
+	PlayAudio(aXMLNode.attributes.audio);	
+	
+	focusManager.setFocus("lstAnswerList");
+};
+
+function PlayAdditional(aXMLNode: XMLNode) {
+	// Берем переход
+	aXMLNode = getNodeGotoNode(aXMLNode);
+	currentXMLNode = aXMLNode;
+	if (debugging) {trace("Playing additional...");}
+
+	// Проигрываем доп.
+	PlayVideo(aXMLNode.attributes.video1);
+	PlayAudio(aXMLNode.attributes.audio1);	
+}
+
+var listListenerObject:Object = new Object();
+listListenerObject.change = function(eventObject:Object) {
+	QuestionSound.setVolume(100);
+	AmbientSound.setVolume(100);
+	setMusicVolumeByScroller();
+	currentXMLNode = lstAnswerList.selectedItem.data["XMLNode"];
+	lstAnswerList.visible = false;
+	pbAnswerTime.visible = false;
+	changeGameState(5);
+}
+lstAnswerList.addEventListener("change", listListenerObject);
+
+function answerTimeCallback() {
+	var msGone: Number = getTimer() - StartingAnswerTime;
+	pbAnswerTime.setProgress(answerMaxTime - msGone, answerMaxTime);
+
+	if (msGone > answerMaxTime) {
+		// Играет финальная сцена
+		switch (currentGameStudy) {
+		case 6:
+			PlayVideo("AllFuckOffTheBar", false);
+			PlayAudio("Silent_13", false);		
+			ShowFinal("Охрана выпроводила вас из заведения...");		
+		break;
+		case 7:
+			PlayVideo("police_leaving", false);
+			PlayAudio("Silent_2", false);		
+			ShowFinal("Вас забрали в трезвяк менты...");		
+		break;
+		case 8:
+			PlayVideo("police_leaving", false);
+			PlayAudio("Silent_2", false);		
+			ShowFinal("Менты забрали вас в трезвяк...");
+		break;
+		case 9:
+			PlayVideo("WifeTakesOffSerega", false);
+			PlayAudio("Silent_5", false);
+			ShowFinal("Жена утащила друга домой...");		
+		break;
+		case 10:
+			PlayVideo("BackGround1_FinalStudy", false);
+			PlayAudio("Silent_3", false);
+			ShowFinal("Твой друг умер...");		
+		break;
+		default:
+			PlayVideo("SlavkaSeregaGoOut", false);
+			PlayAudio("Silent_7", false);		
+			ShowFinal("Твои друзья ушли...");
+		break;
+		}
+	}
+}
+
+function WaitPlayer() {
+	lstAnswerList.visible = true;
+	pbAnswerTime.visible = true;
+	
+	// В зависимости от стадии игры показываем разные фоновые картинки в ожидании реакции игрока
+	var randomNum:Number = Math.floor(Math.random() * 5) + 1;
+	if (debugging) {trace("Game background random video number = " + randomNum);}
+	
+	switch (currentGameStudy) {
+		// Курят двое
+		case 2:
+			PlayVideo("BackGround1_Smoking1", true);
+		break;
+		// Курят все
+		case 3:
+			PlayVideo("BackGround1_SmokingAll", true);
+		break;
+		// Уже пьяные
+		case 4:
+			PlayVideo("Background1_Study4", true);
+		break;
+		// Уже пьяные, камера шатается
+		case 5:
+			PlayVideo("Background1_Study4", true);
+		break;			
+		// Охранник на фоне
+		case 6:
+			PlayVideo("Background1_StudySecurity", true);
+		break;
+		// На улице
+		case 7:
+			PlayVideo("Background1_Street", true);
+		break;
+		// Менты на улице
+		case 8:
+			PlayVideo("Background1_PoliceStanding", true);
+		break;
+		// Жена пришла
+		case 9:
+			PlayVideo("BackGround1_StudyWife", true);
+		break;			
+		// Серега умер
+		case 10:
+			PlayVideo("Background1_FinalStudy", true);
+		break;
+		// По умолчанию - выпившие (т.е. обычные)
+		default:
+			switch (randomNum) {
+			case 1:
+				PlayVideo("Eugene_EatsSalat", true);
+			break;
+			case 2:
+				PlayVideo("SlavkaEatsSalat", true);
+			break;
+			default:
+				PlayVideo("Background1_Study1", true);
+			break;
+			}
+		break;
+	}
+			
+	// Запускаем отсчет времени ответа
+	clearInterval(intervalID);
+	intervalID = setInterval(answerTimeCallback, 100);
+	StartingAnswerTime = getTimer();
+}
+
+function AnswerQuestion(aXMLNode: XMLNode) {
+	if (debugging) {trace("Answering...");}
+	
+	// Останавливаем таймер отсчета времени ответа
+	clearInterval(intervalID);
+
+	setGameStudy(aXMLNode);
+	
+	taQuestion.text = aXMLNode.attributes.label;
+	
+	// Проверяем на финал
+	CheckFinal(aXMLNode);
+	
+	currentXMLNode = aXMLNode;
+	
+	// Показываем видео ответа
+	PlayVideo(aXMLNode.attributes.video);
+//	PlayAudio(aXMLNode.attributes.audio);	
+}
+
+//////////////////////////////////////////////////////////
+// Доп. логика для движка
+drunkCounter = 0;
+lightCounter = 0;
+
+onEnterFrame = function() {
+//	trace("CurrentGameState = " + CurrentGameState + ", gameStateChanged = " + gameStateChanged);
+//	trace("QuestionSound = " + QuestionSound.position + ", duration = " + QuestionSound.duration);
+	if (gameStateChanged) {
+		gameStateChanged = false;
+		switch (CurrentGameState) {
+		case 1:
+			PlayIntro();
+		break;
+		case 2:
+			AskQuestion(currentXMLNode);
+		break;
+		case 3:
+			PlayAdditional(currentXMLNode);
+		break;
+		case 4:
+			WaitPlayer();
+		break;
+		case 5:
+			AnswerQuestion(currentXMLNode);
+		break;
+		case 6:
+			AmbientSound.attachSound("GameOver");
+			AmbientSound.start();
+		break;
+		case 7:
+			PlayVideo("Titles");
+			PlayAudio("final_music");
+		break;
+		case 9:
+			PlayVideo("Donates");
+		break;
+		}
+	}
+//////////////////////////////////////////////////////////
+// Доп. логика для движка
+
+//	SceneVideo._alpha = 100 - (lightCounter - Math.floor(lightCounter / 70) * 70);
+	lightCounter++;
+	if (lightCounter > 100) {lightCounter = 0;}
+	
+	if ((currentGameStudy >= 0) and (CurrentGameState < 7)) {
+		var playerDrunkCoefficient = EugeneGlassesDrinken / 2;
+		var scale = Math.sin(Math.PI / 180 * drunkCounter) * 10;
+		var xoffset = Math.sin(Math.PI / 180 * drunkCounter * 2) * 30 * playerDrunkCoefficient;
+		SceneVideo.swapDepths(0);
+		SceneVideo._xscale = 100 + (26 + scale) * playerDrunkCoefficient;
+		SceneVideo._yscale = 100 + 2 * Math.abs(scale) * playerDrunkCoefficient;
+		SceneVideo._x = 320 + xoffset - SceneVideo._width / 2;
+		SceneVideo._y = 480 - SceneVideo._height;
+		drunkCounter+=2;
+		if (drunkCounter > 359) {
+			drunkCounter = 0;
+		}
+	}
+	else {
+		SceneVideo._x = 0;
+		SceneVideo._y = 0;
+		SceneVideo._xscale = 100;
+		SceneVideo._yscale = 100;
+	}
+}
+
+bDonates.onPress = function() {
+	clearInterval(intervalID);
+	QuestionSound.stop();
+	AmbientMusic.setVolume(0);
+	AmbientSound.setVolume(0);
+	// Дадим возможность ответить
+	if ((CurrentGameState == 2) or (CurrentGameState == 3)) {
+		lstAnswerList.visible = true;
+	}
+	changeGameState(9);
+}
+
+bTitles.onPress = function () {
+	clearInterval(intervalID);
+	taQuestion.visible = false;
+	lstAnswerList.visible = false;
+	pbAnswerTime.visible = false;
+	stopAllAudio();
+	changeGameState(7);	
+}
+
+bRestart.onPress = function () {
+	if (debugging) {trace("Restarting...");}
+	clearInterval(intervalID);
+	this._x = 485;
+	this._y = 613;
+	currentGameStudy = 0;
+	QuestionsAsked = 0;
+	stopAllAudio();
+	
+	bAbout._visible = true;
+	pbAnswerTime._visible = true;
+	mc_pic_audio._visible = true;
+	mc_pic_volume._visible = true;
+	scrollerMusic._visible = true;
+	bDonates._visible = true;
+	
+	SeregaGlassesPrepared = 0;
+	SlavkaGlassesPrepared = 0;
+	EugeneGlassesPrepared = 0;
+
+	SeregaGlassesDrinken = 0;
+	SlavkaGlassesDrinken = 0;
+	EugeneGlassesDrinken = 0;
+
+	currentXMLNode = treeXML.firstChild;
+//	currentXMLNode = FindNodeWithMark(treeXML.firstChild, "OK_WE_GO_OUT");
+//	EugeneGlassesDrinken = 2;
+//	currentGameStudy = 7;
+	
+	Episode = 1;
+	playAmbientSound("AmbientCafe");
+	playRandomAmbientMusic();
+
+	changeGameState(2);
+}
+
+// After loading is ecomplete, trace the XML object.
+treeXML.onLoad = function(success) {
+	trace("treeXML loaded = " + success);
+	changeGameState(1);
+};
+
+var XMLText1: String = "<node><node label=\"Ну что, пацаны, выпьем?\" video=\"LETSDRINKSAIDSLAVKA\" audio=\"SLAVKASAYSLETSDRINK\" mark=\"GAME_STUDY1\"><node label=\"Давай, наливай.\" video=\"SLAVKAFLOWINGUPSEREGA\" mark=\"LETS_DRINK_FIRST\"><node label=\"Ну, за встречу!\" video=\"DRINKINGSLAVKAANDSEREGA\" audio=\"SLAVKASAYSDRINKFORMEETING\" mark=\"DRINK_FOR_MEETING\"><node label=\"Погодите, я не понял, а где мой стаканчик?\" video=\"EUGENE_WHEREISMYGLASS\" mark=\"STOP_WHERE_IS_MY_GLASS\"><node label=\"Да ты прямо из горла пей!\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSDRINKFROMBOTTLE\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\" mark=\"DRINK_FROM_BOTTLE_HEAD\"><node label=\"Нее, я из горла не буду... Я буду в горло!\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"Ставлю пузырь, что я его выпью!\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSBETONBOTTLEIDRINKBOTTLE\" mark=\"BET_ON_BOTTLE_I_SHALL_DRINK_THIS_BOTTLE\"><node label=\"Слушай, кстати, а за что Митрофаныча так не любят?\" mark=\"MITROFANYCH\"><node label=\"Он пять лет назад у себя на заводе уронил бутылку водки...\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSMITROFANYCH5YEARSAGODROPEDVODKA\"><node label=\"А ведь он был спортсменом! Любил бегать... за второй.\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"Нужно сразу брать три, чтобы потом не бегать за второй!\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSNEEDTAKE3BOTTLE\"><node label=\"Нее, в прошлый раз вторая бутылка коньяка явно была лишней, хватило бы первой и третьей...\"><node label=\"Наливай! Между первой и второй закусончик небольшой.\" video=\"SLAVKAEATSSALAT\" audio=\"SLAVKASAYSBETWEENFIRSTANDSECOND\" mark=\"A_LITTLE_TIME_BETWEEN_FIRST_AND_SECOND\"><node label=\"Где же мой стаканчик?\" video=\"SEREGAFLOWINGUPSLAVKA\" mark=\"WHERE_IS_MY_GLASS\"><node label=\"Да вот же он! В нем бутылка стоит. \" video=\"HEREISYOURGLASSEUGENE\" audio=\"SLAVKASAYSHEREISYOURGLASSEUGENE\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"Ну тогда наливай полный!\" video=\"SLAVKACHANGESTHEGLASS\" mark=\"EPISODE2\"><node label=\"А помнишь, как ты в прошлый раз упился? \" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSDOYOUREMEMBERYOUDRUNKLASTTIME\" mark=\"DO_YOU_REMEBER_YOU_DRUNK_LAST_TIME\"><node label=\"Я не помню тот момент, с которого я не помню.\" video=\"SLAVKAFLOWINGUPEUGENE\"><node label=\"За нас, мужики! \" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSFORUSMEN\" mark=\"DRINK_SECOND_GLASS\"><node label=\"Давай, погнали! Поздно выпитая рюмка - зря открытая бутылка.\" video=\"ALLDRINKING\" mark=\"LATE_DRINK_IS_INVANE_DRINKEN_FIRST\"><node label=\"Что может быть лучше прогулки на свежем воздухе? Разве что посидеть в прокуренном баре и попить водки!\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSWHATISBETTERSMOKEDBARANDVODKA\"><node label=\"Как там у тебя с женой? Опять поссорились?\" video=\"EUGENE_EATSSALAT\"><node label=\"В прошлый раз пришел домой в три ночи, она сразу догадалась, что я пьян. У меня пальто было застегнуто на яйцо.\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSMYSUITWASWITHEGG\"><node label=\"А я вчера девчонку с работы подколол: &quot;Полина, отлично выглядишь. Бухала вчера?&quot;\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"Мужик - не кактус, он пить должен! \" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSMANNEEDTODRINK\" mark=\"MAN_NEED_WATERFALLING\"><node label=\"Да... людям свойственно напиваться.\" video=\"EUGENE_EATSSALAT\" mark=\"YEAH_MAN_OVERDRINKS_SOMETIMES\"><node label=\"Перекур! Никотиновое голодание приводит к алкогольному обжорству!\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSSMOKEBREAK\" mark=\"WILL_WE_SMOKE\"><node label=\"Я бросил.\" video=\"SEREGASLAVKASTARTSMOKING\"><node label=\"Бросил - подними...\" video=\"SLAVKASMOKINGLOOP\" audio=\"SLAVKASAYSTAKEIFDROPED\" mark=\"GAME_STUDY2\"><node label=\"Нет, ты не понял, я совсем бросил.\"><node label=\"Сначала ты бросаешь курить, потом бросаешь пить, потом с женщинами общаться... знаешь кем ты станешь?\" video=\"SLAVKASMOKINGLOOP\" audio=\"SLAVKASAYSDOYOUKNOWYOUWILLBEEUGENE\"><node label=\"Мне врач запретил.\"><node label=\"Врач, это тот, кто пьет  и курит меньше своего пациента.\" video=\"SLAVKASMOKINGLOOP\" audio=\"SLAVKASAYSDOCTORISWHODRINKANDSMOKELOWER\"><node label=\"Курите сами, я не буду курить.\" video=\"SEREGASLAVKASTOPSMOKING\" mark=\"SMOKE_YOURSELF_I_SHALL_NOT_SMOKE\"><node label=\"Ладно, мужики, давайте еще водки накатим!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSLETSDRINKONEMORETIMEMEN\" video1=\"SEREGAFLOWINGUPSLAVKAANDEUGENE\" audio1=\"SILENT_26\" mark=\"GAME_STUDY4\"><node label=\"Третий тост, за любовь к женщинам!\" video=\"ALLDRINKING\"><node label=\"Слушайте прикол, познакомился с девушкой по инету, не очень красивая оказалась. Ну, пошли в кафе пиво пить. Меня торкнуло, я ей и говорю: &quot;Странно, вроде пью-пью - а ты всё хуже и хуже...&quot;\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSABOUTGIRL1\" mark=\"GAME_STUDY5\"><node label=\"А она тебе что ответила?\"><node label=\"&quot;Хам!&quot;, - говорит, - &quot;Такие, как я на дороге не валяются!&quot;, - вскочила и схватила сумочку...\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSABOUTGIRL2\"><node label=\"А ты ей, что сказал?\"><node label=\"Говорю: &quot;Такие, как я тоже на дороге не валяются! Стоят и шатаются...&quot;\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSABOUTGIRL3\"><node label=\"А фото её у тебя осталось?\"><node label=\"Вот ее фотография... А нее, это кто-то пиво разлил...\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSABOUTGIRL4\" mark=\"HERE_IS_HER_PHOTO\"><node label=\"Некрасивых женщин не бывает... у тебя просто стакан пустой!\" video=\"SEREGAFLOWINGUPSLAVKAANDEUGENE\" mark=\"NO_UGLY_GIRLS_SIMPLY_LOW_VODKA\"><node label=\"Дайте мне точку опоры и я... скажу тост! \" video=\"SLAVKAWANTTOSAYTOSTLOOP\" audio=\"SLAVKAWANTTOSAYTOST\" mark=\"I_WANT_TO_SAY_TOST\"><node label=\"Опять? За женщин?\"><node label=\"Нее... за женщин уже пили! Выпьем за то... чтобы не было мучительно больно за бесцельно...\" video=\"SLAVKAWANTTOSAYTOSTLOOP\" audio=\"SLAVKAWANTTODRINKHISFAVORTOST\"><node label=\"Как меня достала эта фраза...\"><node label=\"Ты испортил мой тост, гад!\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSYOUBREAKMYTOSTEUGENE\"><node label=\"Ты каждый раз, как напьешься, это говоришь...\" mark=\"EVERY_TIME_YOU_ARE_DRUNK\"><node label=\"Слышь, ты чо, меня не уважаешь???\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSDOYOURESPECTME\" mark=\"DO_YOU_RESPECT_ME\"><node label=\"Ну началось, пьяное быдло...\"><node label=\"Люди перестанут уважать друг друга, если наука победит алкоголизм...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSIFSCIENCEDEFEATSALCHOHOL\"><node label=\"Успокой уже своего друга.\" mark=\"TRANQUILLIZE_YOU_FRIEND\"><node label=\"Короче, мужики, давайте лучше я ржаку расскажу!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSHEYMENLETITELLHUMOR\" mark=\"STORY_ABOUT_PANDABEAR\"><node label=\"Надеюсь что-то новенькое?\"><node label=\"Гулял я недавно в зоопарке, подхожу к клетке с медведем панда... Видели, какие у него чёрные круги под глазами?\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSSTORYABOUTPANDABEAR1\" mark=\"PANDA_BEAR\"><node label=\"Ну, видели и чо?\"><node label=\"Медведь панда как бы всем своим видом нам говорит: Не бухайте, мужики!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSSTORYABOUTPANDABEAR2\" video1=\"ALLLAUGHINGDRUNKWITHAUDIO\" audio1=\"SILENT_5\"><node label=\"А ведь все взаимосвязано: живёшь - хочется выпить , выпил - хочется жить.\"><node label=\"Слушай, ты это... извини меня... больно нравится мне тост про &quot;бесцельно прожитые годы&quot;.\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSSORRYFORMYTOST\" mark=\"FORGIVE_ME\"><node label=\"Да ладно, проехали, какой то я сегодня злой...\"><node label=\"А чо злой то?\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSWHYAREYOUANGRY\" mark=\"WHY_ARE_YOU_ANGER\"><node label=\"Да опять цены растут, а зарплату не повышают...\" mark=\"FLAT_BILL_INCOMING\"><node label=\"У меня такая же фигня...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSIHAVETHESAMESHIT\"><node label=\"Совсем государство оборзело! Валить из этой страны надо...\" mark=\"EPISODE5\"><node label=\"Господа, ведите себя потише! \" video=\"SECURITYCOMING\" audio=\"SECURITYSAYSBEQUET\" mark=\"GAME_STUDY6\"><node label=\"Хорошо, хорошо.\" video=\"SECURITYLEAVING\"><node label=\"Куда валить? \" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSWHATCOUNTRYWEGO\" mark=\"GAME_STUDY5\"><node label=\"Да хоть в Эфиопию!\"><node label=\"Гыгыгы... эфиоп, твою мать!\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSEPHIOPYOURMOTHER\"><node label=\"Этой стране уже ничего не поможет...\" mark=\"THIS_COUNTRY_IS_WITHOUT_PROMISING\"><node label=\"Только массовые расстрелы спасут...\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSONLYMASSSHOOTINGSAVE\" mark=\"MASS_SHOOTINGS_SAVE_COUNTRY\"><node label=\"Эх...наливай ещё по одной!\" mark=\"DRINK_FOURTH_GLASS\"><node label=\"Да ты ещё эту не допил. \" video=\"SLAVKAVERYDRUNKTELLINGLOOP\" audio=\"SLAVKASAYSYOUDIDNTDRINKTHISYET\" video1=\"ALLDRINKING\" audio1=\"SILENT_12\" mark=\"YOU_DIDNT_DRINK_THIS_ONE_YET\"><node label=\"Теперь освежите...\" video=\"SEREGAFLOWINGUPSLAVKAANDEUGENE\"><node label=\"А знаете, что не до конца выпитое спиртное говорит о не здоровой атмосфере в коллективе?\" video=\"SEREGAVERYDRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTPARTLYDRINK\" video1=\"ALLDRINKING\" audio1=\"SILENT_12\"><node label=\"Что-то водка сегодня какая то странная...\" mark=\"VODKA_IS_VERY_STRANGE\"><node label=\"Ага, я тоже заметил, горло дербанит...\" video=\"SEREGAVERYDRUNKTELLINGLOOP\" audio=\"SEREGASAYSBEDVODKA\" mark=\"IT_SHARPS_ME\"><node label=\"А тебе как?\"><node label=\"Да вроде нормуль.\" video=\"SLAVKAVERYDRUNKTELLINGLOOP\" audio=\"SLAVKASAYSVODKAISNORMAL\"><node label=\"Это потому что в твоем спирте крови нет.\" mark=\"EPISODE8\"><node label=\"Мужики, а вот знаете почему мы пьем?\" video=\"SEREGAVERYDRUNKTELLINGLOOP\" audio=\"SEREGASAYSDOYOUKNOWWHYWEDRINK\" mark=\"WHY_WE_DRINK\"><node label=\"Не знаем... но догадываемся...\"><node label=\"Потому что лучше пить, чем колоться и нюхать клей.\" video=\"SLAVKAVERYDRUNKTELLINGLOOP\" audio=\"SLAVKASAYSBETTERDRINKTHANDRUG\"><node label=\"Чтобы некрасивые женщины тоже могли потрахаться.\" video=\"ALLLAUGHINGDRUNKWITHAUDIO\"><node label=\"Потому что ощущения - как с парашютом прыгать, только намного дешевле!\" video=\"SEREGAVERYDRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTPARASHUTE\" mark=\"PARASHUTE_MARK\"><node label=\"Эээ! Что с тобой? Тебе что, плохо?\" mark=\"WHAT_IS_THIS_WITH_YOU\"><node label=\"Е-мое, походу, водка палёная...\" video=\"SEREGAFEELINGBED\" audio=\"SEREGASAYSFAKEVODKA\" mark=\"GAME_STUDY10\"><node label=\"Все, допились... надо скорую вызывать!\"><node label=\"\" final=\"ТВОЙ ДРУГ УМЕР ЕЩЁ ДО ПРИЕЗДА СКОРОЙ ПОМОЩИ. ВАМ ДВОИМ УДАЛОСЬ ВЫЖИТЬ, НО ОТ БОЛЬШОЙ ДОЗЫ МЕТАНОЛА У ВАС ПРОПАЛО ЗРЕНИЕ...\" video=\"BACKGROUND1_FINALSTUDY\" audio=\"SILENT_5\" mark=\"MARK_FINAL1\" isBranch = \"true\" /></node></node></node><node label=\"А я... знаешь... ещё что... думаю...\" mark=\"WOULD_YOU_KNOW_WHAT_I_THINK\"><node label=\"\" final=\"К СОЖАЛЕНИЮ, ТЫ ПЕРЕПИЛ И ОТРУБИЛСЯ... ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"EUGENEFALLINGTOSALAT\" mark=\"MARK_FINAL7\" isBranch = \"true\" /></node></node></node><node label=\"Потому что миром правит любовь... вот я люблю выпить...\" video=\"ALLLAUGHINGDRUNKWITHAUDIO\"><node label=\"\" goto=\"PARASHUTE_MARK\" isBranch = \"true\" /></node><node label=\"За что ещё выпьем?\" video=\"SEREGAFLOWINGUPSLAVKAANDEUGENE\" mark=\"FOR_WHAT_WE_DRINK_ONE_MORE\"><node label=\"Выпьем за... свободную Эфиопию!\" video=\"SLAVKAWANTTOSAYTOSTLOOP\" audio=\"SLAVKASAYSTOSTFORFREEEPHIOPIA\" mark=\"DRINK_FOR_FREEDOM_IN_EPHIOPIA\"><node label=\"За это я выпью...\" video=\"ALLDRINKING\"><node label=\"\" final=\"ТЫ СПОИЛ СВОЕГО ДРУГА... ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"SLAVKADRUNKDIE\" mark=\"MARK_FINAL14\" isBranch = \"true\" /></node><node label=\"Ты достал... своим дебилизмом!\"><node label=\"\" final=\"ТЫ РАЗОЗЛИЛ СВОЕГО ДРУГА И ОН СТУКНУЛ ТЕБЯ! ВСТРЕЧА НЕ УДАЛАСЬ.\" video=\"SLAVKAPUNCHESEUGENE\" audio=\"SLAVKAPUNCHESEUGENE\" mark=\"MARK_FINAL12\" isBranch = \"true\" /></node></node></node></node></node><node label=\"Ну и почему?\"><node label=\"\" goto=\"PARASHUTE_MARK\" isBranch = \"true\" /></node><node label=\"Мне кажется, твоя жена знает...\" video=\"WIFEBEATSEREGAWITHSOUND\" mark=\"YOUR_WIFE_KNOWS\"><node label=\"Вот ты где скотина! Ах ты алкаш проклятый! Дома есть нечего, а он последние деньги пропивает! А ну пошли быстро отсюда!\" video=\"WIFESHARPTELLINGLOOP\" audio=\"WIFESAYSHEREHEISDRINKING\" mark=\"GAME_STUDY9\"><node label=\"Мадам, позвольте заметить...\"><node label=\"Что ты сказал???\" audio=\"WIFESAYSWHATHAVEYOUSAID\"><node label=\"Мы... уже... собсно... собирались ...\"><node label=\"\" goto=\"MARK_FINAL8\" isBranch = \"true\" /></node><node label=\"Наш друг... ваш муж... достойнейший человек...\" mark=\"OUR_FRIEND_YOUR_HUSBAND_VERY_RESPECTIVE_PERSON\"><node label=\"Кто достойнейший? Этот сморчок??? Ну насмешил!\" video=\"WIFESHARPTELLINGLOOP\" audio=\"WIFESAYSWHOISRESPECTIVEPERSON\"><node label=\"Он рассказывал... вы удивительная женщина!\"><node label=\"Ой, ой, льстишь, подлец!\" video=\"WIFESCARINGLOOP\" audio=\"WIFESAYSYOULIEME\"><node label=\"Не тронь нашего друга, женщина!\" mark=\"GET_OUT_FROM_OUR_FRIEND_WOMAN\"><node label=\"\" final=\"ЖЕНА ТВОЕГО ДРУГА УТАЩИЛА ЕГО ДОМОЙ И ИСПОРТИЛА ВАМ ВСТРЕЧУ!\" video=\"WIFETAKESOFFSEREGA\" mark=\"MARK_FINAL8\" isBranch = \"true\" /></node><node label=\"\" goto=\"YOU_DONT_UNDERSTAND_MADAM\" isBranch = \"true\" /><node label=\"\" goto=\"YOUR_HUSBAND_SAID\" isBranch = \"true\" /></node></node><node label=\"Он не сморчок... он рассказывал нам, что...\"><node label=\"Да он уже лыка не вяжет! Что он мог тебе рассказать???\" video=\"WIFESHARPTELLINGLOOP\" audio=\"WIFESAYSHEISDRUNKWHATHASHESAID\"><node label=\"Он говорил... что...\" mark=\"YOUR_HUSBAND_SAID\"><node label=\"Что ты сказал???\" audio=\"WIFESAYSWHATHAVEYOUSAID\"><node label=\"Про то... как сильно и безумно... он вас любит!\"><node label=\"Выпить он любит!\" video=\"WIFESHARPTELLINGLOOP\" audio=\"WIFESAYSHELIKESTODRINK\"><node label=\"\" goto=\"HE_SAVED_MANS_LIFE\" isBranch = \"true\" /><node label=\"\" goto=\"GET_OUT_FROM_OUR_FRIEND_WOMAN\" isBranch = \"true\" /><node label=\"\" goto=\"YOU_DONT_UNDERSTAND_MADAM\" isBranch = \"true\" /></node></node><node label=\"Про то... как вы безжалостно гнобите его!\"><node label=\"\" goto=\"TOMMOROW_MORNING_WE_ARE_TALK_ABOUT_IT\" isBranch = \"true\" /></node></node></node><node label=\"Вы не поверите...\"><node label=\"Да с этим алкашом я уже во что угодно поверю!\" video=\"WIFESHARPTELLINGLOOP\" audio=\"WIFESAYSIBELIEVETOANYWITHTHISALCOMAN\"><node label=\"Он... спас жизнь... человеку...\" mark=\"HE_SAVED_MANS_LIFE\"><node label=\"Денег на опохмел что ли дал?\" audio=\"WIFESAYSHASHEGIVESMONEYTOAFTERDRINK\"><node label=\"Нет... ребенку... на дороге...\"><node label=\"Как это случилось?\" audio=\"WIFESAYSHOWITHAPPENED\"><node label=\"Обкуренный вдупель малыш... перебегал дорогу...\"><node label=\" \" final=\"ПРИДУМАЙ ЧТО-НИБУДЬ ПОЛУЧШЕ! ЖЕНА ТВОЕГО ДРУГА УТАЩИЛА ЕГО ДОМОЙ. ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"WIFETAKESOFFSEREGA\" isBranch = \"true\" /></node><node label=\"Дети увидели сигарету... на перекрестке...\"><node label=\"Что ты несешь???\" video=\"WIFESCARINGLOOP\" audio=\"WIFESAYSWHATAREYOUSAYING\"><node label=\"Один побежал за сигаретой...\"><node label=\"И мой муж остановил его?\" audio=\"WIFESAYSDIDMYHUSBANDSTOPHIM\"><node label=\"Да\"><node label=\"От невинных детей... пахло винным перегаром...\" video=\"SEREGAVERYDRUNKTELLINGLOOP\" audio=\"SEREGASAYSCHILDRENSMELLSLIKEAVINE\"><node label=\"\" goto=\"HE_IS_A_HERO\" isBranch = \"true\" /></node></node><node label=\"Нет\"><node label=\"А что?\" audio=\"WIFESAYSANDWHAT\"><node label=\"Он отобрал у него сигарету! Чтобы малыш... не умер от рака легких.\"><node label=\"Избавиться от рака... лучше всего... с помощью пива.\" video=\"SEREGAVERYDRUNKTELLINGLOOP\" audio=\"SEREGASAYSHOWTOUSERAK\"><node label=\"Он у тебя герой!\" mark=\"HE_IS_A_HERO\"><node label=\"\" goto=\"MARK_FINAL8\" isBranch = \"true\" /></node></node></node><node label=\"Он остановил машину... собственным телом...\"><node label=\"О боже! Его срочно надо показать врачам! Миленький, как ты? Сейчас, сейчас, потерпи...\" audio=\"WIFESAYSHEMUSTTOGOTOHOSPITAL\"><node label=\"Он в порядке... мы напоили его обезбаливающим...\"><node label=\"\" final=\"КАЖЕТСЯ ЖЕНА ДРУГА ПОВЕРИЛА! В ЦЕЛОМ ВСТРЕЧА УДАЛАСЬ, НО МОГЛО БЫТЬ И ЛУЧШЕ.\" video=\"WIFETAKESOFFSEREGA\" audio=\"SILENT_5\" mark=\"MARK_FINAL31\" isBranch = \"true\" /></node></node></node></node></node></node></node><node label=\"\" goto=\"YOU_DONT_UNDERSTAND_MADAM\" isBranch = \"true\" /></node></node></node></node><node label=\"У женщины случился... выкидыш...\"><node label=\" \" final=\"ЖЕНА ДРУГА НЕ ПОВЕРИЛА И УТАЩИЛА ЕГО ДОМОЙ... ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"WIFETAKESOFFSEREGA\" mark=\"YOU_LIE_ME\" isBranch = \"true\" /></node></node></node><node label=\"Он потерял... смысл жизни...\"><node label=\"Мы с ним завтра утром поговорим об этом!\" video=\"WIFESHARPTELLINGLOOP\" audio=\"WIFESAYSWEWILLSAYABOUTITTOMORROWMORNING\" mark=\"TOMMOROW_MORNING_WE_ARE_TALK_ABOUT_IT\"><node label=\"\" goto=\"GET_OUT_FROM_OUR_FRIEND_WOMAN\" isBranch = \"true\" /><node label=\"Вы не понимаете... мадам!\" mark=\"YOU_DONT_UNDERSTAND_MADAM\"><node label=\"\" goto=\"MARK_FINAL8\" isBranch = \"true\" /></node></node></node></node></node></node></node><node label=\"\" goto=\"YOU_DONT_UNDERSTAND_MADAM\" isBranch = \"true\" /></node></node></node></node><node label=\"Сударыня, как вам не стыдно!\"><node label=\"Это тебе должно быть стыдно, пропоица подзаборная!\" video=\"WIFESCARINGLOOP\" audio=\"WIFESAYSYOUMUSTBEFAULT\"><node label=\"Я бы попросил вас не выражаться...\"><node label=\"Ишь, посмотрите на него! Он бы попросил! Заткнись, дятел!\" video=\"WIFESCARINGLOOP\" audio=\"WIFESAYSSHOUTYOURMOUTH\"><node label=\"\" goto=\"OUR_FRIEND_YOUR_HUSBAND_VERY_RESPECTIVE_PERSON\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"GET_OUT_FROM_OUR_FRIEND_WOMAN\" isBranch = \"true\" /></node></node><node label=\"О! Белая пьянка! Дамы спаивают кавалеров...\"><node label=\"\" goto=\"MARK_FINAL8\" isBranch = \"true\" /></node></node></node><node label=\"\" goto=\"FOR_WHAT_WE_DRINK_ONE_MORE\" isBranch = \"true\" /></node></node><node label=\"Ты и спирт медицинский залпом можешь.\"><node label=\"\" goto=\"GAME_STUDY10\" isBranch = \"true\" /></node><node label=\"\" goto=\"FOR_WHAT_WE_DRINK_ONE_MORE\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"WHAT_IS_THIS_WITH_YOU\" isBranch = \"true\" /><node label=\"\" goto=\"FOR_WHAT_WE_DRINK_ONE_MORE\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"YOUR_WIFE_KNOWS\" isBranch = \"true\" /><node label=\"\" goto=\"WOULD_YOU_KNOW_WHAT_I_THINK\" isBranch = \"true\" /><node label=\"\" goto=\"FOR_WHAT_WE_DRINK_ONE_MORE\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"VODKA_IS_VERY_STRANGE\" isBranch = \"true\" /><node label=\"\" goto=\"FOR_WHAT_WE_DRINK_ONE_MORE\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"WOULD_YOU_KNOW_WHAT_I_THINK\" isBranch = \"true\" /></node></node><node label=\"Тише... Не надо орать...\" mark=\"KEEP_SILENT_DONT_CRY\"><node label=\"А что такого? Хочу и ору! Мы живем в свободной стране!\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSWEARELIVINGINFREEDOMCOUNTRY\"><node label=\"Нас сейчас отсюда выпроводят...\"><node label=\"Да пусть только попробуют!\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSIFTHEYTRY\"><node label=\"Заткнись урод!\" video=\"SECURITYCOMING\"><node label=\"\" goto=\"MARK_FINAL6\" isBranch = \"true\" /></node><node label=\"Успокойся, чувак!\" mark=\"EASY_MAN\"><node label=\"Господа, просим покинуть наше заведение! \" video=\"SECURITYCOMING\" audio=\"SECURITYSAYSGOOUT\" mark=\"GAME_STUDY6\"><node label=\"Извините нас... пожалуйста... мы больше не будем!\"><node label=\"...\" video=\"SECURITYLEAVING\" audio=\"SILENT_3\" mark=\"GAME_STUDY5\"><node label=\"Все из-за тебя, козла! \"><node label=\"\" goto=\"MARK_FINAL12\" isBranch = \"true\" /></node><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /></node></node><node label=\"На каком... собственно... основании?\"><node label=\"\" goto=\"MARK_FINAL6\" isBranch = \"true\" /></node><node label=\"Хорошо... мы уходим...\" video=\"ALLGOOUTBAR\" mark=\"OK_WE_GO_OUT\"><node label=\"В такую погоду... только тещу за пивом гонять!\" video=\"BACKGROUND1_STREET\" audio=\"SEREGASAYSABOUTWEATHERANDWIFEMOTHER\" mark=\"GAME_STUDY7\"><node label=\"Мне надо отлить...\" video=\"POLICE_ARRIVING\"><node label=\"Граждане, предъявите ваши документы!\" video=\"POLICE_TALKING\" audio=\"POLICE_ASKDOCUMENTS\" mark=\"GAME_STUDY8\"><node label=\"Какие документы? Нас здесь итак все знают!\"><node label=\"\" goto=\"MARK_FINAL2\" isBranch = \"true\" /></node><node label=\"Нет документов... дома оставили...\"><node label=\"Тогда пройдемте...\" video=\"POLICE_TALKING\" audio=\"POLICE_LETSGO\"><node label=\"Куда?\" mark=\"WHERE_WE_GO\"><node label=\"\" goto=\"TO_POLICE_DEPARTMENT\" isBranch = \"true\" /></node><node label=\"Мы в чем то подозреваемся?\"><node label=\"Нет.\" video=\"POLICE_TALKING\" audio=\"POLICE_NO\"><node label=\"А на каком собсно основании?\"><node label=\"До выяснения личности в отделение РОВД.\" video=\"POLICE_TALKING\" audio=\"POLICE_GOTODEPARTMENT\" mark=\"TO_POLICE_DEPARTMENT\"><node label=\"\" goto=\"WILL_WE_COMPROMISE\" isBranch = \"true\" /><node label=\"\" goto=\"CALL_TO_ADVOCATE\" isBranch = \"true\" /></node></node><node label=\"Я имею право на один звонок!\" mark=\"CALL_TO_ADVOCATE\"><node label=\"Здесь тебе не Америка. (голос друга) Америкосы... все дебилы!\" video=\"POLICE_TALKING\" audio=\"POLICE_YOU_ARE_NOT_IN_AMERICA\" video1=\"BACKGROUND1_POLICESTANDING\" audio1=\"SLAVKASAYSAMERICANSAREFOOL\"><node label=\"Сам ты дебил... такие же люди, как все...\"><node label=\"\" goto=\"MARK_FINAL2\" isBranch = \"true\" /></node><node label=\"\" goto=\"WILL_WE_COMPROMISE\" isBranch = \"true\" /><node label=\"\" goto=\"MY_FRIEND_IS_POLICE_CHEIF\" isBranch = \"true\" /></node></node></node></node><node label=\"Несите меня сами! (лечь на землю)\"><node label=\"\" goto=\"MARK_FINAL2\" isBranch = \"true\" /></node><node label=\"Мой друг - начальник РОВД!\" mark=\"MY_FRIEND_IS_POLICE_CHEIF\"><node label=\"Это не важно.\" video=\"POLICE_TALKING\" audio=\"POLICE_ITISNOTIMPORTANT\"><node label=\"Это важно для вашей карьеры.\"><node label=\"Ты что, мне угрожаешь? Как его фамилия?\" video=\"POLICE_TALKING\" audio=\"POLICE_WHATISHISFIRSTNAME\"><node label=\"Иванов (пытаешься угадать)\"><node label=\"\" goto=\"MARK_FINAL2\" isBranch = \"true\" /></node><node label=\"Я сейчас ему позвоню, но вы сначала подумайте, не отпустить ли вам нас?\"><node label=\"Вот только не надо меня пугать! Вы свободны.\" video=\"POLICE_TALKING\" audio=\"POLICE_DONTTHREATONME\"><node label=\"Спасибо за понимание!\"><node label=\"\" goto=\"MARK_FINAL32\" isBranch = \"true\" /></node></node></node></node></node><node label=\"А может быть договоримся?\" mark=\"WILL_WE_COMPROMISE\"><node label=\"Может быть.\" video=\"POLICE_TALKING\" audio=\"POLICE_MAYBE\"><node label=\"500 устроит? (реально можете наскребсти)\"><node label=\"И еще половину сержанту.\" video=\"POLICE_TALKING\" audio=\"POLICE_ONEHALFTOSERGENT\"><node label=\"Но у нас столько нет...\"><node label=\"\" final=\"МЕНТЫ ЗАБРАЛИ ВАС В ТРЕЗВЯК. ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"POLICE_LEAVING\" audio=\"SILENT_2\" mark=\"MARK_FINAL2\" isBranch = \"true\" /></node><node label=\"\" goto=\"ONLY_500_NOW\" isBranch = \"true\" /><node label=\"\" goto=\"BAD_POLICEMAN\" isBranch = \"true\" /></node></node><node label=\"1000 (блефуешь, у вас столько нет)\"><node label=\"Давайте и уходите.\" video=\"POLICE_TALKING\" audio=\"POLICE_GIVEANDGO\"><node label=\"Вы задержаны за получение взятки!\" video=\"POLICE_CONFUSED\" mark=\"BAD_POLICEMAN\"><node label=\"\" final=\"МЕНТЫ ИСПУГАЛИСЬ! ПОЗДРАВЛЕНИЯ! ВСТРЕЧА АЛКОДРУЗЕЙ УДАЛАСЬ!\" audio=\"SILENT_5\" mark=\"MARK_FINAL32\" isBranch = \"true\" /></node><node label=\"С собой только 500, но я занесу завтра! Обещаю!\" mark=\"ONLY_500_NOW\"><node label=\"Давай сколько есть и проваливайте.\" video=\"POLICE_TALKING\" audio=\"POLICE_GIVEASYOUHAVE\"><node label=\"Вот... держите... 500...\"><node label=\"\" final=\"ВАМ УДАЛОСЬ ОТКУПИТЬСЯ ОТ МЕНТОВ! НЕ САМЫЙ ЛУЧШИЙ ВАРИАНТ.\" audio=\"SILENT_5\" mark=\"MARK_FINAL33\" isBranch = \"true\" /></node></node></node></node></node></node></node></node></node></node></node></node></node></node></node></node></node></node></node><node label=\"Я сказал тише!\"><node label=\"\" goto=\"MASS_SHOOTINGS_SAVE_COUNTRY\" isBranch = \"true\" /></node><node label=\"\" goto=\"EASY_MAN\" isBranch = \"true\" /></node></node></node></node><node label=\"В Америку.\"><node label=\"Америкосы все дебилы!\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSAMERICANSAREFOOL\"><node label=\"Сам ты дебил... такие же люди, как все...\"><node label=\"Ну и езжай в свою Америку... убедись!\" video=\"SLAVKAVERYDRUNKTELLINGLOOP\" audio=\"SLAVKASAYSGOTOYOURAMERICAANDSEE\"><node label=\"\" goto=\"KEEP_SILENT_DONT_CRY\" isBranch = \"true\" /><node label=\"Я бы поехал, если б взяли.\"><node label=\"Да кому ты там нужен?\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSAMERICANNONEEDOFYOU\"><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"EASY_MAN\" isBranch = \"true\" /></node></node></node></node><node label=\"А русские что, не дебилы?\"><node label=\"Русские - самая умная нация!\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSRUSSIANSARETHEBEST\"><node label=\"Ага... и самая нищая...\"><node label=\"В это виноваты проклятые америкосы!\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSAMERICANSARETHEBED\"><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"EASY_MAN\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"EASY_MAN\" isBranch = \"true\" /></node></node></node></node></node></node><node label=\"Это кто там трендит?\"><node label=\"\" final=\"ОХРАНА ВЫПРОВОДИЛА ВАС ИЗ ЗАВЕДЕНИЯ. ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"ALLFUCKOFFTHEBAR\" mark=\"MARK_FINAL6\" isBranch = \"true\" /></node></node></node><node label=\"Знаете рецепт карьерного роста в нашей стране?\"><node label=\"Карьера мужчины зависит от того, кто с кем пьёт, карьера женщины - кто с кем спит.Проблема в том, что выпить с нужным человеком гораздо трудней, чем переспать!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTCARIER\"><node label=\"\" goto=\"THIS_COUNTRY_IS_WITHOUT_PROMISING\" isBranch = \"true\" /><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /></node></node></node></node><node label=\"Да, одна девушка не дает...\" mark=\"NO_SEX_WITH_ONE_GIRL\"><node label=\"Значит плохо просишь.\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSBADASKINGHER\"><node label=\"Ей нравятся только непьющие...\"><node label=\"А она нравится только пьяным?\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYANDSHEISLIKEDDRUNKEN\"><node label=\"\" goto=\"SHE_IS_PARTICULARLY\" isBranch = \"true\" /><node label=\"\" goto=\"SHE_IS_VERY_GOOD\" isBranch = \"true\" /></node></node><node label=\"Нет, просто она для меня особенная...\" mark=\"SHE_IS_PARTICULARLY\"><node label=\"Все бабы одинаковые!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSALLWOMENARETHESAME\" mark=\"ALL_WOMEN_ARE_THE_SAME\"><node label=\"Нет, она не такая, как все!\"><node label=\"А что в ней особенного то?\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSWHYSHEISBETTER\"><node label=\"Она... она... очень хорошая...\" mark=\"SHE_IS_VERY_GOOD\"><node label=\"Это ты тут &quot;уже хороший&quot; сидишь! Говорю тебе все женщины одинаковые!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSYOUDRUNKALLWOMENARETHESAME\"><node label=\"Ты по своей жене всех не мерь.\" mark=\"DONT_COMPARE_BY_YOUR_WIFE\"><node label=\"\" final=\"ТВОЙ ДРУГ СТУКНУЛ ТЕБЯ В РЕПУ! НАДО БЫТЬ ПОВЕЖЛИВЕЕ! ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"SEREGAPUNCHESEUGENE\" audio=\"SEREGAPUNCHESEUGENE\" mark=\"MARK_FINAL13\" isBranch = \"true\" /></node><node label=\"Есть одна проблема с ней...\"><node label=\"Какая проблема?\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSWHATPROBLEM\"><node label=\"Она замужем...\"><node label=\"Ну и что! Это не проблема...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSITISNOTAPROBLEM\"><node label=\"Она твоя жена...\"><node label=\"Что??? Да я тебе щас в тыкву дам!\" video=\"SEREGASAYISHALLHITYOURFACE\" audio=\"SEREGASAYSILLHITYOURFACE\"><node label=\"Успокойся, я пошутил!\"><node label=\"Не шути так больше!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSDONTJOKEASYET\"><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"SHE_IS_YOUR_FRIEND_WIFE\" isBranch = \"true\" /><node label=\"\" goto=\"SHE_IS_PRETTY_WHEN_YOU_DRUNK\" isBranch = \"true\" /></node></node><node label=\"Расслабься, чувак!\"><node label=\"Он шутит! Кому твоя грымза нужна то?\" video=\"SLAVKAJUSTIFIED\" audio=\"SLAVKASAYSWIFEISWITCH\"><node label=\"Она очень даже красива... когда ты сильно пьян!\" mark=\"SHE_IS_PRETTY_WHEN_YOU_DRUNK\"><node label=\"\" goto=\"MARK_FINAL3\" isBranch = \"true\" /></node><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /></node></node></node></node><node label=\"Она жена твоего друга.\" mark=\"SHE_IS_YOUR_FRIEND_WIFE\"><node label=\"Так... давай сейчас ещё выпьем и рассмотрим эту ситуацию трезво...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSLETSDRINKANDTHINK\" video1=\"SEREGAFLOWINGUPSLAVKAANDEUGENE\" audio1=\"SILENT_26\"><node label=\"Давай...\" video=\"ALLDRINKING\"><node label=\"Иметь жену друга - это значит... иметь самого друга...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSFUCKFRIENDSWIFEASFUCKFRIEND\"><node label=\"Ты прав...\"><node label=\"Поэтому ваще забудь про нее... ищи себе такую же, только свободную!\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSLOOKFORFREEGIRL\"><node label=\"Я уже и сам так думаю...\"><node label=\"Молодец! Давай за это выпьем! \" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSGOODMANLETSDRINKFORTHIS\" video1=\"SEREGAFLOWINGUPSLAVKAANDEUGENE\" audio1=\"SILENT_26\"><node label=\"\" goto=\"WOULD_YOU_KNOW_WHAT_I_THINK\" isBranch = \"true\" /><node label=\"Щас спою!\" video=\"SECURITYCOMING\"><node label=\"\" goto=\"ENOUGH_FOR_YOU\" isBranch = \"true\" /></node><node label=\"\" goto=\"VODKA_IS_VERY_STRANGE\" isBranch = \"true\" /></node></node><node label=\"Мы созданы друг для друга!\" mark=\"WE_ARE_CREATED_FOR_EACH_OTHER\"><node label=\"Спирт и вода тоже созданы друг для друга... но водка может получится дерьмовая...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTSPIRIT1\"><node label=\"Не понял...\"><node label=\"Ты - спирт... она - вода... ищи себе такую воду, чтобы стать хорошей водкой...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTSPIRIT2\"><node label=\"\" goto=\"WOULD_YOU_KNOW_WHAT_I_THINK\" isBranch = \"true\" /><node label=\"\" goto=\"POUR_MORE\" isBranch = \"true\" /></node></node><node label=\"О! Давай выпьем за хорошую водку!\"><node label=\"\" goto=\"ENOUGH_FOR_YOU\" isBranch = \"true\" /></node><node label=\"\" goto=\"WOULD_YOU_KNOW_WHAT_I_THINK\" isBranch = \"true\" /></node></node></node></node><node label=\"Ты не прав...\"><node label=\"Быстро выпитый стакан не считается налитым.\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSFASTDRUNKGLASS\"><node label=\"\" goto=\"WE_ARE_CREATED_FOR_EACH_OTHER\" isBranch = \"true\" /><node label=\"Наливай еще!\" mark=\"POUR_MORE\"><node label=\"Знаешь... тебе уже хватит...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSTHATSENOUGHFORYOU\" mark=\"ENOUGH_FOR_YOU\"><node label=\"\" goto=\"VODKA_IS_VERY_STRANGE\" isBranch = \"true\" /><node label=\"Наливай я сказал!\"><node label=\"\" goto=\"MARK_FINAL13\" isBranch = \"true\" /></node></node></node></node></node></node></node><node label=\"Водка какая то... странная...\" video=\"ALLDRINKING\"><node label=\"\" goto=\"IT_SHARPS_ME\" isBranch = \"true\" /></node></node></node></node></node><node label=\"Она нимфоманка.\"><node label=\"Вон, у этого перца сбоку уже была одна такая нимфоманка, до сих пор лечится!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTNIMTHA\"><node label=\"Что, правда лечишься?\"><node label=\"\" goto=\"MARK_FINAL4\" isBranch = \"true\" /></node><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /></node></node></node></node></node></node><node label=\"Она очень красивая...\" mark=\"SHE_IS_VERY_PRETTY\"><node label=\"Может, просто у тебя давно женщины не было? \" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSMAYBEYOUHAVENOWOMANLONGTIME\"><node label=\"Месяц.\"><node label=\"Вот в этом вся причина!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSWEFOUNDAREASON\"><node label=\"А мне что-то и не охота ...\"><node label=\"\" goto=\"YOU_ARE_OLDMAN\" isBranch = \"true\" /></node><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /></node></node><node label=\"Полгода.\"><node label=\"Стареешь, рукоблудный! \" video=\"SEREGASHARPTELLINGLOOP\" audio=\"SEREGASAYSYOUOLDER\" mark=\"YOU_ARE_OLDMAN\"><node label=\"Да пошел ты!\" final=\"ТЫ УДАРИЛ СВОЕГО ДРУГА! НАДО БЫТЬ ПОСДЕРЖЕННЕЕ. ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"EUGENEPUNCHESSEREGAWITHSOUND\" mark=\"MARK_FINAL11\" isBranch = \"true\" /><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /></node></node><node label=\"Обычная женщина вчера была.\"><node label=\"Да ты влюбился, чувак!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSYOUAREINLOVEMAN\"><node label=\"\" goto=\"DRINK_FOURTH_GLASS\" isBranch = \"true\" /></node></node></node></node></node></node><node label=\"Да... знаю... но эта чем-то меня цепляет...\"><node label=\"Чем, чем - пелоткой она тебя цепляет! \" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSSHEKEEPSYOUBYVAGINA\"><node label=\"\" goto=\"SHE_IS_VERY_GOOD\" isBranch = \"true\" /><node label=\"\" goto=\"SHE_IS_VERY_PRETTY\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"DONT_COMPARE_BY_YOUR_WIFE\" isBranch = \"true\" /></node></node></node></node><node label=\"\" goto=\"VODKA_IS_VERY_STRANGE\" isBranch = \"true\" /></node></node><node label=\"Наливай. Выпьем &quot;За понимание&quot;!\"><node label=\"\" goto=\"YOU_DIDNT_DRINK_THIS_ONE_YET\" isBranch = \"true\" /></node></node></node><node label=\"Прикольно! А еще чего-нибудь расскажи...\"><node label=\"\" goto=\"STORY_ABOUT_AIRPLANE\" isBranch = \"true\" /></node><node label=\"А медведь панда, это ведь твоя жена!\"><node label=\"\" goto=\"MARK_FINAL13\" isBranch = \"true\" /></node></node></node><node label=\"Нет, не видели.\"><node label=\"Ладно, слушай другую: однажды у экипажа самолета кончилось топливо...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTAIRPLANE1\" mark=\"STORY_ABOUT_AIRPLANE\"><node label=\"Я эту знаю...\" mark=\"I_KNOW_THIS_STORY\"><node label=\"\" goto=\"FORGIVE_ME\" isBranch = \"true\" /></node><node label=\"И что дальше?\"><node label=\"Пришлось лететь трезвыми!\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTAIRPLANE2\" video1=\"ALLLAUGHINGDRUNKWITHAUDIO\" audio1=\"SILENT_5\"><node label=\"Еще давай!\"><node label=\"Оставить девушку, уходя в армию, это все равно что оставить на улице бутылку водки и вернуться за ней через два года.\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSABOUTVODKAGIRL2YEARARMY\" video1=\"ALLLAUGHINGDRUNKWITHAUDIO\" audio1=\"SILENT_5\"><node label=\"\" goto=\"I_KNOW_THIS_STORY\" isBranch = \"true\" /><node label=\"Угарно! А еще?\"><node label=\"В сутках 24 часа, в ящике пива 24 банки - совпадение?!\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSABOUT24BEER\"><node label=\"\" goto=\"I_KNOW_THIS_STORY\" isBranch = \"true\" /><node label=\"Действительно интересно... Еще есть?\"><node label=\"Гомо бухиенс - человек пьющий. Бухо сапиенс - пьянь разумная.\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSHOMOBUHIENCE\" video1=\"ALLLAUGHINGDRUNKWITHAUDIO\" audio1=\"SILENT_5\"><node label=\"\" goto=\"I_KNOW_THIS_STORY\" isBranch = \"true\" /><node label=\"Ладно, хватит я щас от смеха умру!\"><node label=\"\" goto=\"FORGIVE_ME\" isBranch = \"true\" /></node></node></node></node></node></node></node></node></node></node></node><node label=\"Не надо твоих тупых ржак, я уже итак злой сегодня...\" mark=\"THATS_ENOUGH_YOUR_STUPID_HUMOR\"><node label=\"\" goto=\"WHY_ARE_YOU_ANGER\" isBranch = \"true\" /></node></node></node><node label=\"Давай, валяй...\" mark=\"EPISODE4\"><node label=\"Террористы, захватившие ликеро-водочный завод, пятые сутки не могут сформулировать свои требования...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTTERRORISTS\" video1=\"ALLLAUGHINGDRUNKWITHAUDIO\" audio1=\"SILENT_5\"><node label=\"Насмешил! А еще расскажи?\"><node label=\"\" goto=\"PANDA_BEAR\" isBranch = \"true\" /></node><node label=\"Как-то не смешно...\"><node label=\"Ты сегодня какой-то злой...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSYOUANGRYTODAY\"><node label=\"\" goto=\"FLAT_BILL_INCOMING\" isBranch = \"true\" /><node label=\"\" goto=\"NO_SEX_WITH_ONE_GIRL\" isBranch = \"true\" /></node></node></node></node><node label=\"\" goto=\"THATS_ENOUGH_YOUR_STUPID_HUMOR\" isBranch = \"true\" /></node></node><node label=\"Щас в репу получишь!\" video=\"EUGENEISHALLHITYOURFACE\" mark=\"I_LL_BOB_YOU_TO_FACE\"><node label=\"\" goto=\"MARK_FINAL12\" isBranch = \"true\" /></node></node></node><node label=\"\" goto=\"TRANQUILLIZE_YOU_FRIEND\" isBranch = \"true\" /><node label=\"\" goto=\"I_LL_BOB_YOU_TO_FACE\" isBranch = \"true\" /></node></node><node label=\"Ага, щас тоже какое-нибудь дерьмо вспомню...\" mark=\"I_LL_TALK_ABOUT_SHIT_TOO\"><node label=\"\" goto=\"STORY_ABOUT_PANDABEAR\" isBranch = \"true\" /></node></node></node><node label=\"Я за это пить не буду.\"><node label=\"Не нравится, скажи свой!\" video=\"SLAVKASHARPTELLINGLOOP\" audio=\"SLAVKASAYSSAYYOURTOST\"><node label=\"\" goto=\"EVERY_TIME_YOU_ARE_DRUNK\" isBranch = \"true\" /><node label=\"\" goto=\"I_LL_TALK_ABOUT_SHIT_TOO\" isBranch = \"true\" /></node></node></node></node><node label=\"Только не про &quot;бесцельно прожитые годы&quot;!\"><node label=\"\" goto=\"DO_YOU_RESPECT_ME\" isBranch = \"true\" /></node></node></node><node label=\"Помнишь, на общаге объява висела?\"><node label=\"&quot;Дорогие девушки! У вас сухая кожа? Редкие волосы? Проблемы с фигурой? Тогда приходите к нам! У нас темно и мы уже пьяные.&quot;\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTGIRLS\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"А еще в водке много женских гормонов...\"><node label=\"Почему?\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSWHY\"><node label=\"Потому что, выпивая две бутылки водки, я не могу водить машину и начинаю поступать не логично.\" video=\"ALLLAUGHINGDRUNKWITHAUDIO\"><node label=\"Как верно заметил Гераклит, одну бутылку нельзя выпить два раза. Но и две бутылки нельзя выпить два раза...\" video=\"SEREGADRUNKTELLINGLOOP\" audio=\"SEREGASAYSABOUTGERAKLIT\"><node label=\"\" goto=\"MY_PROPOSAL_DRINK_FOR_IT\" isBranch = \"true\" /><node label=\"\" goto=\"TOTAL_PRIKOL\" isBranch = \"true\" /></node></node></node></node><node label=\"Ваще прикол!\" mark=\"TOTAL_PRIKOL\"><node label=\"\" goto=\"I_WANT_TO_SAY_TOST\" isBranch = \"true\" /></node></node></node></node></node><node label=\"Давайте выпьем по этому поводу.\" video=\"SEREGAFLOWINGUPSLAVKAANDEUGENE\" mark=\"MY_PROPOSAL_DRINK_FOR_IT\"><node label=\"\" goto=\"I_WANT_TO_SAY_TOST\" isBranch = \"true\" /></node></node></node><node label=\"И ты ее, конечно же, послал?\"><node label=\"Ну что ты, как я мог! Вежливо предложил пройти ей мелкими шагами в строну моего члена...\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSABOUTLITTLESTEPS\"><node label=\"Жестоко ты с ней!\"><node label=\"\" goto=\"I_WANT_TO_SAY_TOST\" isBranch = \"true\" /></node><node label=\"Молодец! Так ей - королеве всех уродов!\"><node label=\"\" goto=\"HERE_IS_HER_PHOTO\" isBranch = \"true\" /></node></node></node></node></node><node label=\"Ты уже рассказывал...\" video=\"SEREGAFLOWINGUPSLAVKAANDEUGENE\"><node label=\"\" goto=\"I_WANT_TO_SAY_TOST\" isBranch = \"true\" /></node><node label=\"\" goto=\"NO_UGLY_GIRLS_SIMPLY_LOW_VODKA\" isBranch = \"true\" /></node></node></node></node><node label=\"Вам тоже надо бросить курить.\" mark=\"YOU_MUST_STOP_SMOKING\"><node label=\"Да уже поздно...\" video=\"SEREGATELLINGSMOKINGLOOP\" audio=\"SEREGASAYSITISTOOLATE\"><node label=\"Бросить курить никогда не поздно!\"><node label=\"Значит и торопиться некуда! \" video=\"SEREGATELLINGSMOKINGLOOP\" audio=\"SEREGASAYSNONEEDTOHURRY\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"Докуривайте быстрей, гады ! А то я не выдержу и тоже закурю...\" video=\"SEREGASLAVKASTOPSMOKING\"><node label=\"\" goto=\"GAME_STUDY4\" isBranch = \"true\" /></node><node label=\"\" goto=\"SMOKE_YOURSELF_I_SHALL_NOT_SMOKE\" isBranch = \"true\" /></node></node></node></node></node></node><node label=\"Кем?\"><node label=\"Дереволазом!\" video=\"SLAVKASMOKINGANGERLOOP\" audio=\"SLAVKASAYSDEREVOLAZOM\"><node label=\"Ты чо, обурел?\" mark=\"ARE_YOU_FUCKING_FREAK\"><node label=\"Да ты бухаешь, как... как... как дереволаз!\" video=\"SEREGASMOKINGANGERLOOP\" audio=\"SEREGASAYSYOUDRINKASDEREVOLAZ\"><node label=\"\" goto=\"GET_OUT_FREAK\" isBranch = \"true\" /><node label=\"\" goto=\"I_DRINK_LOWER_100\" isBranch = \"true\" /></node></node><node label=\"Да пошел ты...\" mark=\"GET_OUT_FREAK\"><node label=\"Сам пошел! С дереволазами не бухаем!\" video=\"SLAVKASMOKINGANGERLOOP\" audio=\"SLAVKASAYDONTDRINKWITHDEREVOLAZ\"><node label=\"Да ну тебя!\" video=\"SEREGASLAVKASTOPSMOKING\"><node label=\"\" goto=\"GAME_STUDY4\" isBranch = \"true\" /></node><node label=\"Знаешь, я не буду на тебя обижаться...\"><node label=\"Потому что обижаются только обиженные и опущенные!\" video=\"SLAVKASMOKINGLOOP\" audio=\"SLAVKASAYSABOUTDOWNMEN\"><node label=\"Ну все, пипец тебе!\" mark=\"I_LL_HIT_YOUR_FUCKING_FACE\"><node label=\"\" final=\"ТЫ УДАРИЛ В РЕПУ СВОЕГО ДРУГА! СЛИШКОМ СЛАБЫЕ У ТЕБЯ НЕРВЫ. ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"EUGENEPUNCHESSLAVKAWITHSOUND\" mark=\"MARK_FINAL10\" isBranch = \"true\" /></node><node label=\"Потому что жизнь сама обидит тебя...\" video=\"SEREGASLAVKASTOPSMOKING\"><node label=\"\" goto=\"GAME_STUDY4\" isBranch = \"true\" /></node></node></node><node label=\"Все, я сваливаю отсюда!\"><node label=\"\" final=\"ТЫ ИСПОРТИЛ ВЕЧЕР! СЛИШКОМ СЛАБЫЕ У ТЕБЯ НЕРВЫ. ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"EUGENEGOOUT\" mark=\"MARK_FINAL5\" isBranch = \"true\" /></node><node label=\"\" goto=\"I_LL_HIT_YOUR_FUCKING_FACE\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"YOU_MUST_STOP_SMOKING\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"GET_OUT_FREAK\" isBranch = \"true\" /></node></node><node label=\"А, ладно, давай покурим!\" video=\"EUGENESTARTSSMOKING\"><node label=\"Долгие годы я искал себя и, наконец, нашел... в пивбаре.\" video=\"SEREGATELLINGSMOKINGLOOP\" audio=\"SEREGASAYSHEFOUNDHIMSELFINBEERBAR\" mark=\"I_FOUND_MYSELF_IN_BEERBAR\"><node label=\"Мужики, а я, если честно - мало пьющий...\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"Ты мало пьющий?\" video=\"SEREGASMOKINGANGERLOOP\" audio=\"SEREGASAYSYOUDRINKALITTLE\"><node label=\"Я пью не больше 100 грамм.\" mark=\"I_DRINK_LOWER_100\"><node label=\"Ты гонишь!\" video=\"SLAVKASMOKINGANGERLOOP\" audio=\"SLAVKASAYSYOULIE\"><node label=\"Просто когда я выпиваю 100 грамм, то становлюсь другим человеком, а он пьет очень много.\" video=\"ALLLAUGHINGDRUNKWITHAUDIO\" mark=\"WHEN_I_DRINK_100_I_BECOME_ANOTHER_MAN\"><node label=\"Насмешил!\" video=\"SEREGATELLINGSMOKINGLOOP\" audio=\"SEREGASAYSYOUJOKEDME\" mark=\"GAME_STUDY4\"><node label=\"\" goto=\"THE_TRUETH_IS_THE_TRUETH\" isBranch = \"true\" /></node></node></node></node><node label=\"Пью, пью, а мне все мало и мало!\" video=\"ALLLAUGHINGDRUNKWITHAUDIO\"><node label=\"Да ты бухаешь, как... как... как дереволаз!\" video=\"SEREGASMOKINGANGERLOOP\" audio=\"SEREGASAYSYOUDRINKASDEREVOLAZ\"><node label=\"Что правда, то правда...\" video=\"SEREGASLAVKASTOPSMOKING\" mark=\"THE_TRUETH_IS_THE_TRUETH\"><node label=\"\" goto=\"GAME_STUDY4\" isBranch = \"true\" /></node><node label=\"\" goto=\"GET_OUT_FREAK\" isBranch = \"true\" /></node></node></node></node><node label=\"А кто такие &quot;дереволазы&quot;?\" mark=\"WHO_ARE_DEREVOLAZS\"><node label=\"Это такие, как ты!\" video=\"SLAVKASMOKINGANGERLOOP\" audio=\"SLAVKASAYSTHEYAREASYOU\"><node label=\"\" goto=\"ARE_YOU_FUCKING_FREAK\" isBranch = \"true\" /><node label=\"\" goto=\"GET_OUT_FREAK\" isBranch = \"true\" /></node></node></node></node></node></node><node label=\"Давай покурим.\" video=\"SEREGASLAVKASTARTSMOKING\" mark=\"LETS_SMOKE_PROPOSED_EUGENE\"><node label=\"Голос из зала: извините, вы не могли бы перестать курить? Ваши сигареты меня очень раздражают...\" video=\"EUGENESTARTSSMOKING\" audio=\"WOMANPLEASESTOPSMOKING\" mark=\"GAME_STUDY3\"><node label=\"Нас они вобще убивают!!!\" video=\"ALLLAUGHINGDRUNKWITHAUDIO\"><node label=\"\" goto=\"I_FOUND_MYSELF_IN_BEERBAR\" isBranch = \"true\" /></node><node label=\"Да пошла ты!\" video=\"SECURITYCOMING\"><node label=\"\" goto=\"MARK_FINAL6\" isBranch = \"true\" /></node></node></node></node></node><node label=\"Кстати, есть такое животное - верблюд, может не пить 30 дней!\" mark=\"ABOUT_CAMEL\"><node label=\"\" goto=\"WILL_WE_SMOKE\" isBranch = \"true\" /></node><node label=\"\" goto=\"LETS_SMOKE_PROPOSED_EUGENE\" isBranch = \"true\" /></node></node><node label=\"Это называется &quot;шампанское по-русски&quot; - муж пьет водку, а жена шипит.\"><node label=\"Шампанское из туфельки, это вам не водку из кирзача...\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTSHAMPANE1\"><node label=\"А ты пил хоть раз водку из кирзача?\" mark=\"DRINK_VODKA_FROM_KIRZACH\"><node label=\"Ну... было однажды...\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTSHAMPANE2\"><node label=\"Тьфу ты! А мы с тобой из одной стопки бухали...\"><node label=\"А ты чо, брезгливый такой?\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTSHAMPANE3\"><node label=\"А ты сам чо, не брезгливый? Налить тебе в мою туфельку?\"><node label=\"Предупреждать надо, чтоб нормальные люди не бухали с таким быдлом, как ты!\" video=\"SLAVKASAYSTOSEREGA\" audio=\"SLAVKASAYSWEDONTDRINKWITHSHITMAN\" mark=\"YOU_MUST_WARN_TO_NORMAL_PEOPLE_DONT_DRINK_WITH_YOU\"><node label=\"Правильно говоришь!\"><node label=\"\" final=\"НУ ВОТ... ТВОЙ ДРУГ ОБИДЕЛСЯ И УШЕЛ... ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"SEREGAGOOUTWITHAUDIO\" mark=\"MARK_FINAL3\" isBranch = \"true\" /></node><node label=\"Иди бухай с бомжами!\"><node label=\"\" goto=\"MARK_FINAL13\" isBranch = \"true\" /></node><node label=\"\" goto=\"LETS_SMOKE_PROPOSED_EUGENE\" isBranch = \"true\" /></node></node><node label=\"Нет, не брезгливый.\"><node label=\"\" goto=\"WILL_WE_SMOKE\" isBranch = \"true\" /></node></node></node><node label=\"Бухой что ли был?\"><node label=\"Вот уж правда - тошнит не от водки, а от стаканчиков...\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSFEELBEDFROMVODKAGLASSES\"><node label=\"Точно подмечено.\"><node label=\"\" goto=\"WILL_WE_SMOKE\" isBranch = \"true\" /></node></node></node></node></node><node label=\"\" goto=\"YEAH_MAN_OVERDRINKS_SOMETIMES\" isBranch = \"true\" /></node></node><node label=\"Я помню, что ты нажрался, как свинья.\" mark=\"YOU_WAS_DRUNK_AS_PIG\"><node label=\"Это твоя вина! Споил меня в прошлый раз... \" video=\"SEREGASHARPTELLINGLOOP\" audio=\"SEREGASAYSITWASYOURFAULT\" mark=\"YOU_WERE_DRUNK_ME\"><node label=\"Да ты бухаешь, как Винни-Пух!\"><node label=\"Винни Пух? Это тот, который нес в подарок бутылку водки и выпил по дороге?\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSABOUTVINNIPUH\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"\" goto=\"WHO_OVERDRINKED_OTHER\" isBranch = \"true\" /><node label=\"\" goto=\"DID_I_FASTEN_YOUR_EGG_TOO\" isBranch = \"true\" /></node></node><node label=\"Нет, это ты меня споил, чувак!\"><node label=\"Ты просто свою меру не знаешь! \" video=\"SEREGASHARPTELLINGLOOP\" audio=\"SEREGASAYSYOUDONTKNOWYOURNORM\"><node label=\"Ты помнишь, кто кого споил? \" mark=\"WHO_OVERDRINKED_OTHER\"><node label=\"Я отошел не надолго, вернулся, а вы уже споили друг-друга.\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYSYOUDRUNKEACHOTHER\"><node label=\"\" goto=\"YEAH_MAN_OVERDRINKS_SOMETIMES\" isBranch = \"true\" /><node label=\"Так значит это он виноват! Оставил нас...\"><node label=\"Вот козел!\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSKOZEL\"><node label=\"Как оправдываться будешь?\"><node label=\"Никак. Вы сами виноваты.\" video=\"SLAVKADRUNKTELLINGLOOP\" audio=\"SLAVKASAYITWASYOURFAULT\"><node label=\"\" goto=\"YOU_GOAT\" isBranch = \"true\" /><node label=\"Ну и кто ты после этого?\"><node label=\"\" goto=\"GIRL_TAKES_ME_HOME\" isBranch = \"true\" /></node></node></node><node label=\"Тоже мне друг называется!\"><node label=\"Я не виноват, что меня бухого какая-то телка к себе домой увела!\" video=\"SLAVKAJUSTIFIED\" audio=\"SLAVKASAYSORRYMENGIRLTOOKMEOUT\" mark=\"GIRL_TAKES_ME_HOME\"><node label=\"Ну тогда ладно...\"><node label=\"\" goto=\"WILL_WE_SMOKE\" isBranch = \"true\" /></node><node label=\"Ну ты и правда козлина!\" mark=\"YOU_GOAT\"><node label=\"\" final=\"НУ ЗАЧЕМ ТЫ ТАК? ТВОЙ ДРУГ ОБИДЕЛСЯ И УШЕЛ... ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"SLAVKAGOOUTWITHAUDIO\" mark=\"MARK_FINAL4\" isBranch = \"true\" /></node></node></node></node></node></node></node><node label=\"Свою меру я знаю и меньше никогда не пью!\"><node label=\"\" goto=\"MAN_NEED_WATERFALLING\" isBranch = \"true\" /></node></node></node><node label=\"Ты ведь не думаешь, что я споил тебя нарочно?\" mark=\"DID_I_FASTEN_YOUR_EGG_TOO\"><node label=\"Нет, у тебя, дереволаза, ума бы не хватило!\" video=\"SEREGASHARPTELLINGLOOP\" audio=\"SEREGASAYSNOYOURMINDTOOSMALL\"><node label=\"\" goto=\"MARK_FINAL11\" isBranch = \"true\" /><node label=\"\" goto=\"WHO_OVERDRINKED_OTHER\" isBranch = \"true\" /></node></node></node></node></node></node><node label=\"Может вино закажем? А то водка сегодня что-то не прёт...\" mark=\"MABY_VINE\"><node label=\"Вино полезно для здоровья. А здоровье нужно, чтобы пить водку...\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSVINEISGOODFORHEALTH\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"\" goto=\"YEAH_MAN_OVERDRINKS_SOMETIMES\" isBranch = \"true\" /><node label=\"\" goto=\"ABOUT_CAMEL\" isBranch = \"true\" /><node label=\"\" goto=\"DRINK_VODKA_FROM_KIRZACH\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"LETS_SMOKE_PROPOSED_EUGENE\" isBranch = \"true\" /></node></node></node></node><node label=\"Я вобще смутно все помню...\" video=\"SLAVKAFLOWINGUPEUGENE\"><node label=\"А как проституток заказал, помнишь?\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTPROSTITUTES1\"><node label=\"Ну помню...\"><node label=\"Как ты можешь помнить, если ты уже бухой под столом валялся?\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTPROSTITUTES2\"><node label=\"Я не валялся, я лежал.\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"Типа, если человек может лежать на полу, ни за что не держась, - он еще не пьян?\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTDRUNKMANONFLOOR\"><node label=\"\" goto=\"LATE_DRINK_IS_INVANE_DRINKEN_FIRST\" isBranch = \"true\" /><node label=\"Ладно, и что вы хотите этим сказать?\" video=\"EUGENE_WHEREISMYGLASS\"><node label=\"\" goto=\"GIVE_1000_FOR_FALSE_CALL\" isBranch = \"true\" /></node></node></node><node label=\"Я не валялся, я пуговицу искал.\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"\" goto=\"GIVE_1000_FOR_FALSE_CALL\" isBranch = \"true\" /></node></node></node>";
+
+var XMLText2: String = "<node label=\"Я? Заказал?\"><node label=\"С тебя пятисотка, которую мы отдали браткам за ложный вызов...\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSGIVEME500\" mark=\"GIVE_1000_FOR_FALSE_CALL\"><node label=\"Да ты гонишь!\" video=\"EUGENE_WHEREISMYGLASS\"><node label=\"Да если бы не мы, то тебя братки к себе увезли геем отрабатывать!\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTGAY\"><node label=\"Чо, серъезно?\"><node label=\"Серъезней не бывает!\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSVERYSERIOUS\"><node label=\"Ладно, мужики, извините меня, вот вам пятисотка!\" video=\"EUGENEGIVES500RURSEREGA\" mark=\"OK_MEN_TAKE_1000\"><node label=\"\" goto=\"DRINK_SECOND_GLASS\" isBranch = \"true\" /></node><node label=\"\" goto=\"I_DONT_TRUST\" isBranch = \"true\" /></node></node><node label=\"Да не может такого быть!\" video=\"EUGENE_WHEREISMYGLASS\"><node label=\"Нее, ну ты погляди! Это его благодарность нам?\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSHEDOESNTPLEASEUS\"><node label=\"Не верю...\" mark=\"I_DONT_TRUST\"><node label=\"Ты нам, своим друзьям не веришь?\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSYOUDONTTRUSTYOURFRIENDS\"><node label=\"Да, я вам не верю!\"><node label=\"\" final=\"ТВОИ ДРУЗЬЯ ОБИДЕЛИСЬ НА ТЕБЯ И УШЛИ... ВСТРЕЧА НЕ УДАЛАСЬ!\" video=\"SLAVKASEREGAGOOUT\" mark=\"MARK_FINAL9\" isBranch = \"true\" /></node><node label=\"Верю, но с трудом.\"><node label=\"Круто мы тебя развели? Гыгыгы!\" video=\"LAUGHINGSLAVKAANDSEREGA\" audio=\"SEREGASAYSCOOLWEJOKEDYOU\"><node label=\"Ну вы блин приколисты! Я почти поверил...\"><node label=\"\" goto=\"DRINK_SECOND_GLASS\" isBranch = \"true\" /></node></node></node></node></node><node label=\"\" goto=\"OK_MEN_TAKE_1000\" isBranch = \"true\" /></node></node></node></node><node label=\"\" goto=\"OK_MEN_TAKE_1000\" isBranch = \"true\" /></node></node></node></node><node label=\"Так ведь нельзя же быть одновременно умным, веселым и трезвым!\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"...\" video=\"SLAVKAFLOWINGUPEUGENE\" audio=\"SILENT_13\" video1=\"ALLDRINKING\" audio1=\"SILENT_12\"><node label=\"\" goto=\"YOU_WAS_DRUNK_AS_PIG\" isBranch = \"true\" /></node></node></node></node><node label=\"Нет, пить надо из маленькой посуды... но часто!\"><node label=\"\" goto=\"DO_YOU_REMEBER_YOU_DRUNK_LAST_TIME\" isBranch = \"true\" /></node></node></node></node></node><node label=\"Три - мало, я в школе с корешами больше выпивал...\"><node label=\"Взрослым считается тот, кто преуменьшает, а не преувеличивает количество выпитого.\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSWHOISOLDMAN\"><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"Ну ладно, пошутил я...\" video=\"SLAVKAFLOWINGUPSEREGA\" mark=\"I_JOKED_MEN\"><node label=\"\" goto=\"DO_YOU_REMEBER_YOU_DRUNK_LAST_TIME\" isBranch = \"true\" /></node><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"Мужики, а слабо вам взять и бросить пить?\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"Бросить пить легко - трудно убедить в этом друзей.\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSITISSIMPLETODROPDRINK\"><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"I_JOKED_MEN\" isBranch = \"true\" /><node label=\"Мне здесь нальют или я иду бухать к себе домой?\" video=\"SLAVKAFLOWINGUPSEREGA\" mark=\"AM_I_DRINK_OR_GO_HOME\"><node label=\"\" goto=\"DO_YOU_REMEBER_YOU_DRUNK_LAST_TIME\" isBranch = \"true\" /></node></node></node><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"Казалось бы - обычная бутылка водки, а как меняется жизнь человека!\" mark=\"SIMPLE_VODKA_BOTTLE\"><node label=\"\" goto=\"A_LITTLE_TIME_BETWEEN_FIRST_AND_SECOND\" isBranch = \"true\" /></node><node label=\"Уронили водку на пол, оторвали Васе руки...\"><node label=\"Внимание, загадка! Составьте предложение из 5 глаголов.\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSENIGMA1\" mark=\"ANSWER_QUESTION\"><node label=\"Знаю, знаю эту загадку...\"><node label=\"\" goto=\"A_LITTLE_TIME_BETWEEN_FIRST_AND_SECOND\" isBranch = \"true\" /></node><node label=\"И какой правильный ответ?\"><node label=\"Ответ простой: решили послать сходить купить выпить.\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSENIGMA2\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /></node></node><node label=\"Как в командировку съездил?\"><node label=\"Плохо, там один кент поспорил со мной на 3 бутылки, что за раз выпьет 2 бутылки водки . И выпил ведь! А потом еще гад и говорит: &quot;А где мои выигрышные?&quot;.\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTHOLIDAY\"><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"Лучше иметь дело с пьяным профессионалом, чем с трезвым идиотом!\"><node label=\"\" goto=\"ANSWER_QUESTION\" isBranch = \"true\" /></node><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"Как к врачу сходил?\"><node label=\"Прикинь, прихожу к врачу, а у него на кабинете табличка: &quot;ЦВЕТЫ И КОНФЕТЫ НЕ ПЬЮ!&quot;\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSABOUTDOCTORROOM\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"Уважаю прямолинейных людей!\"><node label=\"\" goto=\"ANSWER_QUESTION\" isBranch = \"true\" /></node><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /><node label=\"А я себе солнцезащитные очки купил...\" mark=\"EUGENE_BUY_SUNPROOF_GLASSES\"><node label=\"Даже темные очки не скроют запаха перегара!\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTSUNPROOFGLASSES\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node></node></node><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"На иных пьянках можно и не пить: походил, подышал, закусил...\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"\" goto=\"BET_ON_BOTTLE_I_SHALL_DRINK_THIS_BOTTLE\" isBranch = \"true\" /></node><node label=\"\" goto=\"SIMPLE_VODKA_BOTTLE\" isBranch = \"true\" /><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"А это что за еда?\" video=\"EUGENE_WHATISTHISFOOD\" mark=\"WHAT_IS_THIS_FOOD\"><node label=\"Салат.\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSSALAT\"><node label=\"Нет такой еды - салат. Есть такая закуска. \" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"\" goto=\"BET_ON_BOTTLE_I_SHALL_DRINK_THIS_BOTTLE\" isBranch = \"true\" /></node><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"У меня тост!\"><node label=\"Говори!\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSLETSTALK\"><node label=\"Лучше быть знаменитым на весь мир пьяницей,чем анонимным алкоголиком!\" video=\"LAUGHINGSLAVKAANDSEREGA\"><node label=\"Я всю жизнь читал о вреде алкоголизма и бросил... читать!\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSDROPREADING\"><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node><node label=\"Однажды я, находясь в состоянии тяжелого отрезвления...\"><node label=\"Давай уже просто выпьем!\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSLETSDRINKSIMPLY\"><node label=\"\" goto=\"WHERE_IS_MY_GLASS\" isBranch = \"true\" /><node label=\"\" goto=\"AM_I_DRINK_OR_GO_HOME\" isBranch = \"true\" /></node></node></node></node></node></node><node label=\"А что на бутылке написано?\" video=\"EUGENE_WHEREISMYGLASS\"><node label=\"Перед злоупотреблением, охладить.\" video=\"SLAVKATELLINGLOOP\" audio=\"SLAVKASAYSBEFOREBEDUSINGDOCOOL\" video1=\"SLAVKAFLOWINGUPSEREGA\" audio1=\"SILENT_19\"><node label=\"А мне налить?\" video=\"DRINKINGSLAVKAANDSEREGA\"><node label=\"\" goto=\"DRINK_FROM_BOTTLE_HEAD\" isBranch = \"true\" /></node></node></node><node label=\"А что там за новость про &quot;Балтику&quot;?\"><node label=\"Пивоваренный концерн &quot;Балтика&quot; приступил к выпуску нового сорта - &quot;Балтика Наилучшее&quot;. А сокращённо - &quot;Наибалтика&quot;.\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSABOUTNAIBALTIKA\" video1=\"LAUGHINGSLAVKAANDSEREGA\" audio1=\"SILENT_3\"><node label=\"\" goto=\"LETS_DRINK_FIRST\" isBranch = \"true\" /><node label=\"\" goto=\"WHAT_IS_THIS_FOOD\" isBranch = \"true\" /><node label=\"\" goto=\"EUGENE_BUY_SUNPROOF_GLASSES\" isBranch = \"true\" /></node></node><node label=\"Я в завязке...\"><node label=\"Знаем мы эту шутку! Лучший способ напиться на халяву - это сказать в компании, что ты в завязке, тогда целью остальных будет напоить тебя!\" video=\"SEREGATELLINGLOOP\" audio=\"SEREGASAYSHOWTODRINKFREE\"><node label=\"\" goto=\"LETS_DRINK_FIRST\" isBranch = \"true\" /><node label=\"Ты уничтожил мой тайный план!\" video=\"SLAVKAFLOWINGUPSEREGA\"><node label=\"\" goto=\"DRINK_FOR_MEETING\" isBranch = \"true\" /></node><node label=\"\" goto=\"WHAT_IS_THIS_FOOD\" isBranch = \"true\" /></node></node></node></node>";
+
+// Бага в IDE! Line of code > 53152 символа вызывает переполнение стэка компилятора!
+// Пришлось разбить на 2 строки и объединять их потом
+var XMLText = XMLText1 + XMLText2;
+
+treeXML.parseXML(XMLText);
+treeXML.onLoad(true);
+//treeXML.load("alco.xml");
+
+///////////////////////////////////////////////////////////
+// Для отладки
+
+function setEpisodeInfo(aEpisodeMark: String, aEugeneGlassesDrinken: Number, aCurrentGameStudy: Number) {
+	currentXMLNode = FindNodeWithMark(treeXML.firstChild, aEpisodeMark);
+	EugeneGlassesDrinken = aEugeneGlassesDrinken;
+	currentGameStudy = aCurrentGameStudy;
+}
+
+var keyListener:Object = new Object();
+keyListener.onKeyDown = function() {
+	if (debugging) {trace("Key code = " + Key.getCode());}
+	
+    // Возврат на предыдущий вопрос - кнопка b
+	if (Key.getCode() == 66) {
+		if (QuestionsAsked > 1) {
+			QuestionSound.stop();
+			setMusicVolumeByScroller();
+			QuestionsAsked-=2;
+			currentXMLNode = questionsStack[QuestionsAsked];
+			changeGameState(2);
+			if (debugging) {trace("BACK to previous question, QuestionsAsked: " + QuestionsAsked);}
+		}
+    }
+	// Пропуск любой сцены - кнопка s
+	if (Key.getCode() == 83) {
+		if (debugging) {trace("Skipping scene");}
+		QuestionSound.stop();
+		setMusicVolumeByScroller();
+		switchGameStatesForAudio();
+		switchGameStatesForVideo();
+    }
+	// Показ/сокрытие статистики выпитого - кнопка a
+	if (Key.getCode() == 65) {	
+		tiStats._visible = !tiStats._visible;
+	}
+	
+	// Смена эпизодов в игре
+	if (Key.getCode() == 69) {
+		Episode++;
+		if (Episode > 9) {
+			Episode = 1;
+		}
+		switch (Episode) {
+		case 2:
+			setEpisodeInfo("EPISODE2", 0, 1);
+		break;
+		case 3:
+			setEpisodeInfo("YEAH_MAN_OVERDRINKS_SOMETIMES", 1, 1);
+		break;
+		case 4:
+			setEpisodeInfo("EPISODE4", 2, 5);
+		break;
+		case 5:
+			setEpisodeInfo("EPISODE5", 2, 6);
+		break;
+		case 6:
+			setEpisodeInfo("OK_WE_GO_OUT", 3, 7);
+		break;
+		case 7:
+			setEpisodeInfo("YOUR_WIFE_KNOWS", 3, 9);
+		break;
+		case 8:
+			setEpisodeInfo("EPISODE8", 3, 5);
+		break;
+		case 9:
+			setEpisodeInfo("NO_SEX_WITH_ONE_GIRL", 2, 5);
+		break;
+		default:
+			currentXMLNode = treeXML.firstChild;
+		break;
+		}
+		clearInterval(intervalID);
+		QuestionsAsked = 0;
+		stopAllAudio();
+		playAmbientSound("AmbientCafe");
+		playRandomAmbientMusic();
+		changeGameState(2);;
+	}
+}
+
+Key.addListener(keyListener);
+
+bTitles._visible = false;
+bAbout._visible = false;
+tiStats._visible = false;
+pbAnswerTime._visible = false;
+mc_pic_audio._visible = false;
+mc_pic_volume._visible = false;
+scrollerMusic._visible = false;
+bDonates._visible = false;
+bTitles.visible = false;
+
