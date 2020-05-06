@@ -1,6 +1,25 @@
 [START]Алконавты / Alconauts v0.7 (code name "Semushka")[BGNDVIDEO BackGround1_Study1][ANSWERSORDER OFF][MUSIC Motel_Rock]
 	НАЧАТЬ ИГРУ / START THE GAME
 		[GAME_SAVEPOINT,Game_Study1]Ну что, пацаны, выпьем?[VIDEO LetsDrinkSaidSlavka][AUDIO SlavkaSaysLetsDrink][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic||DJ_Electric_Feeling_Promo_Mix_gitar||DJ_Electric_Feeling_Promo_Mix_techno]
+			Я в завязке...
+				[mark_11io71e687sxvd3dn159]Знаем мы эту шутку! Лучший способ напиться на халяву - это сказать в компании, что ты в завязке, тогда целью остальных будет напоить тебя![VIDEO SeregaTellingLoop][AUDIO SeregaSaysHowToDrinkFree][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
+					[GOTO lets_drink_first]
+					Ты уничтожил мой тайный план![VIDEO SlavkaFlowingUpSerega]
+						[mark_p52o114v5ecvc91fu009][GOTO drink_for_meeting]
+					[GOTO what_is_this_food]
+			А что там за новость про "Балтику"?
+				[mark_u7h97g1x57hkhr6t45m9]Пивоваренный концерн "Балтика" приступил к выпуску нового сорта пива - "Балтика Сорокоградусное".[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutNaibaltika]
+					
+						[mark_28k6vf37h6kda27fi1x9]...[VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
+							[GOTO lets_drink_first]
+							[GOTO what_is_this_food]
+							[GOTO eugene_buy_sunproof_glasses]
+			А что на бутылке написано?[VIDEO Eugene_WhereIsMyGlass]
+				[mark_jhgb3hm3rtz28e2xr046]Перед злоупотреблением, охладить.[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysBeforeBedUsingDoCool]
+					
+						[mark_644al91ifk6twn66s7hk]...[VIDEO SlavkaFlowingUpSerega][AUDIO Silent_19][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
+							А мне налить?[VIDEO DrinkingSlavkaAndSerega]
+								[mark_9kfd299h5r612380vzfq][GOTO drink_from_bottle_head]
 			[lets_drink_first]Давай, наливай.[VIDEO SlavkaFlowingUpSerega]
 				[drink_for_meeting]Ну, за встречу![VIDEO DrinkingSlavkaAndSerega][AUDIO SlavkaSaysDrinkForMeeting][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 					[stop_where_is_my_glass]Погодите, я не понял, а где мой стаканчик?[VIDEO Eugene_WhereIsMyGlass]
@@ -680,22 +699,26 @@
 								[mark_8qx1w4a1b59697s03181]Давай уже просто выпьем![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysLetsDrinkSimply][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 									[GOTO where_is_my_glass]
 									[GOTO am_i_drink_or_go_home]
-			А что на бутылке написано?[VIDEO Eugene_WhereIsMyGlass]
-				[mark_jhgb3hm3rtz28e2xr046]Перед злоупотреблением, охладить.[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysBeforeBedUsingDoCool]
+			Эпизоды игры
+				[mark_8urza8m418b61mv026he]{this.gotoSuccess='GAME_SAVEPOINT';this.gotoCancel='GAME_SAVEPOINT';''}[GOTO buy_button_episodes]
+		[SEPARATOR]
+		[buy_button_episodes]Кнопка переключения эпизодов "EPISODE" дает возможность быстрого перехода по сценам в игре, чтобы не проходить каждый раз все заново. Она появится внизу и будет доступна всегда, пока ты не удалишь игру.[BGNDIMAGE episodes.jpg][BGNDAUDIO episodes_button_desc1][ANSWERTIME 18.8][TIMEEXPIRED proccess_buying]
+			[try_again_buy_button_episodes]Эпизоды игры.
+				[proccess_buying]{this.productId = "com.kri_games.alco.episodes";'';}{script getPayment}
 					
-						[mark_644al91ifk6twn66s7hk]...[VIDEO SlavkaFlowingUpSerega][AUDIO Silent_19][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
-							А мне налить?[VIDEO DrinkingSlavkaAndSerega]
-								[mark_9kfd299h5r612380vzfq][GOTO drink_from_bottle_head]
-			А что там за новость про "Балтику"?
-				[mark_u7h97g1x57hkhr6t45m9]Пивоваренный концерн "Балтика" приступил к выпуску нового сорта пива - "Балтика Сорокоградусное".[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutNaibaltika]
-					
-						[mark_28k6vf37h6kda27fi1x9]...[VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
-							[GOTO lets_drink_first]
-							[GOTO what_is_this_food]
-							[GOTO eugene_buy_sunproof_glasses]
-			Я в завязке...
-				[mark_11io71e687sxvd3dn159]Знаем мы эту шутку! Лучший способ напиться на халяву - это сказать в компании, что ты в завязке, тогда целью остальных будет напоить тебя![VIDEO SeregaTellingLoop][AUDIO SeregaSaysHowToDrinkFree][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
-					[GOTO lets_drink_first]
-					Ты уничтожил мой тайный план![VIDEO SlavkaFlowingUpSerega]
-						[mark_p52o114v5ecvc91fu009][GOTO drink_for_meeting]
-					[GOTO what_is_this_food]
+						[wait2]...[IMAGE episodes.jpg][AUDIO silent_3]
+							
+								[mark_7u249b2lf7c472494fvi]{script checkPayment2}
+									
+										[payment_success2]...[IMAGE episodes.jpg][PURCHASE cheats]
+											
+												[mark_lo9fb6iz5619s1v1w24v]Поздравляем! Кнопка переключения эпизодов "EPISODE" появилась внизу. Она будет доступна всегда, пока ты не удалишь игру.[IMAGE episodes.jpg][AUDIO episodes_button_bought][BGNDIMAGE *]
+													>>>
+														[mark_l173w68sf3ab3l9l8j3q]{'[GOTO ' + this.gotoSuccess + ']'}
+										[payment_fail2]Что то не так, попробуй еще раз.[IMAGE episodes.jpg][AUDIO episodes_button_desc2][BGNDIMAGE *][ANSWERSORDER OFF]
+											[GOTO try_again_buy_button_episodes]
+											[cancel_buy_button_episodes]Нет, спасибо.
+												[mark_677039120q01r58og222]{'[GOTO ' + this.gotoCancel + ']'}
+			[mark_57459g1d36876o98q2vr][GOTO cancel_buy_button_episodes]
+	Эпизоды игры
+		[mark_8b8adi78738690oewbn3]{this.gotoSuccess='START';this.gotoCancel='START';''}[GOTO buy_button_episodes]

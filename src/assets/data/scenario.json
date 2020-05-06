@@ -13,6 +13,106 @@
                         {
                           "node": [
                             {
+                              "_mark": "",
+                              "_content": "[LABEL ][GOTO lets_drink_first]"
+                            },
+                            {
+                              "node": [
+                                {
+                                  "_mark": "mark_p52o114v5ecvc91fu009",
+                                  "_content": "[LABEL ][GOTO drink_for_meeting]"
+                                }
+                              ],
+                              "_mark": "",
+                              "_content": "[LABEL Ты уничтожил мой тайный план!][VIDEO SlavkaFlowingUpSerega]"
+                            },
+                            {
+                              "_mark": "",
+                              "_content": "[LABEL ][GOTO what_is_this_food]"
+                            }
+                          ],
+                          "_mark": "mark_11io71e687sxvd3dn159",
+                          "_content": "[LABEL Знаем мы эту шутку! Лучший способ напиться на халяву - это сказать в компании, что ты в завязке, тогда целью остальных будет напоить тебя!][VIDEO SeregaTellingLoop][AUDIO SeregaSaysHowToDrinkFree][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]"
+                        }
+                      ],
+                      "_mark": "",
+                      "_content": "[LABEL Я в завязке...]"
+                    },
+                    {
+                      "node": [
+                        {
+                          "node": [
+                            {
+                              "node": [
+                                {
+                                  "node": [
+                                    {
+                                      "_mark": "",
+                                      "_content": "[LABEL ][GOTO lets_drink_first]"
+                                    },
+                                    {
+                                      "_mark": "",
+                                      "_content": "[LABEL ][GOTO what_is_this_food]"
+                                    },
+                                    {
+                                      "_mark": "",
+                                      "_content": "[LABEL ][GOTO eugene_buy_sunproof_glasses]"
+                                    }
+                                  ],
+                                  "_mark": "mark_28k6vf37h6kda27fi1x9",
+                                  "_content": "[LABEL ...][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]"
+                                }
+                              ],
+                              "_mark": "",
+                              "_content": "[LABEL ]"
+                            }
+                          ],
+                          "_mark": "mark_u7h97g1x57hkhr6t45m9",
+                          "_content": "[LABEL Пивоваренный концерн \"Балтика\" приступил к выпуску нового сорта пива - \"Балтика Сорокоградусное\".][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutNaibaltika]"
+                        }
+                      ],
+                      "_mark": "",
+                      "_content": "[LABEL А что там за новость про \"Балтику\"?]"
+                    },
+                    {
+                      "node": [
+                        {
+                          "node": [
+                            {
+                              "node": [
+                                {
+                                  "node": [
+                                    {
+                                      "node": [
+                                        {
+                                          "_mark": "mark_9kfd299h5r612380vzfq",
+                                          "_content": "[LABEL ][GOTO drink_from_bottle_head]"
+                                        }
+                                      ],
+                                      "_mark": "",
+                                      "_content": "[LABEL А мне налить?][VIDEO DrinkingSlavkaAndSerega]"
+                                    }
+                                  ],
+                                  "_mark": "mark_644al91ifk6twn66s7hk",
+                                  "_content": "[LABEL ...][VIDEO SlavkaFlowingUpSerega][AUDIO Silent_19][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]"
+                                }
+                              ],
+                              "_mark": "",
+                              "_content": "[LABEL ]"
+                            }
+                          ],
+                          "_mark": "mark_jhgb3hm3rtz28e2xr046",
+                          "_content": "[LABEL Перед злоупотреблением, охладить.][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysBeforeBedUsingDoCool]"
+                        }
+                      ],
+                      "_mark": "",
+                      "_content": "[LABEL А что на бутылке написано?][VIDEO Eugene_WhereIsMyGlass]"
+                    },
+                    {
+                      "node": [
+                        {
+                          "node": [
+                            {
                               "node": [
                                 {
                                   "node": [
@@ -3669,6 +3769,26 @@
                     {
                       "node": [
                         {
+                          "_mark": "mark_8urza8m418b61mv026he",
+                          "_content": "[LABEL {this.gotoSuccess='GAME_SAVEPOINT';this.gotoCancel='GAME_SAVEPOINT';''}][GOTO buy_button_episodes]"
+                        }
+                      ],
+                      "_mark": "",
+                      "_content": "[LABEL Эпизоды игры]"
+                    }
+                  ],
+                  "_mark": "GAME_SAVEPOINT,Game_Study1",
+                  "_content": "[LABEL Ну что, пацаны, выпьем?][VIDEO LetsDrinkSaidSlavka][AUDIO SlavkaSaysLetsDrink][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic||DJ_Electric_Feeling_Promo_Mix_gitar||DJ_Electric_Feeling_Promo_Mix_techno]"
+                },
+                {
+                  "_mark": "SEPARATOR",
+                  "_content": "[LABEL ]"
+                },
+                {
+                  "node": [
+                    {
+                      "node": [
+                        {
                           "node": [
                             {
                               "node": [
@@ -3677,106 +3797,110 @@
                                     {
                                       "node": [
                                         {
-                                          "_mark": "mark_9kfd299h5r612380vzfq",
-                                          "_content": "[LABEL ][GOTO drink_from_bottle_head]"
+                                          "node": [
+                                            {
+                                              "node": [
+                                                {
+                                                  "node": [
+                                                    {
+                                                      "node": [
+                                                        {
+                                                          "node": [
+                                                            {
+                                                              "node": [
+                                                                {
+                                                                  "_mark": "mark_l173w68sf3ab3l9l8j3q",
+                                                                  "_content": "[LABEL {'[GOTO ' + this.gotoSuccess + ']'}]"
+                                                                }
+                                                              ],
+                                                              "_mark": "",
+                                                              "_content": "[LABEL >>>]"
+                                                            }
+                                                          ],
+                                                          "_mark": "mark_lo9fb6iz5619s1v1w24v",
+                                                          "_content": "[LABEL Поздравляем! Кнопка переключения эпизодов \"EPISODE\" появилась внизу. Она будет доступна всегда, пока ты не удалишь игру.][IMAGE episodes.jpg][AUDIO episodes_button_bought][BGNDIMAGE *]"
+                                                        }
+                                                      ],
+                                                      "_mark": "",
+                                                      "_content": "[LABEL ]"
+                                                    }
+                                                  ],
+                                                  "_mark": "payment_success2",
+                                                  "_content": "[LABEL ...][IMAGE episodes.jpg][PURCHASE cheats]"
+                                                },
+                                                {
+                                                  "node": [
+                                                    {
+                                                      "_mark": "",
+                                                      "_content": "[LABEL ][GOTO try_again_buy_button_episodes]"
+                                                    },
+                                                    {
+                                                      "node": [
+                                                        {
+                                                          "_mark": "mark_677039120q01r58og222",
+                                                          "_content": "[LABEL {'[GOTO ' + this.gotoCancel + ']'}]"
+                                                        }
+                                                      ],
+                                                      "_mark": "cancel_buy_button_episodes",
+                                                      "_content": "[LABEL Нет, спасибо.]"
+                                                    }
+                                                  ],
+                                                  "_mark": "payment_fail2",
+                                                  "_content": "[LABEL Что то не так, попробуй еще раз.][IMAGE episodes.jpg][AUDIO episodes_button_desc2][BGNDIMAGE *][ANSWERSORDER OFF]"
+                                                }
+                                              ],
+                                              "_mark": "",
+                                              "_content": "[LABEL ]"
+                                            }
+                                          ],
+                                          "_mark": "mark_7u249b2lf7c472494fvi",
+                                          "_content": "[LABEL {script checkPayment2}]"
                                         }
                                       ],
                                       "_mark": "",
-                                      "_content": "[LABEL А мне налить?][VIDEO DrinkingSlavkaAndSerega]"
+                                      "_content": "[LABEL ]"
                                     }
                                   ],
-                                  "_mark": "mark_644al91ifk6twn66s7hk",
-                                  "_content": "[LABEL ...][VIDEO SlavkaFlowingUpSerega][AUDIO Silent_19][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]"
+                                  "_mark": "wait2",
+                                  "_content": "[LABEL ...][IMAGE episodes.jpg][AUDIO silent_3]"
                                 }
                               ],
                               "_mark": "",
                               "_content": "[LABEL ]"
                             }
                           ],
-                          "_mark": "mark_jhgb3hm3rtz28e2xr046",
-                          "_content": "[LABEL Перед злоупотреблением, охладить.][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysBeforeBedUsingDoCool]"
+                          "_mark": "proccess_buying",
+                          "_content": "[LABEL {this.productId = \"com.kri_games.alco.episodes\";'';}{script getPayment}]"
                         }
                       ],
-                      "_mark": "",
-                      "_content": "[LABEL А что на бутылке написано?][VIDEO Eugene_WhereIsMyGlass]"
+                      "_mark": "try_again_buy_button_episodes",
+                      "_content": "[LABEL Эпизоды игры.]"
                     },
                     {
-                      "node": [
-                        {
-                          "node": [
-                            {
-                              "node": [
-                                {
-                                  "node": [
-                                    {
-                                      "_mark": "",
-                                      "_content": "[LABEL ][GOTO lets_drink_first]"
-                                    },
-                                    {
-                                      "_mark": "",
-                                      "_content": "[LABEL ][GOTO what_is_this_food]"
-                                    },
-                                    {
-                                      "_mark": "",
-                                      "_content": "[LABEL ][GOTO eugene_buy_sunproof_glasses]"
-                                    }
-                                  ],
-                                  "_mark": "mark_28k6vf37h6kda27fi1x9",
-                                  "_content": "[LABEL ...][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]"
-                                }
-                              ],
-                              "_mark": "",
-                              "_content": "[LABEL ]"
-                            }
-                          ],
-                          "_mark": "mark_u7h97g1x57hkhr6t45m9",
-                          "_content": "[LABEL Пивоваренный концерн \"Балтика\" приступил к выпуску нового сорта пива - \"Балтика Сорокоградусное\".][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutNaibaltika]"
-                        }
-                      ],
-                      "_mark": "",
-                      "_content": "[LABEL А что там за новость про \"Балтику\"?]"
-                    },
-                    {
-                      "node": [
-                        {
-                          "node": [
-                            {
-                              "_mark": "",
-                              "_content": "[LABEL ][GOTO lets_drink_first]"
-                            },
-                            {
-                              "node": [
-                                {
-                                  "_mark": "mark_p52o114v5ecvc91fu009",
-                                  "_content": "[LABEL ][GOTO drink_for_meeting]"
-                                }
-                              ],
-                              "_mark": "",
-                              "_content": "[LABEL Ты уничтожил мой тайный план!][VIDEO SlavkaFlowingUpSerega]"
-                            },
-                            {
-                              "_mark": "",
-                              "_content": "[LABEL ][GOTO what_is_this_food]"
-                            }
-                          ],
-                          "_mark": "mark_11io71e687sxvd3dn159",
-                          "_content": "[LABEL Знаем мы эту шутку! Лучший способ напиться на халяву - это сказать в компании, что ты в завязке, тогда целью остальных будет напоить тебя!][VIDEO SeregaTellingLoop][AUDIO SeregaSaysHowToDrinkFree][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]"
-                        }
-                      ],
-                      "_mark": "",
-                      "_content": "[LABEL Я в завязке...]"
+                      "_mark": "mark_57459g1d36876o98q2vr",
+                      "_content": "[LABEL ][GOTO cancel_buy_button_episodes]"
                     }
                   ],
-                  "_mark": "GAME_SAVEPOINT,Game_Study1",
-                  "_content": "[LABEL Ну что, пацаны, выпьем?][VIDEO LetsDrinkSaidSlavka][AUDIO SlavkaSaysLetsDrink][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic||DJ_Electric_Feeling_Promo_Mix_gitar||DJ_Electric_Feeling_Promo_Mix_techno]"
+                  "_mark": "buy_button_episodes",
+                  "_content": "[LABEL Кнопка переключения эпизодов \"EPISODE\" дает возможность быстрого перехода по сценам в игре, чтобы не проходить каждый раз все заново. Она появится внизу и будет доступна всегда, пока ты не удалишь игру.][BGNDIMAGE episodes.jpg][BGNDAUDIO episodes_button_desc1][TIMEEXPIRED proccess_buying][ANSWERTIME 18.8]"
                 }
               ],
               "_mark": "",
               "_content": "[LABEL НАЧАТЬ ИГРУ / START THE GAME]"
+            },
+            {
+              "node": [
+                {
+                  "_mark": "mark_8b8adi78738690oewbn3",
+                  "_content": "[LABEL {this.gotoSuccess='START';this.gotoCancel='START';''}][GOTO buy_button_episodes]"
+                }
+              ],
+              "_mark": "",
+              "_content": "[LABEL Эпизоды игры]"
             }
           ],
           "_mark": "START",
-          "_content": "[LABEL Алконавты/Alconauts v0.7 (code name \"Semushka\")][BGNDVIDEO BackGround1_Study1][MUSIC Motel_Rock][ANSWERSORDER OFF]"
+          "_content": "[LABEL Алконавты / Alconauts v0.7 (code name \"Semushka\")][BGNDVIDEO BackGround1_Study1][MUSIC Motel_Rock][ANSWERSORDER OFF]"
         }
       ]
     }
