@@ -1,18 +1,18 @@
-[START]Алконавты v0.5 (code name "PolLitra")[BGNDIMAGE Intro.jpg][ANSWERSORDER OFF]
+[START]Алконавты/Alconauts v0.7 (code name "Semushka")[BGNDIMAGE Intro.jpg][ANSWERSORDER OFF]
 	НАЧАТЬ ИГРУ / START THE GAME
-		[GAME_SAVEPOINT,Game_Study1]Ну что, пацаны, выпьем?[VIDEO LetsDrinkSaidSlavka][comment Славка][AUDIO SlavkaSaysLetsDrink][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic,DJ_Electric_Feeling_Promo_Mix_gitar,DJ_Electric_Feeling_Promo_Mix_techno]
+		[GAME_SAVEPOINT,Game_Study1]Ну что, пацаны, выпьем?[VIDEO LetsDrinkSaidSlavka][AUDIO SlavkaSaysLetsDrink][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic,DJ_Electric_Feeling_Promo_Mix_gitar,DJ_Electric_Feeling_Promo_Mix_techno]
 			[lets_drink_first]Давай, наливай.[VIDEO SlavkaFlowingUpSerega][comment Славка наливает Сереге и себе]
 				[drink_for_meeting]Ну, за встречу![VIDEO DrinkingSlavkaAndSerega][comment Славка и Серега выпивают][AUDIO SlavkaSaysDrinkForMeeting][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 					[stop_where_is_my_glass]Погодите, я не понял, а где мой стаканчик?[comment Женька разводит руками][VIDEO Eugene_WhereIsMyGlass]
-						[drink_from_bottle_head]Да ты прямо из горла пей![comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysDrinkFromBottle]
+						[drink_from_bottle_head]Да ты прямо из горла пей![VIDEO SeregaTellingLoop][AUDIO SeregaSaysDrinkFromBottle]
 							
 								[mark_8854jzio8ukdh498g1rq][VIDEO LaughingSlavkaAndSerega][AUDIOSilent_3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 									Нее, я из горла не буду... Я буду в горло![VIDEO LaughingSlavkaAndSerega]
-										[bet_on_bottle_i_shall_drink_this_bottle]Ставлю пузырь, что я его выпью![comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysBetOnBottleIdrinkBottle][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+										[bet_on_bottle_i_shall_drink_this_bottle]Ставлю пузырь, что я его выпью![VIDEO SeregaTellingLoop][AUDIO SeregaSaysBetOnBottleIdrinkBottle][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 											[Mitrofanych]Слушай, кстати, а за что Митрофаныча так не любят?
-												[mark_7247p0zw5yy4n4v5o93f]Он пять лет назад у себя на заводе уронил бутылку водки...[comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysMitrofanych5YearsAgoDropedVodka][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+												[mark_7247p0zw5yy4n4v5o93f]Он пять лет назад у себя на заводе уронил бутылку водки...[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysMitrofanych5YearsAgoDropedVodka][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 													А ведь он был спортсменом! Любил бегать... за второй.[VIDEO LaughingSlavkaAndSerega]
-														[mark_s29b6vnkh03yu231i6h0]Нужно сразу брать три, чтобы потом не бегать за второй![comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysNeedTake3Bottle][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+														[mark_s29b6vnkh03yu231i6h0]Нужно сразу брать три, чтобы потом не бегать за второй![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysNeedTake3Bottle][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 															Нее, в прошлый раз 2 бутылка коньяка явно была лишней, хватило бы 1 и 3
 																[a_little_time_between_first_and_second]Наливай! Между первой и второй закусончик небольшой.[comment Славка, ест салат пластм. вилкой][VIDEO SlavkaEatsSalat][AUDIO SlavkaSaysBetweenFirstAndSecond][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																	[where_is_my_glass]Где же мой стаканчик?[comment Серега наливает Славке и себе][VIDEO SeregaFlowingUpSlavka]
@@ -20,15 +20,15 @@
 																			
 																				[mark_0lp7x52ddyr9y921x6t4][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																					Ну тогда наливай полный![comment Славка убирает полулитровый пластиковый стаканчик под стол, достает оттуда стопку, как у всех, ставит Женьке][VIDEO SlavkaChangesTheGlass]
-																						[do_you_remeber_you_drunk_last_time]А помнишь, как ты в прошлый раз упился? [comment Серега][AUDIO SeregaSaysDoYouRememberYouDrunkLastTime][VIDEO SeregaTellingLoop][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																						[do_you_remeber_you_drunk_last_time]А помнишь, как ты в прошлый раз упился? [AUDIO SeregaSaysDoYouRememberYouDrunkLastTime][VIDEO SeregaTellingLoop][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																							Я не помню тот момент, с которого я не помню.[comment Славка наливает Женьке][VIDEO SlavkaFlowingUpEugene]
 																								[EPISODE1,Drink_second_glass]За нас, мужики! [comment Все держат стопки, Серега говорит тост][AUDIO SeregaSaysForUsMen][VIDEO SeregaTellingLoop][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																									[late_drink_is_invane_drinken_first]Давай, погнали! Поздно выпитая рюмка - зря открытая бутылка.[comment Все выпивают][VIDEO AllDrinking]
-																										[mark_f31uxhtqh729jfbm3pq9]Что может быть лучше прогулки на свежем воздухе? Разве что посидеть в прокуренном баре и попить водки![comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysWhatIsBetterSmokedBarAndVodka][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																										[mark_f31uxhtqh729jfbm3pq9]Что может быть лучше прогулки на свежем воздухе? Разве что посидеть в прокуренном баре и попить водки![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysWhatIsBetterSmokedBarAndVodka][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																											Как там у тебя с женой? Опять поссорились?[VIDEO Eugene_EatsSalat]
 																												[mark_gksl3iqkd2dpt9410r1h]В прошлый раз пришел домой в три ночи, она сразу догадалась, что я пьян. У меня пальто было застегнуто на яйцо.[AUDIO SeregaSaysMySuitWasWithEgg][VIDEO SeregaTellingLoop][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																													А я вчера девчонку с работы подколол: "Полина, отлично выглядишь. Бухала вчера?"[VIDEO LaughingSlavkaAndSerega]
-																														[Man_need_waterfalling]Мужик - не кактус, он пить должен! [comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysManNeedToDrink][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																														[Man_need_waterfalling]Мужик - не кактус, он пить должен! [VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysManNeedToDrink][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																															[yeah_man_overdrinks_sometimes]Да... людям свойственно напиваться.[VIDEO Eugene_EatsSalat]
 																																[EPISODE2,will_we_smoke]Перекур! Никотиновое голодание приводит к алкогольному обжорству![comment Серега и Славка закуривают][VIDEO SeregaTellingLoop][AUDIO SeregaSaysSmokeBreak][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																	Я бросил.[VIDEO SeregaSlavkaStartSmoking]
@@ -44,63 +44,63 @@
 																																											Третий тост, за любовь к женщинам![comment Все выпивают(сигарет ни у кого уже нет!)][VIDEO AllDrinking]
 																																												[Game_Study5]Слушайте прикол, познакомился с девушкой по инету, не очень красивая оказалась. Ну, пошли в кафе пиво пить. Меня торкнуло, я ей и говорю: "Странно, вроде пью-пью - а ты всё хуже и хуже..."[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutGirl1][BGNDVIDEO BackGround1_Study3]
 																																													А она тебе что ответила?
-																																														[mark_i4ipczk2yzqup4a6zzg8]"Хам!", - говорит, - "Такие, как я на дороге не валяются!", - вскочила и схватила сумочку...[comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutGirl2][BGNDVIDEO BackGround1_Study3]
+																																														[mark_i4ipczk2yzqup4a6zzg8]"Хам!", - говорит, - "Такие, как я на дороге не валяются!", - вскочила и схватила сумочку...[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutGirl2][BGNDVIDEO BackGround1_Study3]
 																																															А ты ей, что сказал?
-																																																[mark_geh9349jh19080acx449]Говорю: "Такие, как я тоже на дороге не валяются! Стоят и шатаются..."[comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutGirl3][BGNDVIDEO BackGround1_Study3]
+																																																[mark_geh9349jh19080acx449]Говорю: "Такие, как я тоже на дороге не валяются! Стоят и шатаются..."[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutGirl3][BGNDVIDEO BackGround1_Study3]
 																																																	А фото её у тебя осталось?
-																																																		[here_is_her_photo]Вот ее фотография... А нее, это кто-то пиво разлил...[comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutGirl4][BGNDVIDEO BackGround1_Study3]
+																																																		[here_is_her_photo]Вот ее фотография... А нее, это кто-то пиво разлил...[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutGirl4][BGNDVIDEO BackGround1_Study3]
 																																																			[No_ugly_girls_simply_low_vodka]Некрасивых женщин не бывает... у тебя просто стакан пустой![VIDEO SeregaFlowingUpSlavkaAndEugene]
 																																																				[i_want_to_say_tost]Дайте мне точку опоры и я... скажу тост! [comment Славка поднимается из-за стола][VIDEO SlavkaWantToSayTostLoop][AUDIO SlavkaWantToSayTost][BGNDVIDEO BackGround1_Study3]
 																																																					Опять? За женщин?
-																																																						[mark_2168b40y9i32n8ppku9y]Нее... за женщин уже пили! Выпьем за то... чтобы не было мучительно больно за бесцельно...[comment Славка][AUDIO SlavkaWantToDrinkHisFavorTost][VIDEO SlavkaWantToSayTostLoop][BGNDVIDEO BackGround1_Study3]
+																																																						[mark_2168b40y9i32n8ppku9y]Нее... за женщин уже пили! Выпьем за то... чтобы не было мучительно больно за бесцельно...[AUDIO SlavkaWantToDrinkHisFavorTost][VIDEO SlavkaWantToSayTostLoop][BGNDVIDEO BackGround1_Study3]
 																																																							Как меня достала эта фраза...
-																																																								[mark_4dc473y233y0097722gl]Ты испортил мой тост, гад![comment Славка][AUDIO SlavkaSaysYouBreakMyTostEugene][VIDEO SlavkaSharpTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																								[mark_4dc473y233y0097722gl]Ты испортил мой тост, гад![AUDIO SlavkaSaysYouBreakMyTostEugene][VIDEO SlavkaSharpTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																									[every_time_you_are_drunk]Ты каждый раз, как напьешься, это говоришь...
-																																																										[do_you_respect_me]Слышь, ты чо, меня не уважаешь???[comment Славка][VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysDoYouRespectMe][BGNDVIDEO BackGround1_Study3]
+																																																										[do_you_respect_me]Слышь, ты чо, меня не уважаешь???[VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysDoYouRespectMe][BGNDVIDEO BackGround1_Study3]
 																																																											Ну началось, пьяное быдло...
 																																																												[mark_d0106xfo591yny2358c3]Люди перестанут уважать друг друга, если наука победит алкоголизм...[comment говорит Серега][AUDIO SeregaSaysIfScienceDefeatsAlchohol][VIDEO SeregaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																													[tranquillize_you_friend]Успокой уже своего друга.[comment обращается к Сереге]
-																																																														[story_about_pandabear]Короче, мужики, давайте лучше я ржаку расскажу![comment Серега][AUDIO SeregaSaysHeyMenLetITellHumor][VIDEO SeregaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																														[story_about_pandabear]Короче, мужики, давайте лучше я ржаку расскажу![AUDIO SeregaSaysHeyMenLetITellHumor][VIDEO SeregaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																															Надеюсь что-то новенькое?
-																																																																[panda_bear]Гулял я недавно в зоопарке, подхожу к клетке с медведем панда... Видели, какие у него чёрные круги под глазами?[comment Серега][AUDIO SeregaSaysStoryAboutPandaBear1][VIDEO SeregaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																																[panda_bear]Гулял я недавно в зоопарке, подхожу к клетке с медведем панда... Видели, какие у него чёрные круги под глазами?[AUDIO SeregaSaysStoryAboutPandaBear1][VIDEO SeregaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																																	Ну, видели и чо?
-																																																																		[mark_86gc9996k9b352mlb9zz]Медведь панда как бы всем своим видом нам говорит: Не бухайте, мужики![comment Серега][AUDIO SeregaSaysStoryAboutPandaBear2][VIDEO SeregaDrunkTellingLoop]
+																																																																		[mark_86gc9996k9b352mlb9zz]Медведь панда как бы всем своим видом нам говорит: Не бухайте, мужики![AUDIO SeregaSaysStoryAboutPandaBear2][VIDEO SeregaDrunkTellingLoop]
 																																																																			
 																																																																				[mark_30o109gtr28qfhl9l07p][VIDEO AllLaughingDrunkWithAudio][AUDIO Silent_5][BGNDVIDEO BackGround1_Study3]
 																																																																					А ведь все взаимосвязано: живёшь - хочется выпить , выпил - хочется жить.
-																																																																						[forgive_me]Слушай, ты это... извини меня... больно нравится мне тост про "бесцельно прожитые годы".[comment Славка][AUDIO SlavkaSaysSorryForMyTost][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																																						[forgive_me]Слушай, ты это... извини меня... больно нравится мне тост про "бесцельно прожитые годы".[AUDIO SlavkaSaysSorryForMyTost][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																																							Да ладно, проехали, какой то я сегодня злой...
-																																																																								[why_are_you_anger]А чо злой то?[comment Славка][AUDIO SlavkaSaysWhyAreYouAngry][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																																								[why_are_you_anger]А чо злой то?[AUDIO SlavkaSaysWhyAreYouAngry][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																																									[flat_bill_incoming]Да опять цены растут, а зарплату не повышают...
-																																																																										[mark_19za4sy8d1i3qf7ei9my]У меня такая же фигня...[comment Серега][AUDIO SeregaSaysIHaveTheSameShit][VIDEO SeregaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																																										[mark_19za4sy8d1i3qf7ei9my]У меня такая же фигня...[AUDIO SeregaSaysIHaveTheSameShit][VIDEO SeregaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																																											Совсем государство оборзело! Валить из этой страны надо...[comment громким голосом, чтобы привлечь внимание посетителей]
 																																																																												[EPISODE4,Game_Study6]Господа, ведите себя потише! [comment подходит охранник][VIDEO SecurityComing][AUDIO SecuritySaysBeQuet][BGNDVIDEO BackGround1_StudySecurity]
 																																																																													Хорошо, хорошо.[comment уходит охранник][VIDEO SecurityLeaving]
-																																																																														[EPISODE5,Game_Study5]Куда валить? [comment Славка][AUDIO SlavkaSaysWhatCountryWeGo][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																																														[EPISODE5,Game_Study5]Куда валить? [AUDIO SlavkaSaysWhatCountryWeGo][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																																															Да хоть в Эфиопию!
 																																																																																[mark_8zrjhz3950m3rk1dh9y1]Гыгыгы... эфиоп, твою мать![comment Славка громким голосом][VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysEphiopYourMother][BGNDVIDEO BackGround1_Study3]
 																																																																																	[this_country_is_without_promising]Этой стране уже ничего не поможет...[comment громким голосом, чтобы привлечь внимание посетителей]
 																																																																																		[mass_shootings_save_country]Только массовые расстрелы спасут...[comment Славка негромким голосом][VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysOnlyMassShootingSave][BGNDVIDEO BackGround1_Study3]
 																																																																																			[drink_fourth_glass]Эх...наливай ещё по одной!
-																																																																																				[you_didnt_drink_this_one_yet]Да ты ещё эту не допил. [comment Славка][VIDEO SlavkaVeryDrunkTellingLoop][AUDIO SlavkaSaysYouDidntDrinkThisYet]
+																																																																																				[you_didnt_drink_this_one_yet]Да ты ещё эту не допил. [VIDEO SlavkaVeryDrunkTellingLoop][AUDIO SlavkaSaysYouDidntDrinkThisYet]
 																																																																																					
 																																																																																						[mark_58g5rt1123021p9wwyv0][VIDEO AllDrinking][AUDIO Silent_12][BGNDVIDEO BackGround1_Study3]
 																																																																																							Теперь освежите...[VIDEO SeregaFlowingUpSlavkaAndEugene]
-																																																																																								[mark_775j9lx8824915x5n356]А знаете, что не до конца выпитое спиртное говорит о не здоровой атмосфере в коллективе?[comment Серега][VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysAboutPartlyDrink]
+																																																																																								[mark_775j9lx8824915x5n356]А знаете, что не до конца выпитое спиртное говорит о не здоровой атмосфере в коллективе?[VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysAboutPartlyDrink]
 																																																																																									
 																																																																																										[mark_0d80m84y920p10u50owt][VIDEO AllDrinking][AUDIO Silent_12][BGNDVIDEO BackGround1_Study3]
 																																																																																											[vodka_is_very_strange]Что-то водка сегодня какая то странная...
-																																																																																												[it_sharps_me]Ага, я тоже заметил, горло дербанит...[comment Серега][VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysBedVodka][BGNDVIDEO BackGround1_Study3]
+																																																																																												[it_sharps_me]Ага, я тоже заметил, горло дербанит...[VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysBedVodka][BGNDVIDEO BackGround1_Study3]
 																																																																																													А тебе как?[comment обращается к Славке]
 																																																																																														[mark_uq77bwsn90stewd61f47]Да вроде нормуль.[comment Славка, который потом выжил][VIDEO SlavkaVeryDrunkTellingLoop][AUDIO SlavkaSaysVodkaIsNormal][BGNDVIDEO BackGround1_Study3]
 																																																																																															Это потому что в твоем спирте крови нет.
-																																																																																																[why_we_drink]Мужики, а вот знаете почему мы пьем?[comment Серега][VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysDoYouKnowWhyWeDrink][BGNDVIDEO BackGround1_Study3]
+																																																																																																[why_we_drink]Мужики, а вот знаете почему мы пьем?[VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysDoYouKnowWhyWeDrink][BGNDVIDEO BackGround1_Study3]
 																																																																																																	Не знаем... но догадываемся...
-																																																																																																		[mark_icv846ls580oms5rihu5]Потому что лучше пить, чем колоться и нюхать клей.[comment Славка][VIDEO SlavkaVeryDrunkTellingLoop][AUDIO SlavkaSaysBetterDrinkThanDrug][BGNDVIDEO BackGround1_Study3]
+																																																																																																		[mark_icv846ls580oms5rihu5]Потому что лучше пить, чем колоться и нюхать клей.[VIDEO SlavkaVeryDrunkTellingLoop][AUDIO SlavkaSaysBetterDrinkThanDrug][BGNDVIDEO BackGround1_Study3]
 																																																																																																			Чтобы некрасивые женщины тоже могли любовью заниматься.[VIDEO AllLaughingDrunkWithAudio]
-																																																																																																				[Parashute_mark]Потому что ощущения - как с парашютом прыгать, только намного дешевле![comment Серега][VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysAboutParashute][BGNDVIDEO BackGround1_Study3]
+																																																																																																				[Parashute_mark]Потому что ощущения - как с парашютом прыгать, только намного дешевле![VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysAboutParashute][BGNDVIDEO BackGround1_Study3]
 																																																																																																					[what_is_this_with_you]Эээ! Что с тобой? Тебе что, плохо?[comment Серега начал заваливаться под стол]
-																																																																																																						[EPISODE6,Game_Study10]Е-мое, походу, водка палёная...[comment Серега][VIDEO SeregaFeelingBed][AUDIO SeregaSaysFakeVodka][BGNDVIDEO BackGround1_FinalStudy]
+																																																																																																						[EPISODE6,Game_Study10]Е-мое, походу, водка палёная...[VIDEO SeregaFeelingBed][AUDIO SeregaSaysFakeVodka][BGNDVIDEO BackGround1_FinalStudy]
 																																																																																																							Все, допились... надо скорую вызывать!
 																																																																																																								[Mark_Final1][FINAL Твой друг умер ещё до приезда скорой помощи. Вам двоим удалось выжить, но от большой дозы метанола у вас пропало зрение...(поучительный финал#1)][VIDEO BackGround1_FinalStudy][AUDIO Silent_5]
 																																																																																																					[would_you_know_what_i_think]А я... знаешь... ещё что... думаю...
@@ -153,12 +153,12 @@
 																																																																																																																	Один побежал за сигаретой...
 																																																																																																																		[mark_6u7dbkgizag6h13kmxxm]И мой муж остановил его?[AUDIO WifeSaysDidMyHusbandStopHim][VIDEO WifeScaringLoop][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																																			Да
-																																																																																																																				[mark_v141188u9b0l5m69ox39]От невинных детей... пахло винным перегаром...[comment Серега][VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysChildrenSmellsLikeAVine]
+																																																																																																																				[mark_v141188u9b0l5m69ox39]От невинных детей... пахло винным перегаром...[VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysChildrenSmellsLikeAVine]
 																																																																																																																					[GOTO he_is_a_hero]
 																																																																																																																			Нет
 																																																																																																																				[mark_52tgst37ht99x060911v]А что?[AUDIO WifeSaysAndWhat][VIDEO WifeScaringLoop][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																																					Он отобрал у него сигарету! Чтобы малыш... не умер от рака легких.
-																																																																																																																						[mark_lcf12nzw2j50ms34qcr1]Избавиться от рака... лучше всего... с помощью пива.[comment Серега][VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysHowToUseRak][BGNDVIDEO BackGround1_StudyWife]
+																																																																																																																						[mark_lcf12nzw2j50ms34qcr1]Избавиться от рака... лучше всего... с помощью пива.[VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysHowToUseRak][BGNDVIDEO BackGround1_StudyWife]
 																																																																																																																							[he_is_a_hero]Он у тебя герой!
 																																																																																																																								[mark_k2s86p8ejcq7q862xagi][GOTO Mark_Final8]
 																																																																																																																					Он остановил машину... собственным телом...
@@ -210,7 +210,7 @@
 																																																																																							На каком... собственно... основании?
 																																																																																								[mark_hh8u4im9f2m0ngp069j4][GOTO Mark_Final6]
 																																																																																							[ok_we_go_out]Хорошо... мы уходим...[VIDEO AllGoOutBar]
-																																																																																								[EPISODE9,Game_Study7]В такую погоду... только тещу за пивом гонять![comment Серега][AUDIO SeregaSaysAboutWeatherAndWifeMother][VIDEO BackGround1_Street][BGNDVIDEO BackGround1_Street][AMBIENT AmbientStreet]
+																																																																																								[EPISODE9,Game_Study7]В такую погоду... только тещу за пивом гонять![AUDIO SeregaSaysAboutWeatherAndWifeMother][VIDEO BackGround1_Street][BGNDVIDEO BackGround1_Street][AMBIENT AmbientStreet]
 																																																																																									Мне надо отлить...[VIDEO Police_Arriving]
 																																																																																										[Game_Study8]Граждане, предъявите ваши документы![comment спрашивает на улице патруль][VIDEO Police_Talking][AUDIO Police_AskDocuments][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																											Какие документы? Нас здесь итак все знают!
@@ -267,7 +267,7 @@
 																																																																																				[mark_96c6mirz82537o10z70s][GOTO mass_shootings_save_country]
 																																																																																			[GOTO easy_man]
 																																																																															В Америку.
-																																																																																[mark_87h99e4hi58mmxqap4gi]Америкосы все дебилы![comment Славка][VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysAmericansAreFool][BGNDVIDEO BackGround1_Study3]
+																																																																																[mark_87h99e4hi58mmxqap4gi]Америкосы все дебилы![VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysAmericansAreFool][BGNDVIDEO BackGround1_Study3]
 																																																																																	Сам ты дебил... такие же люди, как все...
 																																																																																		[mark_xa8486j54w44z782026g]Ну и езжай в свою Америку... убедись![comment Славка громким голосом][VIDEO SlavkaVeryDrunkTellingLoop][AUDIO SlavkaSaysGoToYourAmericaAndSee][BGNDVIDEO BackGround1_Study3]
 																																																																																			[GOTO Keep_silent_dont_cry]
@@ -285,31 +285,31 @@
 																																																																													Это кто там трендит?
 																																																																														[Mark_Final6][FINAL Охрана выпроводила вас из заведения. Встреча не удалась! (отрицательный финал #6)][VIDEO AllFuckOffTheBar]
 																																																																											Знаете рецепт карьерного роста в нашей стране?
-																																																																												[mark_d1vxj8rg86f9xrilo98v]Карьера мужчины зависит от того, кто с кем пьёт, карьера женщины - кто с кем спит.Проблема в том, что выпить с нужным человеком гораздо трудней, чем переспать![comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutCarier][BGNDVIDEO BackGround1_Study3]
+																																																																												[mark_d1vxj8rg86f9xrilo98v]Карьера мужчины зависит от того, кто с кем пьёт, карьера женщины - кто с кем спит.Проблема в том, что выпить с нужным человеком гораздо трудней, чем переспать![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutCarier][BGNDVIDEO BackGround1_Study3]
 																																																																													[GOTO this_country_is_without_promising]
 																																																																													[GOTO drink_fourth_glass]
 																																																																									[No_sex_with_one_girl]Да, одна девушка не уламывается...
-																																																																										[mark_283i81sd397ocs0k8e91]Значит плохо просишь.[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysBadAskingHer][BGNDVIDEO BackGround1_Study3]
+																																																																										[mark_283i81sd397ocs0k8e91]Значит плохо просишь.[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysBadAskingHer][BGNDVIDEO BackGround1_Study3]
 																																																																											Ей нравятся только непьющие...
-																																																																												[mark_t03j56neai35914eucyr]А она нравится только пьяным?[comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSayAndSheIsLikedDrunken][BGNDVIDEO BackGround1_Study3]
+																																																																												[mark_t03j56neai35914eucyr]А она нравится только пьяным?[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSayAndSheIsLikedDrunken][BGNDVIDEO BackGround1_Study3]
 																																																																													[GOTO she_is_particularly]
 																																																																													[GOTO she_is_very_good]
 																																																																											[she_is_particularly]Нет, просто она для меня особенная...
-																																																																												[EPISODE11,All_women_are_the_same]Все бабы одинаковые![comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAllWomenAreTheSame][BGNDVIDEO BackGround1_Study3]
+																																																																												[EPISODE11,All_women_are_the_same]Все бабы одинаковые![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAllWomenAreTheSame][BGNDVIDEO BackGround1_Study3]
 																																																																													Нет, она не такая, как все!
-																																																																														[mark_002ouh98y41y2zg496ww]А что в ней особенного то?[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWhySheIsBetter][BGNDVIDEO BackGround1_Study3]
+																																																																														[mark_002ouh98y41y2zg496ww]А что в ней особенного то?[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWhySheIsBetter][BGNDVIDEO BackGround1_Study3]
 																																																																															[she_is_very_good]Она... она... очень хорошая...
-																																																																																[mark_fs7bf6gv9x03dwu133vj]Это ты тут "уже хороший" сидишь! Говорю тебе все женщины одинаковые![comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysYouDrunkAllWomenAreTheSame][BGNDVIDEO BackGround1_Study3]
+																																																																																[mark_fs7bf6gv9x03dwu133vj]Это ты тут "уже хороший" сидишь! Говорю тебе все женщины одинаковые![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysYouDrunkAllWomenAreTheSame][BGNDVIDEO BackGround1_Study3]
 																																																																																	[Dont_compare_by_your_wife]Ты по своей жене всех не мерь.
 																																																																																		[Mark_Final13][FINAL Твой друг стукнул тебя в репу! Надо быть повежливее! Встреча не удалась! (отрицательный финал #13)][comment Серега стукнул][VIDEO SeregaPunchesEugene][AUDIO SeregaPunchesEugene]
 																																																																																	Есть одна проблема с ней...
-																																																																																		[mark_7wd0qrg7hmdj4q333987]Какая проблема?[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWhatProblem][BGNDVIDEO BackGround1_Study3]
+																																																																																		[mark_7wd0qrg7hmdj4q333987]Какая проблема?[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWhatProblem][BGNDVIDEO BackGround1_Study3]
 																																																																																			Она замужем...
-																																																																																				[mark_5u59wh3j16g17awzf390]Ну и что! Это не проблема...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysItIsNotAProblem][BGNDVIDEO BackGround1_Study3]
+																																																																																				[mark_5u59wh3j16g17awzf390]Ну и что! Это не проблема...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysItIsNotAProblem][BGNDVIDEO BackGround1_Study3]
 																																																																																					Она твоя жена...
 																																																																																						[mark_bhn8f0t9bmi6h11kw513]Что??? Да я тебе щас в тыкву дам![VIDEO SeregaSayIshallHitYourFace][AUDIO SeregaSaysIllHitYourFace][BGNDVIDEO BackGround1_Study3]
 																																																																																							Успокойся, я пошутил!
-																																																																																								[mark_7dy7ns7n761p9k35h9z4]Не шути так больше![comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysDontJokeAsYet][BGNDVIDEO BackGround1_Study3]
+																																																																																								[mark_7dy7ns7n761p9k35h9z4]Не шути так больше![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysDontJokeAsYet][BGNDVIDEO BackGround1_Study3]
 																																																																																									[GOTO drink_fourth_glass]
 																																																																																									[GOTO she_is_your_friend_wife]
 																																																																																									[GOTO she_is_pretty_when_you_drunk]
@@ -319,13 +319,13 @@
 																																																																																										[mark_220obkidr8162l0b546s][GOTO Mark_Final3]
 																																																																																									[GOTO drink_fourth_glass]
 																																																																																					[she_is_your_friend_wife]Она жена твоего друга.
-																																																																																						[EPISODE12,mark_3u70q0qmoxfux3vo51g4]Так... давай сейчас ещё выпьем и рассмотрим эту ситуацию трезво...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysLetsDrinkAndThink]
+																																																																																						[EPISODE12,mark_3u70q0qmoxfux3vo51g4]Так... давай сейчас ещё выпьем и рассмотрим эту ситуацию трезво...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysLetsDrinkAndThink]
 																																																																																							
 																																																																																								[mark_4q871659a5ff4h3vm855][VIDEO SeregaFlowingUpSlavkaAndEugene][AUDIO Silent_26][BGNDVIDEO BackGround1_Study3]
 																																																																																									Давай...[comment разливают, выпивают][VIDEO AllDrinking]
-																																																																																										[mark_qgrvb3x1nli7gkij364x]Иметь жену друга - это значит... иметь самого друга...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysFuckFriendsWifeAsFuckFriend][BGNDVIDEO BackGround1_Study3]
+																																																																																										[mark_qgrvb3x1nli7gkij364x]Иметь жену друга - это значит... иметь самого друга...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysFuckFriendsWifeAsFuckFriend][BGNDVIDEO BackGround1_Study3]
 																																																																																											Ты прав...
-																																																																																												[mark_31t30cf3w6gp701g079i]Поэтому ваще забудь про нее... ищи себе такую же, только свободную![comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysLookForFreeGirl][BGNDVIDEO BackGround1_Study3]
+																																																																																												[mark_31t30cf3w6gp701g079i]Поэтому ваще забудь про нее... ищи себе такую же, только свободную![VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysLookForFreeGirl][BGNDVIDEO BackGround1_Study3]
 																																																																																													Я уже и сам так думаю...
 																																																																																														[mark_31kxkeq8a916gpcd5191]Молодец! Давай за это выпьем! [comment Серега всем наливает][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysGoodmanLetsDrinkForThis]
 																																																																																															
@@ -335,19 +335,19 @@
 																																																																																																		[mark_7hsxrkp5zln592x36p11][GOTO enough_for_you]
 																																																																																																	[GOTO vodka_is_very_strange]
 																																																																																													[we_are_created_for_each_other]Мы созданы друг для друга!
-																																																																																														[mark_mevn01w22ig126hzmp06]Спирт и вода тоже созданы друг для друга... но водка может получится дерьмовая...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutSpirit1][BGNDVIDEO BackGround1_Study3]
+																																																																																														[mark_mevn01w22ig126hzmp06]Спирт и вода тоже созданы друг для друга... но водка может получится дерьмовая...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutSpirit1][BGNDVIDEO BackGround1_Study3]
 																																																																																															Не понял...
-																																																																																																[mark_9pk8h705z3suzu74xa88]Ты - спирт... она - вода... ищи себе такую воду, чтобы стать хорошей водкой...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutSpirit2][BGNDVIDEO BackGround1_Study3]
+																																																																																																[mark_9pk8h705z3suzu74xa88]Ты - спирт... она - вода... ищи себе такую воду, чтобы стать хорошей водкой...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutSpirit2][BGNDVIDEO BackGround1_Study3]
 																																																																																																	[GOTO would_you_know_what_i_think]
 																																																																																																	[GOTO pour_more]
 																																																																																															О! Давай выпьем за хорошую водку!
 																																																																																																[mark_i63xp5u7li06d65t7sid][GOTO enough_for_you]
 																																																																																															[GOTO would_you_know_what_i_think]
 																																																																																											Ты не прав...
-																																																																																												[mark_w4g8u5krj8e6i3932d4e]Быстро выпитый стакан не считается налитым.[comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysFastDrunkGlass][BGNDVIDEO BackGround1_Study3]
+																																																																																												[mark_w4g8u5krj8e6i3932d4e]Быстро выпитый стакан не считается налитым.[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysFastDrunkGlass][BGNDVIDEO BackGround1_Study3]
 																																																																																													[GOTO we_are_created_for_each_other]
 																																																																																													[pour_more]Наливай еще!
-																																																																																														[enough_for_you]Знаешь... тебе уже хватит...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysThatsEnoughForYou][BGNDVIDEO BackGround1_Study3]
+																																																																																														[enough_for_you]Знаешь... тебе уже хватит...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysThatsEnoughForYou][BGNDVIDEO BackGround1_Study3]
 																																																																																															[GOTO vodka_is_very_strange]
 																																																																																															Наливай я сказал!
 																																																																																																[mark_0lcaed0wypk18005q5p7][GOTO Mark_Final13]
@@ -359,22 +359,22 @@
 																																																																																						[mark_5uq8plm325is91dg09ox][GOTO Mark_Final4]
 																																																																																					[GOTO drink_fourth_glass]
 																																																																															[she_is_very_pretty]Она очень красивая...
-																																																																																[mark_e09stq088a824htq83il]Может, просто у тебя давно женщины не было? [comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysMaybeYouHaveNoWomanLongTime][BGNDVIDEO BackGround1_Study3]
+																																																																																[mark_e09stq088a824htq83il]Может, просто у тебя давно женщины не было? [VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysMaybeYouHaveNoWomanLongTime][BGNDVIDEO BackGround1_Study3]
 																																																																																	Месяц.
-																																																																																		[mark_oa60f94nqx02489w52c5]Вот в этом вся причина![comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWeFoundAReason][BGNDVIDEO BackGround1_Study3]
+																																																																																		[mark_oa60f94nqx02489w52c5]Вот в этом вся причина![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWeFoundAReason][BGNDVIDEO BackGround1_Study3]
 																																																																																			А мне что-то и не охота ...
 																																																																																				[mark_wo1icgy9f64ukb7r9ya4][GOTO you_are_oldman]
 																																																																																			[GOTO drink_fourth_glass]
 																																																																																	Полгода.
-																																																																																		[you_are_oldman]По-моему таких, как ты девушки вообще не интересуют.[comment Серега][AUDIO SeregaSaysYouOlder][VIDEO SeregaSharpTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																																																		[you_are_oldman]По-моему таких, как ты девушки вообще не интересуют.[AUDIO SeregaSaysYouOlder][VIDEO SeregaSharpTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																																																			[go_fuck_you_off]Да пошел ты!
 																																																																																				[Mark_Final11][FINAL Ты ударил своего друга! Надо быть посдерженнее. Встреча не удалась! (отрицательный финал #11)][VIDEO EugenePunchesSeregaWithSound]
 																																																																																			[GOTO drink_fourth_glass]
 																																																																																	Обычная женщина вчера была.
-																																																																																		[mark_htisr313qfms8vmxfa63]Да ты влюбился, чувак![comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysYouAreInLoveMan][BGNDVIDEO BackGround1_Study3]
+																																																																																		[mark_htisr313qfms8vmxfa63]Да ты влюбился, чувак![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysYouAreInLoveMan][BGNDVIDEO BackGround1_Study3]
 																																																																																			[GOTO drink_fourth_glass]
 																																																																													Да... знаю... но эта чем-то меня цепляет...
-																																																																														[mark_53r15q86b77fw886yp59]Чем, чем? Понятно чем![comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysSheKeepsYouByVagina][BGNDVIDEO BackGround1_Study3]
+																																																																														[mark_53r15q86b77fw886yp59]Чем, чем? Понятно чем![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysSheKeepsYouByVagina][BGNDVIDEO BackGround1_Study3]
 																																																																															[GOTO she_is_very_good]
 																																																																															[GOTO she_is_very_pretty]
 																																																																													[GOTO Dont_compare_by_your_wife]
@@ -386,23 +386,23 @@
 																																																																					А медведь панда, это ведь твоя жена!
 																																																																						[mark_b6066tn42bi3u77j4gsc][GOTO Mark_Final13]
 																																																																	Нет, не видели.
-																																																																		[story_about_airplane]Ладно, слушай другую: однажды у экипажа самолета кончилось топливо...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutAirplane1][BGNDVIDEO BackGround1_Study3]
+																																																																		[story_about_airplane]Ладно, слушай другую: однажды у экипажа самолета кончилось топливо...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutAirplane1][BGNDVIDEO BackGround1_Study3]
 																																																																			[i_know_this_story]Я эту знаю...
 																																																																				[mark_0yf980n2seqw438ma01z][GOTO forgive_me]
 																																																																			И что дальше?
-																																																																				[mark_pavfjog3mpk8bt8y2u35]Пришлось лететь трезвыми![comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutAirplane2]
+																																																																				[mark_pavfjog3mpk8bt8y2u35]Пришлось лететь трезвыми![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutAirplane2]
 																																																																					
 																																																																						[mark_2ta67510og733is90wuj][VIDEO AllLaughingDrunkWithAudio][AUDIO Silent_5][BGNDVIDEO BackGround1_Study3]
 																																																																							Еще давай!
-																																																																								[mark_280077b296amzn640l24]Оставить девушку, уходя в армию, это все равно что оставить на улице бутылку водки и вернуться за ней через два года.[comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutVodkaGirl2YearArmy]
+																																																																								[mark_280077b296amzn640l24]Оставить девушку, уходя в армию, это все равно что оставить на улице бутылку водки и вернуться за ней через два года.[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutVodkaGirl2YearArmy]
 																																																																									
 																																																																										[mark_3xlwxe6kuyr3l5hpn9jp][VIDEO AllLaughingDrunkWithAudio][AUDIO Silent_5][BGNDVIDEO BackGround1_Study3]
 																																																																											[GOTO i_know_this_story]
 																																																																											Угарно! А еще?
-																																																																												[mark_3r8o0w2q0kwc9647z3j5]В сутках 24 часа, в ящике пива 24 банки - совпадение?![comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAbout24Beer][BGNDVIDEO BackGround1_Study3]
+																																																																												[mark_3r8o0w2q0kwc9647z3j5]В сутках 24 часа, в ящике пива 24 банки - совпадение?![VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAbout24Beer][BGNDVIDEO BackGround1_Study3]
 																																																																													[GOTO i_know_this_story]
 																																																																													Действительно интересно... Еще есть?
-																																																																														[mark_5diw37nj0301ec78d8v9]Гомо бухиенс - человек пьющий. Бухо сапиенс - пьянь разумная.[comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysHomoBuhience]
+																																																																														[mark_5diw37nj0301ec78d8v9]Гомо бухиенс - человек пьющий. Бухо сапиенс - пьянь разумная.[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysHomoBuhience]
 																																																																															
 																																																																																[mark_s5rj06zyjx5y21cy1633][VIDEO AllLaughingDrunkWithAudio][AUDIO Silent_5][BGNDVIDEO BackGround1_Study3]
 																																																																																	[GOTO i_know_this_story]
@@ -411,13 +411,13 @@
 																																																																	[thats_enough_your_stupid_humor]Не надо твоих тупых ржак, я уже итак злой сегодня...
 																																																																		[mark_43bc3v1t829g2q23u5lj][GOTO why_are_you_anger]
 																																																															Давай, валяй...
-																																																																[mark_1yzc5cca7j381y02412m]Террористы, захватившие ликеро-водочный завод, пятые сутки не могут сформулировать свои требования...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutTerrorists]
+																																																																[mark_1yzc5cca7j381y02412m]Террористы, захватившие ликеро-водочный завод, пятые сутки не могут сформулировать свои требования...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutTerrorists]
 																																																																	
 																																																																		[mark_0806u6jqx0v5ki9bwwmi][VIDEO AllLaughingDrunkWithAudio][AUDIO Silent_5][BGNDVIDEO BackGround1_Study3]
 																																																																			Насмешил! А еще расскажи?
 																																																																				[mark_rioyp55i14i14ht9g517][GOTO panda_bear]
 																																																																			Как-то не смешно...
-																																																																				[mark_cg8brvwvilqm515u68h2]Ты сегодня какой-то злой...[comment Серега][comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysYouAngryToday][BGNDVIDEO BackGround1_Study3]
+																																																																				[mark_cg8brvwvilqm515u68h2]Ты сегодня какой-то злой...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysYouAngryToday][BGNDVIDEO BackGround1_Study3]
 																																																																					[GOTO flat_bill_incoming]
 																																																																					[GOTO No_sex_with_one_girl]
 																																																															[GOTO thats_enough_your_stupid_humor]
@@ -428,19 +428,19 @@
 																																																									[i_ll_talk_about_shit_too]Ага, щас тоже какое-нибудь дерьмо вспомню...
 																																																										[mark_dm957fhvmz2jkd34dc45][GOTO story_about_pandabear]
 																																																							Я за это пить не буду.
-																																																								[mark_kk1f28s12i3e1egqmhgi]Не нравится, скажи свой![comment Славка][VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysSayYourTost][BGNDVIDEO BackGround1_Study3]
+																																																								[mark_kk1f28s12i3e1egqmhgi]Не нравится, скажи свой![VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysSayYourTost][BGNDVIDEO BackGround1_Study3]
 																																																									[GOTO every_time_you_are_drunk]
 																																																									[GOTO i_ll_talk_about_shit_too]
 																																																					Только не про "бесцельно прожитые годы"!
 																																																						[mark_q33192mfh4hhogh3w611][GOTO do_you_respect_me]
 																																																			Помнишь, на общаге объява висела?
-																																																				[mark_co26ctuxmkf7st1njh3v]"Дорогие девушки! У вас сухая кожа? Редкие волосы? Проблемы с фигурой? Тогда приходите к нам! У нас темно и мы уже пьяные."[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutGirls]
+																																																				[mark_co26ctuxmkf7st1njh3v]"Дорогие девушки! У вас сухая кожа? Редкие волосы? Проблемы с фигурой? Тогда приходите к нам! У нас темно и мы уже пьяные."[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutGirls]
 																																																					
 																																																						[mark_kfv2z492ebd4c47x6v78][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO BackGround1_Study3]
 																																																							А еще в водке много женских гормонов...
-																																																								[mark_ecqtj4958e387g3st609]Почему?[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWhy][BGNDVIDEO BackGround1_Study3]
+																																																								[mark_ecqtj4958e387g3st609]Почему?[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWhy][BGNDVIDEO BackGround1_Study3]
 																																																									Выпивая две бутылки водки, я начинаю поступать не логично.[VIDEO AllLaughingDrunkWithAudio]
-																																																										[mark_5t29q2045y0o870mv3f6]Как верно заметил Гераклит, одну бутылку нельзя выпить два раза. Но и две бутылки нельзя выпить два раза...[comment Серега][VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutGeraklit][BGNDVIDEO BackGround1_Study3]
+																																																										[mark_5t29q2045y0o870mv3f6]Как верно заметил Гераклит, одну бутылку нельзя выпить два раза. Но и две бутылки нельзя выпить два раза...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutGeraklit][BGNDVIDEO BackGround1_Study3]
 																																																											[GOTO my_proposal_drink_for_it]
 																																																											[GOTO total_prikol]
 																																																							[total_prikol]Ваще прикол!
@@ -448,7 +448,7 @@
 																																																	[my_proposal_drink_for_it]Давайте выпьем по этому поводу.[VIDEO SeregaFlowingUpSlavkaAndEugene]
 																																																		[mark_62zz4033g5ouj4349bqa][GOTO i_want_to_say_tost]
 																																															И ты ее, конечно же, послал?
-																																																[mark_y6af0k95astgg6rxpgt4]Ну что ты, как я мог! Вежливо предложил пройти ей мелкими шагами...[comment Славка][AUDIO SlavkaSaysAboutLittleSteps][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																[mark_y6af0k95astgg6rxpgt4]Ну что ты, как я мог! Вежливо предложил пройти ей мелкими шагами...[AUDIO SlavkaSaysAboutLittleSteps][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																	Жестоко ты с ней!
 																																																		[mark_1zrktde3hu8vk8zr448w][GOTO i_want_to_say_tost]
 																																																	Молодец! Так ей - королеве всех уродов!
@@ -487,13 +487,13 @@
 																																							[GOTO you_must_stop_smoking]
 																																					[GOTO get_out_freak]
 																																			А, ладно, давай покурим![comment Женька достает сигу, прикуривает себе, кладет пачку и жигу обратно][VIDEO EugeneStartsSmoking]
-																																				[i_found_myself_in_beerbar]Долгие годы я искал себя и, наконец, нашел... в пивбаре.[comment Серега][VIDEO SeregaTellingSmokingLoop][AUDIO SeregaSaysHeFoundHimselfInBeerBar][BGNDVIDEO BackGround1_Smoking1]
+																																				[i_found_myself_in_beerbar]Долгие годы я искал себя и, наконец, нашел... в пивбаре.[VIDEO SeregaTellingSmokingLoop][AUDIO SeregaSaysHeFoundHimselfInBeerBar][BGNDVIDEO BackGround1_Smoking1]
 																																					Мужики, а я, если честно - мало пьющий...[VIDEO LaughingSlavkaAndSerega]
 																																						[mark_672j3bbvuijnw6855764]Ты мало пьющий?[comment Серега, куря][VIDEO SeregaSmokingAngerLoop][AUDIO SeregaSaysYouDrinkALittle][BGNDVIDEO BackGround1_Smoking1]
 																																							[i_drink_lower_100]Я пью не больше 100 грамм.
 																																								[mark_78870wesrly84flsaebu]Ты гонишь![comment Славка, куря][VIDEO SlavkaSmokingAngerLoop][AUDIO SlavkaSaysYouLie][BGNDVIDEO BackGround1_Smoking1]
 																																									[when_i_drink_100_i_become_another_man]Просто выпив 100 грамм, я становлюсь другим человеком, а он пьет очень много.[VIDEO AllLaughingDrunkWithAudio]
-																																										[mark_xq4w4y42h5n6su728nf1]Насмешил![comment Серега][VIDEO SeregaTellingSmokingLoop][AUDIO SeregaSaysYouJokedMe][BGNDVIDEO BackGround1_Study3]
+																																										[mark_xq4w4y42h5n6su728nf1]Насмешил![VIDEO SeregaTellingSmokingLoop][AUDIO SeregaSaysYouJokedMe][BGNDVIDEO BackGround1_Study3]
 																																											[GOTO the_trueth_is_the_trueth]
 																																							Пью, пью, а мне все мало и мало![VIDEO AllLaughingDrunkWithAudio]
 																																								[mark_uu0de4s68e94f60s3f11]Да ты бухаешь, как... как... как дереволаз![comment Серега, куря][VIDEO SeregaSmokingAngerLoop][AUDIO SeregaSaysYouDrinkAsDerevolaz][BGNDVIDEO BackGround1_Smoking1]
@@ -514,13 +514,13 @@
 																																[mark_61i3h7c2tygs45r147pc][GOTO will_we_smoke]
 																															[GOTO Lets_smoke_proposed_Eugene]
 																													Это называется "шампанское по-русски" - муж пьет водку, а жена шипит.
-																														[mark_4v3ho0g9943e5sr4p20d]Шампанское из туфельки, это вам не водку из кирзача...[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutShampane1][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																														[mark_4v3ho0g9943e5sr4p20d]Шампанское из туфельки, это вам не водку из кирзача...[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutShampane1][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																															[drink_vodka_from_kirzach]А ты пил хоть раз водку из кирзача?
-																																[mark_8w16v2wp5t306yl6ln7u]Ну... было однажды...[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutShampane2][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																[mark_8w16v2wp5t306yl6ln7u]Ну... было однажды...[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutShampane2][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																	Тьфу ты! А мы с тобой из одной стопки бухали...
-																																		[mark_99329505v3000bm021zh]А ты чо, брезгливый такой?[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutShampane3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																		[mark_99329505v3000bm021zh]А ты чо, брезгливый такой?[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutShampane3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																			А ты сам чо, не брезгливый? Налить тебе в мою туфельку?
-																																				[you_must_warn_to_normal_people_dont_drink_with_you]Предупреждать надо, чтоб нормальные люди не бухали с таким быдлом, как ты![comment Славка][AUDIO SlavkaSaysWeDontDrinkWithShitman][VIDEO SlavkaSaysToSerega][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																				[you_must_warn_to_normal_people_dont_drink_with_you]Предупреждать надо, чтоб нормальные люди не бухали с таким быдлом, как ты![AUDIO SlavkaSaysWeDontDrinkWithShitman][VIDEO SlavkaSaysToSerega][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																					Правильно говоришь!
 																																						[Mark_Final3][FINAL Ну вот... твой друг обиделся и ушел... Встреча не удалась! (отрицательный финал #3)][comment Серега ушел][VIDEO SeregaGoOutWithAudio]
 																																					Иди бухай с бомжами!
@@ -529,12 +529,12 @@
 																																			Нет, не брезгливый.
 																																				[mark_f6606xh4bmp86yge075b][GOTO will_we_smoke]
 																																	Бухой что ли был?
-																																		[mark_w1q4909r47sxhz463c74]Вот уж правда - тошнит не от водки, а от стаканчиков...[comment Славка][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysFeelBedFromVodkaGlasses][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																		[mark_w1q4909r47sxhz463c74]Вот уж правда - тошнит не от водки, а от стаканчиков...[VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysFeelBedFromVodkaGlasses][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																			Точно подмечено.
 																																				[mark_8s337i6l2199554p14aw][GOTO Will_we_smoke]
 																															[GOTO yeah_man_overdrinks_sometimes]
 																													[you_was_drunk_as_pig]Я помню, что ты нажрался, как свинья.
-																														[you_were_drunk_me]Это твоя вина! Споил меня в прошлый раз... [comment Серега][VIDEO SeregaSharpTellingLoop][AUDIO SeregaSaysItWasYourFault][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																														[you_were_drunk_me]Это твоя вина! Споил меня в прошлый раз... [VIDEO SeregaSharpTellingLoop][AUDIO SeregaSaysItWasYourFault][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																															Да ты бухаешь, как Винни-Пух!
 																																[mark_6k5784l4741z4m2vet24]Винни Пух? Это тот, который нес в подарок бутылку водки и выпил по дороге?[comment Славка вмешался][VIDEO SlavkaDrunkTellingLoop][AUDIO SlavkaSaysAboutVinniPuh]
 																																	
@@ -542,19 +542,19 @@
 																																			[GOTO who_overdrinked_other]
 																																			[GOTO did_i_fasten_your_egg_too]
 																															Нет, это ты меня споил, чувак!
-																																[mark_xcm0zzanra2cw2jivoq2]Ты просто свою меру не знаешь! [comment Серега][VIDEO SeregaSharpTellingLoop][AUDIO SeregaSaysYouDontKnowYourNorm][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																[mark_xcm0zzanra2cw2jivoq2]Ты просто свою меру не знаешь! [VIDEO SeregaSharpTellingLoop][AUDIO SeregaSaysYouDontKnowYourNorm][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																	[who_overdrinked_other]Ты помнишь, кто кого споил? [comment Женька обращается к Славке]
-																																		[mark_0241ytmwdx8x0dmq3635]Я отошел не надолго, вернулся, а вы уже споили друг-друга.[comment Славка][AUDIO SlavkaSaysYouDrunkEachOther][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																		[mark_0241ytmwdx8x0dmq3635]Я отошел не надолго, вернулся, а вы уже споили друг-друга.[AUDIO SlavkaSaysYouDrunkEachOther][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																			[GOTO yeah_man_overdrinks_sometimes]
 																																			Так значит это он виноват! Оставил нас...
-																																				[mark_69181015n7nhj7ik66nd]Вот козел![comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysKozel][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																				[mark_69181015n7nhj7ik66nd]Вот козел![VIDEO SeregaTellingLoop][AUDIO SeregaSaysKozel][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																					Как оправдываться будешь?
-																																						[mark_y837f94tc1kf64bb18y6]Никак. Вы сами виноваты.[comment Славка][AUDIO SlavkaSayItWasYourFault][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																						[mark_y837f94tc1kf64bb18y6]Никак. Вы сами виноваты.[AUDIO SlavkaSayItWasYourFault][VIDEO SlavkaDrunkTellingLoop][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																							[GOTO You_goat]
 																																							Ну и кто ты после этого?
 																																								[mark_nz784sc416152qa29pd9][GOTO girl_takes_me_home]
 																																					Тоже мне друг называется!
-																																						[girl_takes_me_home]Я не виноват, что меня бухого какая-то телка к себе домой увела![comment Славка][VIDEO SlavkaJustified][AUDIO SlavkaSaySorryMenGirlTookMeOut][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																						[girl_takes_me_home]Я не виноват, что меня бухого какая-то телка к себе домой увела![VIDEO SlavkaJustified][AUDIO SlavkaSaySorryMenGirlTookMeOut][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																							Ну тогда ладно...
 																																								[mark_92533d07m91s4i179y1c][GOTO will_we_smoke]
 																																							[You_goat]Ну ты и правда козлина!
@@ -562,11 +562,11 @@
 																																	Свою меру я знаю и меньше никогда не пью!
 																																		[mark_fk12wv4x12p169gw670d][GOTO Man_need_waterfalling]
 																															[did_i_fasten_your_egg_too]Ты ведь не думаешь, что я споил тебя нарочно?
-																																[mark_1d4o410q96gp980uychj]Нет, у тебя, дереволаза, ума бы не хватило![comment Серега][VIDEO SeregaSharpTellingLoop][AUDIO SeregaSaysNoYourMindTooSmall][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																[mark_1d4o410q96gp980uychj]Нет, у тебя, дереволаза, ума бы не хватило![VIDEO SeregaSharpTellingLoop][AUDIO SeregaSaysNoYourMindTooSmall][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																	[GOTO go_fuck_you_off]
 																																	[GOTO who_overdrinked_other]
 																											[Maby_vine]Может вино закажем? А то водка сегодня что-то не прёт...
-																												[mark_04ecnn3173nyl06x71r7]Вино полезно для здоровья. А здоровье нужно, чтобы пить водку...[comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysVineIsGoodForHealth]
+																												[mark_04ecnn3173nyl06x71r7]Вино полезно для здоровья. А здоровье нужно, чтобы пить водку...[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysVineIsGoodForHealth]
 																													
 																														[mark_d15zp8n5m4bm56f0qs1w][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																															[GOTO yeah_man_overdrinks_sometimes]
@@ -574,33 +574,33 @@
 																															[GOTO drink_vodka_from_kirzach]
 																											[GOTO Lets_smoke_proposed_Eugene]
 																							Я вобще смутно все помню...[comment Славка наливает Женьке][VIDEO SlavkaFlowingUpEugene]
-																								[mark_7f2juf97ulq6893f940u]А как девочек заказал, помнишь?[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutProstitutes1][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																								[mark_7f2juf97ulq6893f940u]А как девочек заказал, помнишь?[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutProstitutes1][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																									Ну помню...
-																										[mark_eg98uw8yw17592ka289f]Как ты можешь помнить, если ты уже бухой под столом валялся?[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutProstitutes2][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																										[mark_eg98uw8yw17592ka289f]Как ты можешь помнить, если ты уже бухой под столом валялся?[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutProstitutes2][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																											Я не валялся, я лежал.[VIDEO LaughingSlavkaAndSerega]
-																												[mark_006a3689pqmmnah0y8oz]Типа, если человек может лежать на полу, ни за что не держась, - он еще не пьян?[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutDrunkManOnFloor][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																												[mark_006a3689pqmmnah0y8oz]Типа, если человек может лежать на полу, ни за что не держась, - он еще не пьян?[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutDrunkManOnFloor][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																													[GOTO late_drink_is_invane_drinken_first]
 																													Ладно, и что вы хотите этим сказать?[VIDEO Eugene_WhereIsMyGlass]
 																														[mark_51fmh7b40mrh538w4x71][GOTO give_1000_for_false_call]
 																											Я не валялся, я пуговицу искал.[VIDEO LaughingSlavkaAndSerega]
 																												[mark_393h8moww7g6tsfpv799][GOTO give_1000_for_false_call]
 																									Я? Заказал?
-																										[give_1000_for_false_call]С тебя пятисотка, которую мы отдали браткам за ложный вызов...[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysGiveMe500][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																										[give_1000_for_false_call]С тебя пятисотка, которую мы отдали браткам за ложный вызов...[VIDEO SeregaTellingLoop][AUDIO SeregaSaysGiveMe500][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																											Да ты гонишь![VIDEO Eugene_WhereIsMyGlass]
-																												[mark_jz5k41a911js47hm2q1t]Да если бы не мы, то тебя братки к себе увезли геем отрабатывать![comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutGay][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																												[mark_jz5k41a911js47hm2q1t]Да если бы не мы, то тебя братки к себе увезли геем отрабатывать![VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutGay][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																													Чо, серъезно?
-																														[mark_81ws830yv60u46z2031i]Серъезней не бывает![comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysVerySerious][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																														[mark_81ws830yv60u46z2031i]Серъезней не бывает![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysVerySerious][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																															[ok_men_take_1000]Ладно, мужики, извините меня, вот вам пятисотка![comment Женька дает штуку Сереге][VIDEO EugeneGives500rurSerega]
 																																[mark_0ce924nqh8ppg35jhwo9][GOTO Drink_second_glass]
 																															[GOTO i_dont_trust]
 																													Да не может такого быть![VIDEO Eugene_WhereIsMyGlass]
-																														[mark_81ms07680bldn7ai5zhn]Нее, ну ты погляди! Это его благодарность нам?[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysHeDoesntPleaseUs][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																														[mark_81ms07680bldn7ai5zhn]Нее, ну ты погляди! Это его благодарность нам?[VIDEO SeregaTellingLoop][AUDIO SeregaSaysHeDoesntPleaseUs][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																															[i_dont_trust]Не верю...
-																																[mark_5o7m9o6x844d72s5v0qi]Ты нам, своим друзьям не веришь?[comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysYouDontTrustYourFriends][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																[mark_5o7m9o6x844d72s5v0qi]Ты нам, своим друзьям не веришь?[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysYouDontTrustYourFriends][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																	Да, я вам не верю!
 																																		[Mark_Final9][FINAL Твои друзья обиделись на тебя и ушли... Встреча не удалась! (отрицательный финал #9)][VIDEO SlavkaSeregaGoOut]
 																																	Верю, но с трудом.
-																																		[mark_fx486k8qb3ee1su68k7y]Круто мы тебя развели? Гыгыгы![comment Серега][VIDEO LaughingSlavkaAndSerega][AUDIO SeregaSaysCoolWeJokedYou][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																																		[mark_fx486k8qb3ee1su68k7y]Круто мы тебя развели? Гыгыгы![VIDEO LaughingSlavkaAndSerega][AUDIO SeregaSaysCoolWeJokedYou][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																																			Ну вы блин приколисты! Я почти поверил...
 																																				[mark_5ob5o8459naermx15nax][GOTO Drink_second_glass]
 																															[GOTO ok_men_take_1000]
@@ -613,13 +613,13 @@
 																					Нет, пить надо из маленькой посуды... но часто!
 																						[mark_rh30u8uenv9i05tfz59r][GOTO do_you_remeber_you_drunk_last_time]
 															Три - мало, я в школе с корешами больше выпивал...
-																[mark_568g7r95e9i96tj81130]Взрослым считается тот, кто преуменьшает, а не преувеличивает количество выпитого.[comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysWhoIsOldman][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																[mark_568g7r95e9i96tj81130]Взрослым считается тот, кто преуменьшает, а не преувеличивает количество выпитого.[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysWhoIsOldman][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																	[GOTO where_is_my_glass]
 																	[I_joked_men]Ну ладно, пошутил я...[VIDEO SlavkaFlowingUpSerega]
 																		[mark_hi5mqw89l14h44ix4s81][GOTO do_you_remeber_you_drunk_last_time]
 																	[GOTO am_i_drink_or_go_home]
 															Мужики, а слабо вам взять и бросить пить?[VIDEO LaughingSlavkaAndSerega]
-																[mark_38du56y9s7117280s5ta]Бросить пить легко - трудно убедить в этом друзей.[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysItIsSimpleToDropDrink][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+																[mark_38du56y9s7117280s5ta]Бросить пить легко - трудно убедить в этом друзей.[VIDEO SeregaTellingLoop][AUDIO SeregaSaysItIsSimpleToDropDrink][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																	[GOTO where_is_my_glass]
 																	[GOTO I_joked_men]
 																	[am_i_drink_or_go_home]Мне здесь нальют или я иду бухать к себе домой?[VIDEO SlavkaFlowingUpSerega]
@@ -628,11 +628,11 @@
 													[simple_vodka_bottle]Казалось бы - обычная бутылка водки, а как меняется жизнь человека!
 														[mark_4p8kydac4u3w2ry55g2j][GOTO a_little_time_between_first_and_second]
 													Уронили водку на пол, оторвали Васе руки...[comment филосовски]
-														[Answer_question]Внимание, загадка! Составьте предложение из 5 глаголов.[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysEnigma1][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+														[Answer_question]Внимание, загадка! Составьте предложение из 5 глаголов.[VIDEO SeregaTellingLoop][AUDIO SeregaSaysEnigma1][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 															Знаю, знаю эту загадку...
 																[mark_2630638w26d58ln6jq68][GOTO a_little_time_between_first_and_second]
 															И какой правильный ответ?
-																[mark_3269e98ml27019zvr88c]Ответ простой: решили послать сходить купить выпить.[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysEnigma2]
+																[mark_3269e98ml27019zvr88c]Ответ простой: решили послать сходить купить выпить.[VIDEO SeregaTellingLoop][AUDIO SeregaSaysEnigma2]
 																	
 																		[mark_hp7e32gy8o89sg5ab076][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																			[GOTO where_is_my_glass]
@@ -640,13 +640,13 @@
 															[GOTO am_i_drink_or_go_home]
 													[GOTO where_is_my_glass]
 											Как в командировку съездил?[comment обращается к Сереге]
-												[mark_u387kp3eqvn8x6b0b2e0]Плохо, там один кент поспорил со мной на 3 бутылки, что за раз выпьет 2 бутылки водки . И выпил ведь! А потом еще гад и говорит: "А где мои выигрышные?".[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutHoliday][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+												[mark_u387kp3eqvn8x6b0b2e0]Плохо, там один кент поспорил со мной на 3 бутылки, что за раз выпьет 2 бутылки водки . И выпил ведь! А потом еще гад и говорит: "А где мои выигрышные?".[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutHoliday][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 													[GOTO where_is_my_glass]
 													Лучше иметь дело с пьяным профессионалом, чем с трезвым идиотом!
 														[mark_4xom2h39wd252rqk0mx4][GOTO Answer_question]
 													[GOTO am_i_drink_or_go_home]
 											Как к врачу сходил?
-												[mark_pxqtf002ujcl49mf6952]Прикинь, прихожу к врачу, а у него на кабинете табличка: "ЦВЕТЫ И КОНФЕТЫ НЕ ПЬЮ!"[comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysAboutDoctorRoom]
+												[mark_pxqtf002ujcl49mf6952]Прикинь, прихожу к врачу, а у него на кабинете табличка: "ЦВЕТЫ И КОНФЕТЫ НЕ ПЬЮ!"[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysAboutDoctorRoom]
 													
 														[mark_14g7u8ce5ni6894m448b][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 															[GOTO where_is_my_glass]
@@ -654,7 +654,7 @@
 																[mark_3eno55oz8vwc4337353v][GOTO Answer_question]
 															[GOTO am_i_drink_or_go_home]
 															[eugene_buy_sunproof_glasses]А я себе солнцезащитные очки купил...
-																[mark_53y3w02c56cw3l7id11d]Даже темные очки не скроют запаха перегара![comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutSunProofGlasses]
+																[mark_53y3w02c56cw3l7id11d]Даже темные очки не скроют запаха перегара![VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutSunProofGlasses]
 																	
 																		[mark_bl9pekzy4y993212etrq][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 																			[GOTO where_is_my_glass]
@@ -666,35 +666,35 @@
 									[GOTO simple_vodka_bottle]
 									[GOTO am_i_drink_or_go_home]
 					[what_is_this_food]А это что за еда?[comment Женька разводит руками][VIDEO Eugene_WhatIsThisFood]
-						[mark_l15fkob6oyevqzjzmqs8]Салат.[comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysSalat][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+						[mark_l15fkob6oyevqzjzmqs8]Салат.[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysSalat][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 							Нет такой еды - салат. Есть такая закуска. [comment Женька][VIDEO LaughingSlavkaAndSerega]
 								[mark_g884jhy0t4iaepwyj4y3][GOTO bet_on_bottle_i_shall_drink_this_bottle]
 							[GOTO am_i_drink_or_go_home]
 					У меня тост![comment Женькина правая рука с выставленным указательным пальцем попадает в кадр (учит уму-разуму)]
-						[mark_qoog04qx27g2n2x20q0f]Говори![comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysLetsTalk][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+						[mark_qoog04qx27g2n2x20q0f]Говори![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysLetsTalk][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 							Лучше быть знаменитым на весь мир пьяницей,чем анонимным алкоголиком![VIDEO LaughingSlavkaAndSerega]
-								[mark_9po0sk1822a749486s8r]Я всю жизнь читал о вреде алкоголизма и бросил... читать![comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysDropReading][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+								[mark_9po0sk1822a749486s8r]Я всю жизнь читал о вреде алкоголизма и бросил... читать![VIDEO SeregaTellingLoop][AUDIO SeregaSaysDropReading][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 									[GOTO where_is_my_glass]
 									[GOTO am_i_drink_or_go_home]
 							Однажды я, находясь в состоянии тяжелого отрезвления...
-								[mark_8qx1w4a1b59697s03181]Давай уже просто выпьем![comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysLetsDrinkSimply][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+								[mark_8qx1w4a1b59697s03181]Давай уже просто выпьем![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysLetsDrinkSimply][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 									[GOTO where_is_my_glass]
 									[GOTO am_i_drink_or_go_home]
 			А что на бутылке написано?[VIDEO Eugene_WhereIsMyGlass]
-				[mark_jhgb3hm3rtz28e2xr046]Перед злоупотреблением, охладить.[comment Славка][VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysBeforeBedUsingDoCool]
+				[mark_jhgb3hm3rtz28e2xr046]Перед злоупотреблением, охладить.[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysBeforeBedUsingDoCool]
 					
 						[mark_644al91ifk6twn66s7hk][VIDEO SlavkaFlowingUpSerega][AUDIO Silent_19][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 							А мне налить?[VIDEO DrinkingSlavkaAndSerega]
 								[mark_9kfd299h5r612380vzfq][GOTO drink_from_bottle_head]
 			А что там за новость про "Балтику"?
-				[mark_u7h97g1x57hkhr6t45m9]Пивоваренный концерн "Балтика" приступил к выпуску нового сорта пива - "Балтика Сорокоградусное".[comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutNaibaltika]
+				[mark_u7h97g1x57hkhr6t45m9]Пивоваренный концерн "Балтика" приступил к выпуску нового сорта пива - "Балтика Сорокоградусное".[VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutNaibaltika]
 					
 						[mark_28k6vf37h6kda27fi1x9][VIDEO LaughingSlavkaAndSerega][AUDIO Silent_3][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 							[GOTO lets_drink_first]
 							[GOTO what_is_this_food]
 							[GOTO eugene_buy_sunproof_glasses]
 			Я в завязке...
-				[mark_11io71e687sxvd3dn159]Знаем мы эту шутку! Лучший способ напиться на халяву - это сказать в компании, что ты в завязке, тогда целью остальных будет напоить тебя![comment Серега][VIDEO SeregaTellingLoop][AUDIO SeregaSaysHowToDrinkFree][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
+				[mark_11io71e687sxvd3dn159]Знаем мы эту шутку! Лучший способ напиться на халяву - это сказать в компании, что ты в завязке, тогда целью остальных будет напоить тебя![VIDEO SeregaTellingLoop][AUDIO SeregaSaysHowToDrinkFree][BGNDVIDEO Eugene_EatsSalat,SlavkaEatsSalat,BackGround1_Study1]
 					[GOTO lets_drink_first]
 					Ты уничтожил мой тайный план![VIDEO SlavkaFlowingUpSerega]
 						[mark_p52o114v5ecvc91fu009][GOTO drink_for_meeting]
