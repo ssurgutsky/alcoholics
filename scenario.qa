@@ -1,4 +1,4 @@
-[START]Алконавты/Alconauts v0.7 (code name "Semushka")[BGNDIMAGE Intro.jpg][ANSWERSORDER OFF]
+[START]Алконавты / Alconauts v0.7 (code name "Semushka")[BGNDVIDEO BackGround1_Study1][ANSWERSORDER OFF][MUSIC Motel_Rock]
 	НАЧАТЬ ИГРУ / START THE GAME
 		[GAME_SAVEPOINT,Game_Study1]Ну что, пацаны, выпьем?[VIDEO LetsDrinkSaidSlavka][AUDIO SlavkaSaysLetsDrink][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic||DJ_Electric_Feeling_Promo_Mix_gitar||DJ_Electric_Feeling_Promo_Mix_techno]
 			[lets_drink_first]Давай, наливай.[VIDEO SlavkaFlowingUpSerega]
@@ -94,13 +94,13 @@
 																																																																																													А тебе как?
 																																																																																														[mark_uq77bwsn90stewd61f47]Да вроде нормуль.[VIDEO SlavkaVeryDrunkTellingLoop][AUDIO SlavkaSaysVodkaIsNormal][BGNDVIDEO BackGround1_Study3]
 																																																																																															Это потому что в твоем спирте крови нет.
-																																																																																																[why_we_drink]Мужики, а вот знаете почему мы пьем?[VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysDoYouKnowWhyWeDrink][BGNDVIDEO BackGround1_Study3]
+																																																																																																[EPISODE5,why_we_drink]Мужики, а вот знаете почему мы пьем?[VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysDoYouKnowWhyWeDrink][BGNDVIDEO BackGround1_Study3]
 																																																																																																	Не знаем... но догадываемся...
 																																																																																																		[mark_icv846ls580oms5rihu5]Потому что лучше пить, чем колоться и нюхать клей.[VIDEO SlavkaVeryDrunkTellingLoop][AUDIO SlavkaSaysBetterDrinkThanDrug][BGNDVIDEO BackGround1_Study3]
 																																																																																																			Чтобы некрасивые женщины тоже могли любовью заниматься.[VIDEO AllLaughingDrunkWithAudio]
 																																																																																																				[Parashute_mark]Потому что ощущения - как с парашютом прыгать, только намного дешевле![VIDEO SeregaVeryDrunkTellingLoop][AUDIO SeregaSaysAboutParashute][BGNDVIDEO BackGround1_Study3]
 																																																																																																					[what_is_this_with_you]Эээ! Что с тобой? Тебе что, плохо?
-																																																																																																						[EPISODE5,Game_Study10]Е-мое, походу, водка палёная...[VIDEO SeregaFeelingBed][AUDIO SeregaSaysFakeVodka][BGNDVIDEO BackGround1_FinalStudy]
+																																																																																																						[Game_Study10]Е-мое, походу, водка палёная...[VIDEO SeregaFeelingBed][AUDIO SeregaSaysFakeVodka][BGNDVIDEO BackGround1_FinalStudy]
 																																																																																																							Все, допились... надо скорую вызывать!
 																																																																																																								[Mark_Final1][FINAL Твой друг умер ещё до приезда скорой помощи. Вам двоим удалось выжить, но от большой дозы метанола у вас пропало зрение...(поучительный финал#1)][VIDEO BackGround1_FinalStudy][AUDIO Silent_5]
 																																																																																																					[would_you_know_what_i_think]А я... знаешь... ещё что... думаю...
@@ -195,13 +195,13 @@
 																																																																																							[GOTO For_what_we_drink_one_more]
 																																																																																			[GOTO would_you_know_what_i_think]
 																																																																																	[Keep_silent_dont_cry]Тише... Не надо орать...
-																																																																																		[mark_x5vo9xne07usltnkir4a]А что такого? Хочу и ору! Мы живем в свободной стране![AUDIO SlavkaSaysWeAreLivingInFreedomCountry][VIDEO SlavkaSharpTellingLoop][BGNDVIDEO BackGround1_Study3]
+																																																																																		[EPISODE7]А что такого? Хочу и ору! Мы живем в свободной стране![AUDIO SlavkaSaysWeAreLivingInFreedomCountry][VIDEO SlavkaSharpTellingLoop][BGNDVIDEO BackGround1_Study3]
 																																																																																			Нас сейчас отсюда выпроводят...
 																																																																																				[mark_ewp5h10q2eltpl4n1b08]Да пусть только попробуют![VIDEO SlavkaSharpTellingLoop][AUDIO SlavkaSaysIfTheyTry][BGNDVIDEO BackGround1_Study3]
 																																																																																					Заткнись урод![VIDEO SecurityComing]
 																																																																																						[mark_ao87e88o3pc3x59x54d1][GOTO Mark_Final6]
 																																																																																					[easy_man]Успокойся, чувак!
-																																																																																						[EPISODE7,Game_Study6]Господа, просим покинуть наше заведение![VIDEO SecurityComing][AUDIO SecuritySaysGoOut][BGNDVIDEO BackGround1_StudySecurity][MUSIC NONE]
+																																																																																						[Game_Study6]Господа, просим покинуть наше заведение![VIDEO SecurityComing][AUDIO SecuritySaysGoOut][BGNDVIDEO BackGround1_StudySecurity][MUSIC NONE]
 																																																																																							Извините нас... пожалуйста... мы больше не будем!
 																																																																																								[Game_Study5]...[VIDEO SecurityLeaving][AUDIO Silent_3][BGNDVIDEO BackGround1_Study3]
 																																																																																									Все из-за тебя, козла!
@@ -210,7 +210,7 @@
 																																																																																							На каком... собственно... основании?
 																																																																																								[mark_hh8u4im9f2m0ngp069j4][GOTO Mark_Final6]
 																																																																																							[ok_we_go_out]Хорошо... мы уходим...[VIDEO AllGoOutBar]
-																																																																																								[EPISODE8,Game_Study7]В такую погоду... только тещу за пивом гонять![AUDIO SeregaSaysAboutWeatherAndWifeMother][VIDEO BackGround1_Street][BGNDVIDEO BackGround1_Street][AMBIENT AmbientStreet]
+																																																																																								[EPISODE8,Game_Study7]В такую погоду... только тещу за пивом гонять![AUDIO SeregaSaysAboutWeatherAndWifeMother][VIDEO BackGround1_Street][BGNDVIDEO BackGround1_Street][AMBIENT AmbientStreet][MUSIC NONE]
 																																																																																									Мне надо отлить...[VIDEO Police_Arriving]
 																																																																																										[Game_Study8]Граждане, предъявите ваши документы![VIDEO Police_Talking][AUDIO Police_AskDocuments][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																											Какие документы? Нас здесь итак все знают!
@@ -236,7 +236,7 @@
 																																																																																													Несите меня сами! (лечь на землю)
 																																																																																														[mark_46z2yxi2m5sdyk9epsdr][GOTO Mark_Final2]
 																																																																																													[my_friend_is_police_cheif]Мой друг - начальник РОВД!
-																																																																																														[EPISODE9,mark_74dpw13w1i3nv3mzdwcd]Это не важно.[VIDEO Police_Talking][AUDIO Police_ItIsNotImportant][BGNDVIDEO BackGround1_PoliceStanding]
+																																																																																														[mark_74dpw13w1i3nv3mzdwcd]Это не важно.[VIDEO Police_Talking][AUDIO Police_ItIsNotImportant][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																															Это важно для вашей карьеры.
 																																																																																																[mark_42d038g99ltilsuq08k7]Ты что, мне угрожаешь? Как его фамилия?[VIDEO Police_Talking][AUDIO Police_WhatIsHisFirstName][BGNDVIDEO BackGround1_PoliceStanding]
 																																																																																																	Иванов (пытаешься угадать)
@@ -295,7 +295,7 @@
 																																																																													[GOTO she_is_particularly]
 																																																																													[GOTO she_is_very_good]
 																																																																											[she_is_particularly]Нет, просто она для меня особенная...
-																																																																												[EPISODE10,All_women_are_the_same]Все бабы одинаковые![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAllWomenAreTheSame][BGNDVIDEO BackGround1_Study3]
+																																																																												[EPISODE9,All_women_are_the_same]Все бабы одинаковые![VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAllWomenAreTheSame][BGNDVIDEO BackGround1_Study3][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic||DJ_Electric_Feeling_Promo_Mix_gitar||DJ_Electric_Feeling_Promo_Mix_techno]
 																																																																													Нет, она не такая, как все!
 																																																																														[mark_002ouh98y41y2zg496ww]А что в ней особенного то?[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysWhySheIsBetter][BGNDVIDEO BackGround1_Study3]
 																																																																															[she_is_very_good]Она... она... очень хорошая...
@@ -319,7 +319,7 @@
 																																																																																										[mark_220obkidr8162l0b546s][GOTO Mark_Final3]
 																																																																																									[GOTO drink_fourth_glass]
 																																																																																					[she_is_your_friend_wife]Она жена твоего друга.
-																																																																																						[EPISODE11,mark_3u70q0qmoxfux3vo51g4]Так... давай сейчас ещё выпьем и рассмотрим эту ситуацию трезво...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysLetsDrinkAndThink]
+																																																																																						[EPISODE10]Так... давай сейчас ещё выпьем и рассмотрим эту ситуацию трезво...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysLetsDrinkAndThink]
 																																																																																							
 																																																																																								[mark_4q871659a5ff4h3vm855]...[VIDEO SeregaFlowingUpSlavkaAndEugene][AUDIO Silent_26][BGNDVIDEO BackGround1_Study3]
 																																																																																									Давай...[VIDEO AllDrinking]
@@ -386,7 +386,7 @@
 																																																																					А медведь панда, это ведь твоя жена!
 																																																																						[mark_b6066tn42bi3u77j4gsc][GOTO Mark_Final13]
 																																																																	Нет, не видели.
-																																																																		[story_about_airplane]Ладно, слушай другую: однажды у экипажа самолета кончилось топливо...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutAirplane1][BGNDVIDEO BackGround1_Study3]
+																																																																		[EPISODE11,story_about_airplane]Ладно, слушай другую: однажды у экипажа самолета кончилось топливо...[VIDEO SeregaDrunkTellingLoop][AUDIO SeregaSaysAboutAirplane1][BGNDVIDEO BackGround1_Study3]
 																																																																			[i_know_this_story]Я эту знаю...
 																																																																				[mark_0yf980n2seqw438ma01z][GOTO forgive_me]
 																																																																			И что дальше?
