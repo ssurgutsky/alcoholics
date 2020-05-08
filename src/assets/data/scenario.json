@@ -3230,7 +3230,7 @@
                                                                                                                                                                     }
                                                                                                                                                                   ],
                                                                                                                                                                   "_mark": "payment_fail",
-                                                                                                                                                                  "_content": "[LABEL Чота не так, чел, попробуй еще!][BGNDVIDEO SlavkaEatsSalat||BackGround1_Study1]"
+                                                                                                                                                                  "_content": "[LABEL Чота не так, чел, попробуй еще!][BGNDVIDEO SlavkaEatsSalat||BackGround1_Study1][ANSWERSORDER OFF]"
                                                                                                                                                                 }
                                                                                                                                                               ],
                                                                                                                                                               "_mark": "",

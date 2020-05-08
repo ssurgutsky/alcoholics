@@ -617,7 +617,7 @@
 																																						[payment_success]...[VIDEO EugeneGives500rurSerega][AUDIO silent_2.7][PURCHASE cheats]
 																																							
 																																								[mark_0ce924nqh8ppg35jhwo9][GOTO Drink_second_glass]
-																																						[payment_fail]Чота не так, чел, попробуй еще![BGNDVIDEO SlavkaEatsSalat||BackGround1_Study1]
+																																						[payment_fail]Чота не так, чел, попробуй еще![BGNDVIDEO SlavkaEatsSalat||BackGround1_Study1][ANSWERSORDER OFF]
 																																							[GOTO donate]
 																																							Извините, нет денег.
 																																								[mark_54h5d2511sdnhr4cp9u8][GOTO no_donate]
