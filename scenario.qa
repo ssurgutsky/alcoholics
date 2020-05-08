@@ -1,4 +1,4 @@
-[START]Алконавты / Alconauts v0.7 (code name "Semushka")[BGNDVIDEO BackGround1_Study1][ANSWERSORDER OFF][MUSIC Motel_Rock]
+[START]Алконавты / Alconauts v0.7 (code name "Semushka")[BGNDVIDEO BackGround1_Study1][ANSWERSORDER OFF][MUSIC Motel_Rock]{script initSystem}
 	НАЧАТЬ ИГРУ / START THE GAME
 		[GAME_SAVEPOINT,Game_Study1]Ну что, пацаны, выпьем?[VIDEO LetsDrinkSaidSlavka][AUDIO SlavkaSaysLetsDrink][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic||DJ_Electric_Feeling_Promo_Mix_gitar||DJ_Electric_Feeling_Promo_Mix_techno]
 			Я в завязке...
@@ -602,16 +602,28 @@
 																											Я не валялся, я пуговицу искал.[VIDEO LaughingSlavkaAndSerega]
 																												[mark_393h8moww7g6tsfpv799][GOTO give_1000_for_false_call]
 																									Я? Заказал?
-																										[give_1000_for_false_call]С тебя пятисотка, которую мы отдали браткам за ложный вызов...[VIDEO SeregaTellingLoop][AUDIO SeregaSaysGiveMe500][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
+																										[EPISODE12,give_1000_for_false_call]С тебя пятисотка, которую мы отдали браткам за ложный вызов...[VIDEO SeregaTellingLoop][AUDIO SeregaSaysGiveMe500][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																											Да ты гонишь![VIDEO Eugene_WhereIsMyGlass]
 																												[mark_jz5k41a911js47hm2q1t]Да если бы не мы, то тебя братки к себе увезли геем отрабатывать![VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutGay][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																													Чо, серъезно?
 																														[mark_81ws830yv60u46z2031i]Серъезней не бывает![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysVerySerious][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
-																															[ok_men_take_1000]Ладно, мужики, извините меня, вот вам пятисотка![VIDEO EugeneGives500rurSerega]
-																																[mark_0ce924nqh8ppg35jhwo9][GOTO Drink_second_glass]
+																															[donate]Ладно, мужики, вот вам денежка!
+																																[mark_11r26974zd53w1n59r80]{this.productId = "com.kri_games.alco.coin1";'';}{script getPayment}
+																																	
+																																		[wait]...[VIDEO SlavkaEatsSalat||BackGround1_Study1][AUDIO silent_5]
+																																			
+																																				[mark_x6v1i8rghy4010v0mb48]{script checkPayment}
+																																					
+																																						[payment_success]...[VIDEO EugeneGives500rurSerega][AUDIO silent_2.7][PURCHASE cheats]
+																																							
+																																								[mark_0ce924nqh8ppg35jhwo9][GOTO Drink_second_glass]
+																																						[payment_fail]Чота не так, чел, попробуй еще![BGNDVIDEO SlavkaEatsSalat||BackGround1_Study1]
+																																							[GOTO donate]
+																																							Извините, нет денег.
+																																								[mark_54h5d2511sdnhr4cp9u8][GOTO no_donate]
 																															[GOTO i_dont_trust]
 																													Да не может такого быть![VIDEO Eugene_WhereIsMyGlass]
-																														[mark_81ms07680bldn7ai5zhn]Нее, ну ты погляди! Это его благодарность нам?[VIDEO SeregaTellingLoop][AUDIO SeregaSaysHeDoesntPleaseUs][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
+																														[no_donate]Нее, ну ты погляди! Это его благодарность нам?[VIDEO SeregaTellingLoop][AUDIO SeregaSaysHeDoesntPleaseUs][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																															[i_dont_trust]Не верю...
 																																[mark_5o7m9o6x844d72s5v0qi]Ты нам, своим друзьям не веришь?[VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysYouDontTrustYourFriends][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																																	Да, я вам не верю!
@@ -620,8 +632,8 @@
 																																		[mark_fx486k8qb3ee1su68k7y]Круто мы тебя развели? Гыгыгы![VIDEO LaughingSlavkaAndSerega][AUDIO SeregaSaysCoolWeJokedYou][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																																			Ну вы блин приколисты! Я почти поверил...
 																																				[mark_5ob5o8459naermx15nax][GOTO Drink_second_glass]
-																															[GOTO ok_men_take_1000]
-																											[GOTO ok_men_take_1000]
+																															[GOTO donate]
+																											[GOTO donate]
 																							Так ведь нельзя же быть одновременно умным, веселым и трезвым![VIDEO LaughingSlavkaAndSerega]
 																								[mark_169x0gzvf77js6r24o51]...[VIDEO SlavkaFlowingUpEugene][AUDIO Silent_13]
 																									
@@ -700,7 +712,7 @@
 			Эпизоды игры
 				[mark_8urza8m418b61mv026he]{this.gotoSuccess='GAME_SAVEPOINT';this.gotoCancel='GAME_SAVEPOINT';''}[GOTO buy_button_episodes]
 		[SEPARATOR]
-		[buy_button_episodes]Кнопка переключения эпизодов "EPISODE" дает возможность быстрого перехода по сценам в игре, чтобы не проходить каждый раз все заново. Она появится внизу и будет доступна всегда, пока ты не удалишь игру.[BGNDIMAGE episodes.jpg][BGNDAUDIO episodes_button_desc1][ANSWERTIME 18.8][TIMEEXPIRED proccess_buying]
+		[buy_button_episodes]Кнопка переключения эпизодов "EPISODE" дает возможность быстрого перехода по сценам в игре, чтобы не проходить каждый раз все заново. Она появится внизу и будет доступна всегда, пока ты не удалишь игру.[BGNDIMAGE episodes.jpg][BGNDAUDIO episodes_button_desc1][ANSWERTIME 18.8][TIMEEXPIRED proccess_buying][ANSWERSORDER OFF]
 			[try_again_buy_button_episodes]Эпизоды игры.
 				[proccess_buying]{this.productId = "com.kri_games.alco.episodes";'';}{script getPayment}
 					
@@ -716,7 +728,11 @@
 										[payment_fail2]Что то не так, попробуй еще раз.[IMAGE episodes.jpg][AUDIO episodes_button_desc2][BGNDIMAGE *][ANSWERSORDER OFF]
 											[GOTO try_again_buy_button_episodes]
 											[cancel_buy_button_episodes]Нет, спасибо.
-												[mark_677039120q01r58og222]{'[GOTO ' + this.gotoCancel + ']'}
+												[mark_41ir503p86z9go5jv33k]Еще подарим кнопку "SKIP" для быстрого пропуска видео![BGNDIMAGE episodes.jpg][ANSWERSORDER OFF]
+													Ладно, давайте.
+														[mark_elafp7x78q7e70wpd661][GOTO proccess_buying]
+													Нет, спасибо.
+														[mark_677039120q01r58og222]{'[GOTO ' + this.gotoCancel + ']'}
 			[mark_57459g1d36876o98q2vr][GOTO cancel_buy_button_episodes]
 		[mark_final0]Менты испугались! Поздравления! Встреча алконавтов удалась! Главный положительный финал![BGNDVIDEO Titles][AMBIENT NONE][MUSIC Motel_Rock]
 			[GOTO play_again]

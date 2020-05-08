@@ -2,3 +2,4 @@ ProductId: com.kri_games.alco.episodes
 
 Play Console -> Apps -> an App -> Development Tools -> Services and API
 
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgoYX+eCvCoXxBrBNmLo31MM3Ycee88nfUA1iuV0z+aHa1u1so+0jM2RotOgsQ31RlaDR2SoRpXkHUOVwllPK5CtcPk/16aueiLCnW+ZiIEd4c1/0cXn2uWOrfRcoAreinHnAkrcDrRYSVQr+XRJ18FZlG6wMmDhu7zR6bp6u20spFahsq58t327Xpf8wNOcECzt3hn/6LIRWUbN2dVjHsNhw4GQgusnzCil9HkL4qhUIhBKqHoDw6B89KtEmAQo7u2uZPLzRoIo4jOJYVLU8BADVCPRJDHf4kt/+3fvkc8+btlxxW1NaoPWHe6svGnZdQ401tZsWYIv35ofBuH+ikwIDAQAB
