@@ -3185,79 +3185,11 @@
                                                                                                                                     {
                                                                                                                                       "node": [
                                                                                                                                         {
-                                                                                                                                          "node": [
-                                                                                                                                            {
-                                                                                                                                              "node": [
-                                                                                                                                                {
-                                                                                                                                                  "node": [
-                                                                                                                                                    {
-                                                                                                                                                      "node": [
-                                                                                                                                                        {
-                                                                                                                                                          "node": [
-                                                                                                                                                            {
-                                                                                                                                                              "node": [
-                                                                                                                                                                {
-                                                                                                                                                                  "node": [
-                                                                                                                                                                    {
-                                                                                                                                                                      "node": [
-                                                                                                                                                                        {
-                                                                                                                                                                          "_mark": "mark_0ce924nqh8ppg35jhwo9",
-                                                                                                                                                                          "_content": "[LABEL ][GOTO Drink_second_glass]"
-                                                                                                                                                                        }
-                                                                                                                                                                      ],
-                                                                                                                                                                      "_mark": "",
-                                                                                                                                                                      "_content": "[LABEL ]"
-                                                                                                                                                                    }
-                                                                                                                                                                  ],
-                                                                                                                                                                  "_mark": "payment_success",
-                                                                                                                                                                  "_content": "[LABEL ...][VIDEO EugeneGives500rurSerega][AUDIO silent_2.7][PURCHASE cheats]"
-                                                                                                                                                                },
-                                                                                                                                                                {
-                                                                                                                                                                  "node": [
-                                                                                                                                                                    {
-                                                                                                                                                                      "_mark": "",
-                                                                                                                                                                      "_content": "[LABEL ][GOTO donate]"
-                                                                                                                                                                    },
-                                                                                                                                                                    {
-                                                                                                                                                                      "node": [
-                                                                                                                                                                        {
-                                                                                                                                                                          "_mark": "mark_54h5d2511sdnhr4cp9u8",
-                                                                                                                                                                          "_content": "[LABEL ][GOTO no_donate]"
-                                                                                                                                                                        }
-                                                                                                                                                                      ],
-                                                                                                                                                                      "_mark": "",
-                                                                                                                                                                      "_content": "[LABEL Извините, нет денег.]"
-                                                                                                                                                                    }
-                                                                                                                                                                  ],
-                                                                                                                                                                  "_mark": "payment_fail",
-                                                                                                                                                                  "_content": "[LABEL Чота не так, чел, попробуй еще!][BGNDVIDEO SlavkaEatsSalat||BackGround1_Study1][ANSWERSORDER OFF]"
-                                                                                                                                                                }
-                                                                                                                                                              ],
-                                                                                                                                                              "_mark": "",
-                                                                                                                                                              "_content": "[LABEL ]"
-                                                                                                                                                            }
-                                                                                                                                                          ],
-                                                                                                                                                          "_mark": "mark_x6v1i8rghy4010v0mb48",
-                                                                                                                                                          "_content": "[LABEL {script checkPayment}]"
-                                                                                                                                                        }
-                                                                                                                                                      ],
-                                                                                                                                                      "_mark": "",
-                                                                                                                                                      "_content": "[LABEL ]"
-                                                                                                                                                    }
-                                                                                                                                                  ],
-                                                                                                                                                  "_mark": "wait",
-                                                                                                                                                  "_content": "[LABEL ...][VIDEO SlavkaEatsSalat||BackGround1_Study1][AUDIO silent_5]"
-                                                                                                                                                }
-                                                                                                                                              ],
-                                                                                                                                              "_mark": "",
-                                                                                                                                              "_content": "[LABEL ]"
-                                                                                                                                            }
-                                                                                                                                          ],
-                                                                                                                                          "_mark": "mark_11r26974zd53w1n59r80",
-                                                                                                                                          "_content": "[LABEL {this.productId = \"com.kri_games.alco.coin1\";'';}{script getPayment}]"
+                                                                                                                                          "_mark": "mark_pwlp6068ye74o1u7612r",
+                                                                                                                                          "_content": "[LABEL ][GOTO donate]"
                                                                                                                                         }
                                                                                                                                       ],
-                                                                                                                                      "_mark": "donate",
+                                                                                                                                      "_mark": "ok_men_take_money",
                                                                                                                                       "_content": "[LABEL Ладно, мужики, вот вам денежка!]"
                                                                                                                                     },
                                                                                                                                     {
@@ -3322,7 +3254,7 @@
                                                                                                                                     },
                                                                                                                                     {
                                                                                                                                       "_mark": "",
-                                                                                                                                      "_content": "[LABEL ][GOTO donate]"
+                                                                                                                                      "_content": "[LABEL ][GOTO ok_men_take_money]"
                                                                                                                                     }
                                                                                                                                   ],
                                                                                                                                   "_mark": "no_donate",
@@ -3342,7 +3274,7 @@
                                                                                                                     },
                                                                                                                     {
                                                                                                                       "_mark": "",
-                                                                                                                      "_content": "[LABEL ][GOTO donate]"
+                                                                                                                      "_content": "[LABEL ][GOTO ok_men_take_money]"
                                                                                                                     }
                                                                                                                   ],
                                                                                                                   "_mark": "EPISODE12,give_1000_for_false_call",
@@ -3823,14 +3755,8 @@
                       "_content": "[LABEL Давай, наливай.][VIDEO SlavkaFlowingUpSerega]"
                     },
                     {
-                      "node": [
-                        {
-                          "_mark": "mark_8urza8m418b61mv026he",
-                          "_content": "[LABEL {this.gotoSuccess='GAME_SAVEPOINT';this.gotoCancel='GAME_SAVEPOINT';''}][GOTO buy_button_episodes]"
-                        }
-                      ],
                       "_mark": "",
-                      "_content": "[LABEL Эпизоды игры]"
+                      "_content": "[LABEL ][GOTO buy_episodes]"
                     }
                   ],
                   "_mark": "GAME_SAVEPOINT,Game_Study1",
@@ -3845,122 +3771,16 @@
                     {
                       "node": [
                         {
-                          "node": [
-                            {
-                              "node": [
-                                {
-                                  "node": [
-                                    {
-                                      "node": [
-                                        {
-                                          "node": [
-                                            {
-                                              "node": [
-                                                {
-                                                  "node": [
-                                                    {
-                                                      "node": [
-                                                        {
-                                                          "node": [
-                                                            {
-                                                              "node": [
-                                                                {
-                                                                  "_mark": "mark_l173w68sf3ab3l9l8j3q",
-                                                                  "_content": "[LABEL {'[GOTO ' + this.gotoSuccess + ']'}]"
-                                                                }
-                                                              ],
-                                                              "_mark": "",
-                                                              "_content": "[LABEL >>>]"
-                                                            }
-                                                          ],
-                                                          "_mark": "mark_lo9fb6iz5619s1v1w24v",
-                                                          "_content": "[LABEL Поздравляем! Кнопка переключения эпизодов \"EPISODE\" появилась внизу. Она будет доступна всегда, пока ты не удалишь игру.][IMAGE episodes.jpg][AUDIO episodes_button_bought][BGNDIMAGE *]"
-                                                        }
-                                                      ],
-                                                      "_mark": "",
-                                                      "_content": "[LABEL ]"
-                                                    }
-                                                  ],
-                                                  "_mark": "payment_success2",
-                                                  "_content": "[LABEL ...][IMAGE episodes.jpg][PURCHASE cheats]"
-                                                },
-                                                {
-                                                  "node": [
-                                                    {
-                                                      "_mark": "",
-                                                      "_content": "[LABEL ][GOTO try_again_buy_button_episodes]"
-                                                    },
-                                                    {
-                                                      "node": [
-                                                        {
-                                                          "node": [
-                                                            {
-                                                              "node": [
-                                                                {
-                                                                  "_mark": "mark_elafp7x78q7e70wpd661",
-                                                                  "_content": "[LABEL ][GOTO proccess_buying]"
-                                                                }
-                                                              ],
-                                                              "_mark": "",
-                                                              "_content": "[LABEL Ладно, давайте.]"
-                                                            },
-                                                            {
-                                                              "node": [
-                                                                {
-                                                                  "_mark": "mark_677039120q01r58og222",
-                                                                  "_content": "[LABEL {'[GOTO ' + this.gotoCancel + ']'}]"
-                                                                }
-                                                              ],
-                                                              "_mark": "",
-                                                              "_content": "[LABEL Нет, спасибо.]"
-                                                            }
-                                                          ],
-                                                          "_mark": "mark_41ir503p86z9go5jv33k",
-                                                          "_content": "[LABEL Еще подарим кнопку \"SKIP\" для быстрого пропуска видео!][BGNDIMAGE episodes.jpg][ANSWERSORDER OFF]"
-                                                        }
-                                                      ],
-                                                      "_mark": "cancel_buy_button_episodes",
-                                                      "_content": "[LABEL Нет, спасибо.]"
-                                                    }
-                                                  ],
-                                                  "_mark": "payment_fail2",
-                                                  "_content": "[LABEL Что то не так, попробуй еще раз.][IMAGE episodes.jpg][AUDIO episodes_button_desc2][BGNDIMAGE *][ANSWERSORDER OFF]"
-                                                }
-                                              ],
-                                              "_mark": "",
-                                              "_content": "[LABEL ]"
-                                            }
-                                          ],
-                                          "_mark": "mark_7u249b2lf7c472494fvi",
-                                          "_content": "[LABEL {script checkPayment2}]"
-                                        }
-                                      ],
-                                      "_mark": "",
-                                      "_content": "[LABEL ]"
-                                    }
-                                  ],
-                                  "_mark": "wait2",
-                                  "_content": "[LABEL ...][IMAGE episodes.jpg][AUDIO silent_3]"
-                                }
-                              ],
-                              "_mark": "",
-                              "_content": "[LABEL ]"
-                            }
-                          ],
-                          "_mark": "proccess_buying",
-                          "_content": "[LABEL {this.productId = \"com.kri_games.alco.episodes\";'';}{script getPayment}]"
+                          "_mark": "mark_834vupc064806a7n47br",
+                          "_content": "[LABEL ][GOTO START]"
                         }
                       ],
-                      "_mark": "try_again_buy_button_episodes",
-                      "_content": "[LABEL Эпизоды игры.]"
-                    },
-                    {
-                      "_mark": "mark_57459g1d36876o98q2vr",
-                      "_content": "[LABEL ][GOTO cancel_buy_button_episodes]"
+                      "_mark": "",
+                      "_content": "[LABEL ]"
                     }
                   ],
-                  "_mark": "buy_button_episodes",
-                  "_content": "[LABEL Кнопка переключения эпизодов \"EPISODE\" дает возможность быстрого перехода по сценам в игре, чтобы не проходить каждый раз все заново. Она появится внизу и будет доступна всегда, пока ты не удалишь игру.][BGNDIMAGE episodes.jpg][BGNDAUDIO episodes_button_desc1][TIMEEXPIRED proccess_buying][ANSWERTIME 18.8][ANSWERSORDER OFF]"
+                  "_mark": "donate",
+                  "_content": "[LABEL ][NAVIGATEURL https://money.yandex.ru/embed/shop.xml?account=41001220674141&quickpay=shop&payment-type-choice=on&writer=seller&targets=На развитие проекта&targets-hint=&default-sum=50&button-text=01&mail=on\" width=\"450\" height=\"199\"]"
                 },
                 {
                   "node": [
@@ -4241,12 +4061,12 @@
             {
               "node": [
                 {
-                  "_mark": "mark_8b8adi78738690oewbn3",
-                  "_content": "[LABEL {this.gotoSuccess='START';this.gotoCancel='START';''}][GOTO buy_button_episodes]"
+                  "_mark": "mark_0r50r5mbcpprv96ebc3g",
+                  "_content": "[LABEL ][GOTO donate]"
                 }
               ],
               "_mark": "buy_episodes",
-              "_content": "[LABEL Эпизоды игры]"
+              "_content": "[LABEL Достать лопатник.]"
             }
           ],
           "_mark": "START",

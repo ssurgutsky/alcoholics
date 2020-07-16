@@ -607,8 +607,20 @@
 																												[mark_jz5k41a911js47hm2q1t]Да если бы не мы, то тебя братки к себе увезли геем отрабатывать![VIDEO SeregaTellingLoop][AUDIO SeregaSaysAboutGay][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																													Чо, серъезно?
 																														[mark_81ws830yv60u46z2031i]Серъезней не бывает![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysVerySerious][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
-																															[ok_men_take_money]Ладно, мужики, вот вам денежка!
-																																[mark_pwlp6068ye74o1u7612r][GOTO donate]
+																															[donate]Ладно, мужики, вот вам денежка!
+																																[mark_11r26974zd53w1n59r80]{this.productId = "com.kri_games.alco.coin1";'';}{script getPayment}
+																																	
+																																		[wait]...[VIDEO SlavkaEatsSalat||BackGround1_Study1][AUDIO silent_5]
+																																			
+																																				[mark_x6v1i8rghy4010v0mb48]{script checkPayment}
+																																					
+																																						[payment_success]...[VIDEO EugeneGives500rurSerega][AUDIO silent_2.7][PURCHASE cheats]
+																																							
+																																								[mark_0ce924nqh8ppg35jhwo9][GOTO Drink_second_glass]
+																																						[payment_fail]Чота не так, чел, попробуй еще![BGNDVIDEO SlavkaEatsSalat||BackGround1_Study1][ANSWERSORDER OFF]
+																																							[GOTO donate]
+																																							Извините, нет денег.
+																																								[mark_54h5d2511sdnhr4cp9u8][GOTO no_donate]
 																															[GOTO i_dont_trust]
 																													Да не может такого быть![VIDEO Eugene_WhereIsMyGlass]
 																														[no_donate]Нее, ну ты погляди! Это его благодарность нам?[VIDEO SeregaTellingLoop][AUDIO SeregaSaysHeDoesntPleaseUs][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
@@ -620,8 +632,8 @@
 																																		[mark_fx486k8qb3ee1su68k7y]Круто мы тебя развели? Гыгыгы![VIDEO LaughingSlavkaAndSerega][AUDIO SeregaSaysCoolWeJokedYou][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 																																			Ну вы блин приколисты! Я почти поверил...
 																																				[mark_5ob5o8459naermx15nax][GOTO Drink_second_glass]
-																															[GOTO ok_men_take_money]
-																											[GOTO ok_men_take_money]
+																															[GOTO donate]
+																											[GOTO donate]
 																							Так ведь нельзя же быть одновременно умным, веселым и трезвым![VIDEO LaughingSlavkaAndSerega]
 																								[mark_169x0gzvf77js6r24o51]...[VIDEO SlavkaFlowingUpEugene][AUDIO Silent_13]
 																									
@@ -697,11 +709,31 @@
 								[mark_8qx1w4a1b59697s03181]Давай уже просто выпьем![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysLetsDrinkSimply][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 									[GOTO where_is_my_glass]
 									[GOTO am_i_drink_or_go_home]
-			[GOTO buy_episodes]
+			Эпизоды игры
+				[mark_8urza8m418b61mv026he]{this.gotoSuccess='GAME_SAVEPOINT';this.gotoCancel='GAME_SAVEPOINT';''}[GOTO buy_button_episodes]
 		[SEPARATOR]
-		[donate][NAVIGATEURL https://money.yandex.ru/embed/shop.xml?account=41001220674141&quickpay=shop&payment-type-choice=on&writer=seller&targets=На развитие проекта&targets-hint=&default-sum=50&button-text=01&mail=on" width="450" height="199"]
-			
-				[mark_834vupc064806a7n47br][GOTO START]
+		[buy_button_episodes]Кнопка переключения эпизодов "EPISODE" дает возможность быстрого перехода по сценам в игре, чтобы не проходить каждый раз все заново. Она появится внизу и будет доступна всегда, пока ты не удалишь игру.[BGNDIMAGE episodes.jpg][BGNDAUDIO episodes_button_desc1][ANSWERTIME 18.8][TIMEEXPIRED proccess_buying][ANSWERSORDER OFF]
+			[try_again_buy_button_episodes]Эпизоды игры.
+				[proccess_buying]{this.productId = "com.kri_games.alco.episodes";'';}{script getPayment}
+					
+						[wait2]...[IMAGE episodes.jpg][AUDIO silent_3]
+							
+								[mark_7u249b2lf7c472494fvi]{script checkPayment2}
+									
+										[payment_success2]...[IMAGE episodes.jpg][PURCHASE cheats]
+											
+												[mark_lo9fb6iz5619s1v1w24v]Поздравляем! Кнопка переключения эпизодов "EPISODE" появилась внизу. Она будет доступна всегда, пока ты не удалишь игру.[IMAGE episodes.jpg][AUDIO episodes_button_bought][BGNDIMAGE *]
+													>>>
+														[mark_l173w68sf3ab3l9l8j3q]{'[GOTO ' + this.gotoSuccess + ']'}
+										[payment_fail2]Что то не так, попробуй еще раз.[IMAGE episodes.jpg][AUDIO episodes_button_desc2][BGNDIMAGE *][ANSWERSORDER OFF]
+											[GOTO try_again_buy_button_episodes]
+											[cancel_buy_button_episodes]Нет, спасибо.
+												[mark_41ir503p86z9go5jv33k]Еще подарим кнопку "SKIP" для быстрого пропуска видео![BGNDIMAGE episodes.jpg][ANSWERSORDER OFF]
+													Ладно, давайте.
+														[mark_elafp7x78q7e70wpd661][GOTO proccess_buying]
+													Нет, спасибо.
+														[mark_677039120q01r58og222]{'[GOTO ' + this.gotoCancel + ']'}
+			[mark_57459g1d36876o98q2vr][GOTO cancel_buy_button_episodes]
 		[mark_final0]Менты испугались! Поздравления! Встреча алконавтов удалась! Главный положительный финал![BGNDVIDEO Titles][AMBIENT NONE][MUSIC Motel_Rock]
 			[GOTO play_again]
 			[GOTO buy_episodes]
@@ -760,5 +792,5 @@
 		[mark_final33]Вам удалось откупиться от ментов, но пришлось отдать последние деньги. Можно было сделать и лучше. Положительный финал #2[BGNDVIDEO BackGround1_PoliceStanding]
 			[GOTO play_again]
 			[GOTO buy_episodes]
-	[buy_episodes]Достать лопатник.
-		[mark_0r50r5mbcpprv96ebc3g][GOTO donate]
+	[buy_episodes]Эпизоды игры
+		[mark_8b8adi78738690oewbn3]{this.gotoSuccess='START';this.gotoCancel='START';''}[GOTO buy_button_episodes]
