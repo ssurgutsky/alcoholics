@@ -1,4 +1,4 @@
-[START]Алконавты / Alconauts v0.7 (code name "Semushka")[BGNDVIDEO BackGround1_Study1][ANSWERSORDER OFF][MUSIC Motel_Rock]{script initSystem}
+[START]Алконавты / Alconauts v0.7 (code name "Semushka")[BGNDVIDEO BackGround1_Study1][ANSWERSORDER ON][MUSIC Motel_Rock]{script initSystem}
 	НАЧАТЬ ИГРУ / START THE GAME
 		[GAME_SAVEPOINT,Game_Study1]Ну что, пацаны, выпьем?[VIDEO LetsDrinkSaidSlavka][AUDIO SlavkaSaysLetsDrink][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1][MUSIC DJ_Electric_Feeling_Promo_Mix_electronic||DJ_Electric_Feeling_Promo_Mix_gitar||DJ_Electric_Feeling_Promo_Mix_techno]
 			Я в завязке...
