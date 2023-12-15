@@ -697,11 +697,8 @@
 								[mark_8qx1w4a1b59697s03181]Давай уже просто выпьем![VIDEO SlavkaTellingLoop][AUDIO SlavkaSaysLetsDrinkSimply][BGNDVIDEO Eugene_EatsSalat||SlavkaEatsSalat||BackGround1_Study1]
 									[GOTO where_is_my_glass]
 									[GOTO am_i_drink_or_go_home]
-			[GOTO buy_episodes]
+			[GOTO donate]
 		[SEPARATOR]
-		[donate][NAVIGATEURL https://money.yandex.ru/embed/shop.xml?account=41001220674141&quickpay=shop&payment-type-choice=on&writer=seller&targets=На развитие проекта&targets-hint=&default-sum=50&button-text=01&mail=on" width="450" height="199"]
-			
-				[mark_834vupc064806a7n47br][GOTO START]
 		[mark_final0]Менты испугались! Поздравления! Встреча алконавтов удалась! Главный положительный финал![BGNDVIDEO Titles][AMBIENT NONE][MUSIC Motel_Rock]
 			[GOTO play_again]
 			[GOTO buy_episodes]
@@ -760,5 +757,17 @@
 		[mark_final33]Вам удалось откупиться от ментов, но пришлось отдать последние деньги. Можно было сделать и лучше. Положительный финал #2[BGNDVIDEO BackGround1_PoliceStanding]
 			[GOTO play_again]
 			[GOTO buy_episodes]
-	[buy_episodes]Достать лопатник.
-		[mark_0r50r5mbcpprv96ebc3g][GOTO donate]
+	[donate]Donate / Дать денежку
+		[mark_8o716rk6f9gm5w4vo191][IMAGE donate.png]Если понравилось, закинь сколько не жалко.
+			Перевод Tinkoff
+				[mark_f80u11uv548604r8v3v5][NAVIGATEURL https://www.tinkoff.ru/cf/7xIiPBRWF9P]
+					
+						[mark_gpz4h2d5q2gj83yqc71b][GOTO START]
+			Перевод Qiwi
+				[mark_n4f3t5qf3l1tjoui2c2f][NAVIGATEURL https://qiwi.com/n/SERJIOS]
+					
+						[mark_xw21sf4q2mxo3q0x9b78][GOTO START]
+			Перевод YooMoney
+				[mark_iz89w1lh9902e1966gt6][NAVIGATEURL https://yoomoney.ru/to/41001220674141]
+					
+						[mark_06z79l0n6q345b2ni5q2][GOTO START]
